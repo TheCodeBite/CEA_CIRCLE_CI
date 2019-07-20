@@ -1,0 +1,23 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-index',
+  templateUrl: './index.component.html',
+  styleUrls: ['./index.component.css']
+})
+export class IndexComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  registroAlumno(){
+    console.log("BOTON REGISTRO ALUMNO ");
+  }
+
+  registroMaestro(){
+    console.log("BOTON REGISTRO MAESTRO")
+  }
+
+}
