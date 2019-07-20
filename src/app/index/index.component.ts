@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -7,17 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
   registroAlumno(){
     console.log("BOTON REGISTRO ALUMNO ");
+    //this.ruta.navigate(["/registroAlumnos"]);
+    this.router.navigate(["/registroAlumnos"]);
   }
 
   registroMaestro(){
-    console.log("BOTON REGISTRO MAESTRO")
+    console.log("BOTON REGISTRO MAESTRO");
+    this.router.navigate(["/registroMaestro"]);
   }
 
 }
