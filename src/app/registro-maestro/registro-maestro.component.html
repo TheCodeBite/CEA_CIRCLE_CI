@@ -1,6 +1,59 @@
 <h2>Registro maestro</h2>
 <hr>
 
-<form>
-    
+<form action="/">
+    <label>Apellido Paterno: </label>
+    <p><input type="text" placeholder="aplleido Paterno"></p>
+
+    <label>Apellido Materno:</label>
+    <p><input type="text" placeholder="Apellido Materno" required></p>
+
+    <label>Nombre(s):</label>
+    <p><input type="text" placeholder="Nombre(s)" required></p>
+
+    <label>Fecha de nacimiento:</label>
+    <p><input type="date" required></p>
+
+    <label>Edad:</label>
+    <p><input type="number" min="18" max="98" required></p>
+
+    <label>Correo:</label>
+    <p><input type="email" placeholder="example@example.com" required></p>
+
+    <label>Teléfono:</label>
+    <p><input type="tel" placeholder="Teléfono" required></p>
+
+    <label>Dirección</label>
+    <p><input type="text" placeholder="Dirección" required></p>
+
+    <label>Sexo:</label>
+    <p>
+        <select>
+            <option value="1">Hombre</option>
+            <option value="2">Mujer</option>
+        </select>
+    </p>
+
+    <label>Titulo profesional:</label>
+    <p><input type="text" placeholder="Titulo profesional"></p>
+
+    <label>Cedula profesional:</label>
+    <p><input type="text" placeholder="Cedula profesional"></p>
+
+    <label>Institución educativa:</label>
+    <p><input type="text" placeholder="Institución educativa"></p>
+
+    <label>Tipo:</label>
+    <p>
+        <select>
+            <option value="1">Preparatoria</option>
+            <option value="2">Universidad</option>
+            <option value="3">Ambas</option>
+        </select>
+    </p>
+
+    <p>
+        <button class="btn btn-primary" type="submit" (click)="save()">Guardar</button>
+    </p>
+
 </form>
