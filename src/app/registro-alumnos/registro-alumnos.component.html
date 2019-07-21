@@ -1,51 +1,48 @@
 <h2>REGISTRO ALUMNO</h2>
-<form>
-    <div>
+<form [formGroup] ="formulario"> 
         <h4>DATOS PERSONALES DEL ALUMNO</h4>
         <label>Nombre(s):</label>
-        <p><input type="text" placeholder="Nombre(s) del alumno"></p>
+        <p><input formControlName="nombre" type="text" placeholder="Nombre(s) del alumno"></p>
         
         <label>Apellido paterno:</label>
-        <p><input type="text" placeholder="Apellido paterno"></p>
+        <p><input formControlName="apellidoPaterno" type="text" placeholder="Apellido paterno"></p>
 
         <label>Apellido materno:</label>
-        <p><input type="text" placeholder="apellido materno"> </p>
+        <p><input formControlName="apellidoMaterno" type="text" placeholder="apellido materno"> </p>
 
         <label>CURP:</label>
-        <p><input type="text" placeholder="CURP"> </p>
+        <p><input formControlName="curp" type="text" placeholder="CURP"> </p>
         
         <label>Fecha de nacimiento:</label>
-        <p><input type="date" placeholder="Fecha de nacimiento"></p>
+        <p><input formControlName="fechadeNacimiento" type="date" placeholder="Fecha de nacimiento"></p>
 
         <label>Edad:</label>
-        <p><input type="number" min="10" max="80" placeholder="Edad"></p>
+        <p><input formControlName="edad" type="number" min="10" max="80" placeholder="Edad"></p>
 
-        <div>
-            <label>Sexo:</label>
-            <p>
-                <select>
-                    <option value="1">Masculino</option>
-                    <option value="2">Mujer</option>
-                </select>
-            </p>
-        </div>
+        <label>Sexo:</label>
+        <p>
+            <select formControlName="sexo">
+                <option value="1">Masculino</option>
+                <option value="2">Mujer</option>
+            </select>
+        </p>
         
         <label>Dirección:</label>
-        <p><input type="text" placeholder="Dirección"> </p>
+        <p><input formControlName="direccion" type="text" placeholder="Dirección"> </p>
 
         <label>Municipio:</label>
-        <p><input type="text" placeholder="Municipio"></p>
-    </div>
+        <p><input formControlName="municipio" type="text" placeholder="Municipio"></p>
     
-    <div>
+    
+    
         <h4>Datos de la escuela</h4>
         
         <label>Matricula:</label>
-        <p> <input type="text" placeholder="Matricula"> </p>
+        <p> <input formControlName="matricula" type="text" placeholder="Matricula"> </p>
 
         <label>Carrera: </label>
         <p>
-            <select>
+            <select formControlName="carrera">
                 <option value="1">Carrera1</option>
                 <option value="2">Carrera2</option>
             </select>
@@ -53,15 +50,15 @@
 
         <label>Aula:</label>
         <p>
-            <select>
-                <option value="1">Carrera1</option>
-                <option value="2">Carrera2</option>
+            <select formControlName="aula">
+                <option value="1">Aula 1</option>
+                <option value="2">Aula 2</option>
             </select>
         </p>
 
         <label>Estado:</label>
         <p>
-            <select>
+            <select formControlName="estado">
                 <option value="1">Activo</option>
                 <option value="2">Inactivo</option>
                 <option value="3">Concluido</option>
@@ -69,8 +66,9 @@
         </p>
 
         <label>Folio de certificado:</label>
-        <p> <input type="text" placeholder="Folio de certificado"> </p>
-    </div>
+        <p> <input formControlName="foliocertificado" type="text" placeholder="Folio de certificado"> </p>
+
+    <button class="btn btn-primary" type="submit" (click)="guardar(formulario.value)" >Guardar</button>
 </form>
 
 <button class="btn btn-primary" (click)="regresar()">Inicio</button>

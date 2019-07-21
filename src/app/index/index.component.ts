@@ -15,7 +15,6 @@ export class IndexComponent implements OnInit {
 
   registroAlumno(){
     console.log("BOTON REGISTRO ALUMNO ");
-    //this.ruta.navigate(["/registroAlumnos"]);
     this.router.navigate(["/registroAlumnos"]);
   }
 
