@@ -13,10 +13,26 @@ export class RegistroMaestroComponent implements OnInit {
   constructor(private route:Router, private fb:FormBuilder) { }
 
   ngOnInit() {
+    this.formulario = this.fb.group({
+      apellidopaterno: [''],
+      apellidomaterno: [''],
+      nombre: [''],
+      fechadenacimiento: [''],
+      edad: [''],
+      correo: [''],
+      telefono: [''],
+      direccion: [''],
+      sexo: [''],
+      tituloprofesional: [''],
+      cedulaprofesional: [''],
+      institucioneducativa: [''],
+      tipo: ['']
+    });
 
   }
 
-  save(){
+  save(datos: any){
     console.log("guardando datos del profesor..");
+    console.log(datos);
   }
 }

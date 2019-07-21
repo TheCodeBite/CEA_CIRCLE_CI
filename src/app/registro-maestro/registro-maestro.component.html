@@ -1,51 +1,51 @@
 <h2>Registro maestro</h2>
 <hr>
 
-<form action="/">
+<form [formGroup]="formulario">
     <label>Apellido Paterno: </label>
-    <p><input type="text" placeholder="aplleido Paterno"></p>
+    <p><input formContolName="apellidopaterno" required type="text" placeholder="aplleido Paterno"></p>
 
     <label>Apellido Materno:</label>
-    <p><input type="text" placeholder="Apellido Materno" required></p>
+    <p><input formContolName="apellidomaterno" type="text" placeholder="Apellido Materno" required></p>
 
     <label>Nombre(s):</label>
-    <p><input type="text" placeholder="Nombre(s)" required></p>
+    <p><input formContolName="nombre" type="text" placeholder="Nombre(s)" required></p>
 
     <label>Fecha de nacimiento:</label>
-    <p><input type="date" required></p>
+    <p><input formContolName="fechadenacimiento" type="date" required></p>
 
     <label>Edad:</label>
-    <p><input type="number" min="18" max="98" required></p>
+    <p><input formContolName="edad" type="number" min="18" max="98" required></p>
 
     <label>Correo:</label>
-    <p><input type="email" placeholder="example@example.com" required></p>
+    <p><input formContolName="correo" type="email" placeholder="example@example.com" required></p>
 
     <label>Teléfono:</label>
-    <p><input type="tel" placeholder="Teléfono" required></p>
+    <p><input formContolName="telefono" type="tel" placeholder="Teléfono" required></p>
 
     <label>Dirección</label>
-    <p><input type="text" placeholder="Dirección" required></p>
+    <p><input formContolName="direccion" type="text" placeholder="Dirección" required></p>
 
     <label>Sexo:</label>
     <p>
-        <select>
+        <select formContolName="sexo">
             <option value="1">Hombre</option>
             <option value="2">Mujer</option>
         </select>
     </p>
 
     <label>Titulo profesional:</label>
-    <p><input type="text" placeholder="Titulo profesional"></p>
+    <p><input formContolName="tituloprofesional" type="text" placeholder="Titulo profesional"></p>
 
     <label>Cedula profesional:</label>
-    <p><input type="text" placeholder="Cedula profesional"></p>
+    <p><input formContolName="cedulaprofesional" type="text" placeholder="Cedula profesional"></p>
 
     <label>Institución educativa:</label>
-    <p><input type="text" placeholder="Institución educativa"></p>
+    <p><input type="text" formContolName="institucioneducativa" placeholder="Institución educativa"></p>
 
     <label>Tipo:</label>
     <p>
-        <select>
+        <select formContolName="tipo"> 
             <option value="1">Preparatoria</option>
             <option value="2">Universidad</option>
             <option value="3">Ambas</option>
