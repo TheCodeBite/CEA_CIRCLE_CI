@@ -26,9 +26,9 @@ export class RegistroMaestroComponent implements OnInit {
         sexo: ['']
       }),
       informacionAcademica:this.fb.group({
-        tituloprofesional: [''],
-        cedulaprofesional: [''],
-        institucioneducativa: [''],
+        tituloprofesional: ['',Validators.required],
+        cedulaprofesional: ['',Validators.required],
+        institucioneducativa: ['',Validators.required],
         tipo: ['']
       })
     });
