@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registro-maestro',
@@ -14,9 +14,9 @@ export class RegistroMaestroComponent implements OnInit {
 
   ngOnInit() {
     this.formulario = this.fb.group({
-      datosPersonales: this.fb.group({
-        apellidopaterno: [''],
-        apellidomaterno: [''],
+      datosPersonales:this.fb.group({
+        apellidopaterno: ['',Validators.required],
+        apellidomaterno: ['',Validators.required],
         nombre: [''],
         fechadenacimiento: [''],
         edad: [''],
@@ -25,7 +25,7 @@ export class RegistroMaestroComponent implements OnInit {
         direccion: [''],
         sexo: ['']
       }),
-      informacionAcademica  : this.fb.group({
+      informacionAcademica:this.fb.group({
         tituloprofesional: [''],
         cedulaprofesional: [''],
         institucioneducativa: [''],

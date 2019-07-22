@@ -5,32 +5,32 @@
 <form [formGroup]="formulario">
     <div formGroupName="datosPersonales">
         <label>Apellido Paterno: </label>
-        <p><input formContolName="apellidopaterno" required type="text" placeholder="aplleido Paterno"></p>
+        <p><input formControlName="apellidopaterno" required type="text" placeholder="aplleido Paterno"></p>
         
         <label>Apellido Materno:</label>
-        <p><input formContolName="apellidomaterno" type="text" placeholder="Apellido Materno" required></p>
+        <p><input formControlName="apellidomaterno" type="text" placeholder="Apellido Materno" required></p>
         
         <label>Nombre(s):</label>
-        <p><input formContolName="nombre" type="text" placeholder="Nombre(s)" required></p>
+        <p><input formControlName="nombre" type="text" placeholder="Nombre(s)" required></p>
         
         <label>Fecha de nacimiento:</label>
-        <p><input formContolName="fechadenacimiento" type="date" required></p>
+        <p><input formControlName="fechadenacimiento" type="date" required></p>
     
         <label>Edad:</label>
-        <p><input formContolName="edad" type="number" min="18" max="98" required></p>
+        <p><input formControlName="edad" type="number" min="18" max="98" required></p>
         
         <label>Correo:</label>
-        <p><input formContolName="correo" type="email" placeholder="example@example.com" required></p>
+        <p><input formControlName="correo" type="email" placeholder="example@example.com" required></p>
         
         <label>Teléfono:</label>
-        <p><input formContolName="telefono" type="tel" placeholder="Teléfono" required></p>
+        <p><input formControlName="telefono" type="tel" placeholder="Teléfono" required></p>
         
         <label>Dirección</label>
-        <p><input formContolName="direccion" type="text" placeholder="Dirección" required></p>
+        <p><input formControlName="direccion" type="text" placeholder="Dirección" required></p>
         
         <label>Sexo:</label>
         <p>
-            <select formContolName="sexo">
+            <select formControlName="sexo">
                 <option value="1">Hombre</option>
                 <option value="2">Mujer</option>
             </select>
@@ -39,17 +39,17 @@
     
     <div forGroupName="informacionAcademica">
         <label>Titulo profesional:</label>
-        <p><input formContolName="tituloprofesional" type="text" placeholder="Titulo profesional"></p>
+        <p><input formControlName="tituloprofesional" type="text" placeholder="Titulo profesional" required></p>
         
         <label>Cedula profesional:</label>
-        <p><input formContolName="cedulaprofesional" type="text" placeholder="Cedula profesional"></p>
+        <p><input formControlName="cedulaprofesional" type="text" placeholder="Cedula profesional" required></p>
         
         <label>Institución educativa:</label>
-        <p><input type="text" formContolName="institucioneducativa" placeholder="Institución educativa"></p>
+        <p><input type="text" formControlName="institucioneducativa" placeholder="Institución educativa" required></p>
         
         <label>Tipo:</label>
         <p>
-            <select formContolName="tipo"> 
+            <select formControlName="tipo"> 
                 <option value="1">Preparatoria</option>
                 <option value="2">Universidad</option>
                 <option value="3">Ambas</option>
