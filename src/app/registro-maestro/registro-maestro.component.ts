@@ -14,19 +14,23 @@ export class RegistroMaestroComponent implements OnInit {
 
   ngOnInit() {
     this.formulario = this.fb.group({
-      apellidopaterno: [''],
-      apellidomaterno: [''],
-      nombre: [''],
-      fechadenacimiento: [''],
-      edad: [''],
-      correo: [''],
-      telefono: [''],
-      direccion: [''],
-      sexo: [''],
-      tituloprofesional: [''],
-      cedulaprofesional: [''],
-      institucioneducativa: [''],
-      tipo: ['']
+      datosPersonales: this.fb.group({
+        apellidopaterno: [''],
+        apellidomaterno: [''],
+        nombre: [''],
+        fechadenacimiento: [''],
+        edad: [''],
+        correo: [''],
+        telefono: [''],
+        direccion: [''],
+        sexo: ['']
+      }),
+      informacionAcademica  : this.fb.group({
+        tituloprofesional: [''],
+        cedulaprofesional: [''],
+        institucioneducativa: [''],
+        tipo: ['']
+      })
     });
 
   }
