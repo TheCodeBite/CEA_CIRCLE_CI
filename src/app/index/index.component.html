@@ -1,57 +1,59 @@
-<!-- Image and text -->
+<div class="view">
+  <div class="mask rgba-black-light align-items-left">
+    <div class="container">
+      <div class="row"> 
+              <!--Grid column-->
+            <div class="col-md-12 mb-4 white-text text-left">
+              <h1 class="h1-reponsive text-white text-uppercase mb-0 pt-md-5 pt-5" style="letter-spacing: 8px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex" style="background-color: rgba(211, 17, 137, 0.356)"> Universidad CEA</strong></h1>
+              <hr class="hr-light my-3">
+              <div class="mb-4">
+                  <h5 class="text-uppercase mb-4 text-white" style="letter-spacing: 3px;"><strong class="d-inline-flex" style="background-color: rgba(211, 17, 137, 0.356)">El Cámino al éxito</strong></h5>
+              </div>
+              <div style="margin-top: 4em;">
+                  <a class="btn btn-success" style="color: white; font-size: 18px; font-family: 'Roboto', sans-serif;" (click)="registroAlumno()" >Registrar Alumno</a>
+                  <a class="btn btn-success botones" (click)="registroMaestro()" >Registro Maestro</a>
+                  <a class="btn btn-success botones" (click)="calificaciones()" >Calificaciones</a>
+                  <a class="btn btn-success botones" (click)="controlPagos()">Control de Pagos</a>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
+
+<!--
 <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-                        <ul class="navbar-nav mr-auto">
-                            <a class="navbar-brand mx-auto" href="#">Centro de Educación Avanzada</a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                                    <span class="navbar-toggler-icon"></span>
-                            </button>
-                        </ul>
-                </div>
-
-               
-                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarNavDropdown">
-                    <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Alumnos</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Maestros</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Alumnos2
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Registro Universidad</a>
-                        <a class="dropdown-item" href="#">Registro Prepatoria</a>
-                        <a class="dropdown-item" href="#">Registro Prepatoria - Universidad</a>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </nav>
-
-    <div class="row">
-        <div id="caja1" class="cajas">
-            <div id="tablaOpciones">
-                <div class="btn-group-vertical">
-                        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="registroAlumno()">Inscribir Alumno</button>
+  <div class="row">
+    <div style="background-color: (rgba(180, 100, 255, 0.4));" id="caja1" class="cajas">
+            -<div id="tablaOpciones">
+                <div class="btn-group-vertical btn-lg btn-block">
+                        <button type="button" class="btn btn-primary btn-lg" (click)="registroAlumno()">Inscribir Alumno</button>
                         <ul></ul>
-                        <button type="button" class="btn btn-primary btn-lg btn-block"(click)="registroMaestro()">Registrar maestro</button>
+                        <button type="button" class="btn btn-secondary btn-lg"(click)="registroMaestro()">Registrar maestro</button>
                         <ul></ul>
-                        <button type="button" class="btn btn-primary btn-lg btn-block"(click)="registroMaestro()">Calificaciones</button>
+                        <button type="button" class="btn btn-light btn-lg"(click)="registroMaestro()">Calificaciones</button>
                         <ul></ul>
-                        <button type="button" class="btn btn-primary btn-lg btn-block"(click)="registroMaestro()">Control de Pagos</button>
+                        <button type="button" class="btn btn-success btn-lg"(click)="registroMaestro()">Control de Pagos</button>
                 </div>
                 
-            </div>              
-        </div>
-    </div>
-</div>
+            </div>    
+          <div  id="card-main" class="card">
+            <div class="card-body">
+              <h1 class="card-title" style="font-size: 300%;">Universidad CEA </h1>
+                <a></a>
+                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                <p class="card-bodys" style="font-size: 30px;">El Cámino al éxito</p>
+
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary" (click)="registroAlumno()" style="margin-left: 1em;">Inscribir Alumno</button>
+                    <button type="button" class="btn btn-primary" (click)="registroMaestro()" style="margin-left: 1em;"> Registrar maestro</button>
+                    <button type="button" class="btn btn-primary"(click)="calificaciones()" style="margin-left: 1em;">Calificaciones</button>
+                    <button type="button" class="btn btn-primary"(click)="controlPagos()" style="margin-left: 1em;">Control de Pagos</button>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>-->

@@ -1,66 +1,136 @@
-<h2>Registro maestro</h2>
-<hr>
+<div class="container-fluid">
+    <div class="row align-item-left">
+        <div class="col-md-4" style="background-color: blue">
 
+        </div>
+        <div class="col-md-8">
 
-<form [formGroup]="formulario">
-    <div formGroupName="datosPersonales">
-        <label>Apellido Paterno: </label>
-        <p><input formControlName="apellidopaterno" required type="text" placeholder="aplleido Paterno"></p>
-        
-        <label>Apellido Materno:</label>
-        <p><input formControlName="apellidomaterno" type="text" placeholder="Apellido Materno" required></p>
-        
-        <label>Nombre(s):</label>
-        <p><input formControlName="nombre" type="text" placeholder="Nombre(s)" required></p>
-        
-        <label>Fecha de nacimiento:</label>
-        <p><input formControlName="fechadenacimiento" type="date" required></p>
-    
-        <label>Edad:</label>
-        <p><input formControlName="edad" type="number" min="18" max="98" required></p>
-        
-        <label>Correo:</label>
-        <p><input formControlName="correo" type="email" placeholder="example@example.com" required></p>
-        
-        <label>Teléfono:</label>
-        <p><input formControlName="telefono" type="tel" placeholder="Teléfono" required></p>
-        
-        <label>Dirección</label>
-        <p><input formControlName="direccion" type="text" placeholder="Dirección" required></p>
-        
-        <label>Sexo:</label>
-        <p>
-            <select formControlName="sexo">
-                <option value="1">Hombre</option>
-                <option value="2">Mujer</option>
-            </select>
-        </p>
+        </div>
     </div>
-    
-    <div forGroupName="informacionAcademica">
-        <label>Titulo profesional:</label>
-        <p><input formControlName="tituloprofesional" type="text" placeholder="Titulo profesional" required></p>
-        
-        <label>Cedula profesional:</label>
-        <p><input formControlName="cedulaprofesional" type="text" placeholder="Cedula profesional" required></p>
-        
-        <label>Institución educativa:</label>
-        <p><input type="text" formControlName="institucioneducativa" placeholder="Institución educativa" required></p>
-        
-        <label>Tipo:</label>
-        <p>
-            <select formControlName="tipo"> 
-                <option value="1">Preparatoria</option>
-                <option value="2">Universidad</option>
-                <option value="3">Ambas</option>
-            </select>
-        </p>
-    </div>
+</div>
+<!--<div class="card" style="overflow: scroll">
+        <h5 class="card-header">
+          Registro de Maestro
+          kevin
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title">Datos Personales</h5>
+          
+          <form [formGroup]="formulario">
+                <div formGroupName="datosPersonales">
 
-    
+                    <div class="form-group">
+                    <label>Nombre(s):</label>
+                    <p><input formControlName="nombre" type="text" class="form-control" placeholder="Nombre(s)" required></p>
+                    </div>
 
-    <p>
-        <button class="btn btn-primary" type="submit" (click)="save(formulario.value)">Guardar</button>
-    </p>
+                    <div class="row">
+                        <div class="col">
+                                <div class="form-group">
+                                    <label>Apellido Paterno: </label>
+                                    <p><input formControlName="apellidopaterno" required type="text" class="form-control" placeholder="aplleido Paterno"></p>
+                                </div>
+                        </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Apellido Materno:</label>
+                                    <p><input formControlName="apellidomaterno" type="text" class="form-control" placeholder="Apellido Materno" required></p>
+                                </div>
+                            </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Fecha de nacimiento:</label>
+                                <p><input formControlName="fechadenacimiento" type="date" class="form-control" required></p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Edad:</label>
+                                <p><input formControlName="edad" type="number" class="form-control" min="18" max="98" required></p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Sexo:</label>
+                                <p>
+                                    <select formControlName="sexo" class="form-control">
+                                        <option value="1">Hombre</option>
+                                        <option value="2">Mujer</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Correo:</label>
+                                <p><input formControlName="correo" type="email" class="form-control" placeholder="example@example.com" required></p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Teléfono:</label>
+                                <p><input formControlName="telefono" type="tel" class="form-control" placeholder="Teléfono" required></p>
+                            </div>    
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Dirección</label>
+                        <p><input formControlName="direccion" type="text" class="form-control" placeholder="Dirección" required></p>
+                    </div>    
+                </div>
+                
+                <h5 class="card-title">Información Académica</h5>
 
-</form>
+                <div formGroupName="informacionAcademica">
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Titulo profesional:</label>
+                                <p><input formControlName="tituloprofesional" type="text" class="form-control" placeholder="Titulo profesional" required></p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                    <label>Cedula profesional:</label>
+                                    <p><input formControlName="cedulaprofesional" type="text" class="form-control" placeholder="Cedula profesional" required></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>Institución educativa:</label>
+                                <p><input type="text" formControlName="institucioneducativa" class="form-control" placeholder="Institución educativa" required></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Tipo:</label>
+                            <p>
+                                <select formControlName="tipo" class="form-control"> 
+                                    <option value="1">Preparatoria</option>
+                                    <option value="2">Universidad</option>
+                                    <option value="3">Ambas</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+        
+                </div>
+                
+                <div class="rd-flex flex-row-reverse">
+                        <button class="btn btn-primary" (click)="save(formulario.value)">Guardar</button>
+                        <button class="btn btn-danger" (click)="cancel()">Cancelar</button>
+                </div>                
+                
+            </form>
+        </div>
+</div>-->

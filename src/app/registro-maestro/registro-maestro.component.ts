@@ -39,4 +39,8 @@ export class RegistroMaestroComponent implements OnInit {
     console.log("guardando datos del profesor..");
     console.log(datos);
   }
+
+  cancel(){
+    this.route.navigate(['']);
+  }
 }
