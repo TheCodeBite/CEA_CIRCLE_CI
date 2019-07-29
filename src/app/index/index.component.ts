@@ -11,8 +11,10 @@ export class IndexComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
+    
   }
 
+  //RUTA DE LOS BOTONES 
   registroAlumno(){
     console.log("BOTON REGISTRO ALUMNO ");
     this.router.navigate(["/registroAlumnos"]);

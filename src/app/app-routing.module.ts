@@ -7,6 +7,7 @@ import { RegistroMaestroComponent } from './registro-maestro/registro-maestro.co
 
 const routes: Routes = [
   {path:'', component: IndexComponent},
+  {path:'home', component: IndexComponent},
   {path:'registroAlumnos', component: RegistroAlumnosComponent},
   {path:'registroMaestro', component: RegistroMaestroComponent},
   {path:'**', component:Page404Component}

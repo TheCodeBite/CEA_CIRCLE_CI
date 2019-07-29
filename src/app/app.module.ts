@@ -8,6 +8,12 @@ import { IndexComponent } from './index/index.component';
 import { Page404Component } from './page404/page404.component';
 import { RegistroAlumnosComponent } from './registro-alumnos/registro-alumnos.component';
 import { RegistroMaestroComponent } from './registro-maestro/registro-maestro.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatStepperModule, MatIconModule } from '@angular/material';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +27,13 @@ import { RegistroMaestroComponent } from './registro-maestro/registro-maestro.co
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule, 
+    MatCheckboxModule,
+    MatStepperModule,
+    MatIconModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

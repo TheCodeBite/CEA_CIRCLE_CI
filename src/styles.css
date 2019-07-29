@@ -1,21 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 .navbar {
     background-color:transparent;
 }
 
 body{
-    height: 100%;
-    width: 100%;
-    position: fixed;
     background-image: url("https://avante.biz/wp-content/uploads/Back-To-School-Wallpapers-For-Desktop/Back-To-School-Wallpapers-For-Desktop-021.jpg"); 
     background-repeat: no-repeat; 
-    background-size: cover; 
-    background-position: absolute center;
+    background-size: cover;
+   
 }
-/*.navbar-light .navbar-nav .nav-link {
-    color: red;
-}
-
-.navbar-light .navbar-nav .active>.nav-link  {
-    color: red;
-}*/

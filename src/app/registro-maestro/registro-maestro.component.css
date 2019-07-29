@@ -1,8 +1,21 @@
- .navbar-light .navbar-nav .nav-link {
-    color: white;
+.main {
+    height: 90%;
+    width: 97%;
+    position: absolute;
+    background: #fff;
+    background-size: 100% 100%;
+    display: flex;
 }
 
-#btn_Guardar {
-    margin-left: 93%;
-    margin-right: 0%;
+.signup-img {
+    height: 100%;
+    width: 40%;
+    background-image: url("../../assets/Imagenes/signup-img.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.signup-form {
+    height: 100%;
+    width: 60%;
 }
