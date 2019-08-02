@@ -1,19 +1,28 @@
 .main {
-    height: 87%;
-    width: 100%;
-    margin: auto auto;
-    display: inline-block;
-    display: inline-flex;
+    height: 90%;
+    width: 97%;
+    position: absolute;
     background: #fff;
-    border-radius: 1em;
-    overflow: hidden;
+    background-size: 100% 100%;
+    display: flex;
 }
 
 .signup-img {
-    width: 40%;
     height: 100%;
+    width: 40%;
     background-image: url("../../assets/Imagenes/signup-img.jpg");
+    background-repeat: no-repeat;
     background-size: 100% 100%;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+}
+
+
+.signup-form {
+    height: 100%;
+    width: 60%;
+    overflow: auto;
+}
+
+.signup-content {
+    height: 100%;
+    width: 100%;
 }

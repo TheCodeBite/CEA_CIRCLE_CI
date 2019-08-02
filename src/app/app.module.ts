@@ -9,10 +9,14 @@ import { Page404Component } from './page404/page404.component';
 import { RegistroAlumnosComponent } from './registro-alumnos/registro-alumnos.component';
 import { RegistroMaestroComponent } from './registro-maestro/registro-maestro.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatStepperModule, MatIconModule } from '@angular/material';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule} from '@angular/material/core';
+import { MaestrosComponent } from './maestros/maestros.component';
+import { AlumnosComponent } from './alumnos/alumnos.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,7 +25,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     IndexComponent,
     Page404Component,
     RegistroAlumnosComponent,
-    RegistroMaestroComponent
+    RegistroMaestroComponent,
+    MaestrosComponent,
+    AlumnosComponent
   ],
   imports: [
     BrowserModule,
@@ -30,10 +36,12 @@ import {MatNativeDateModule} from '@angular/material/core';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule, 
+    HttpClientModule,
     MatCheckboxModule,
     MatStepperModule,
     MatIconModule,
     MatNativeDateModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

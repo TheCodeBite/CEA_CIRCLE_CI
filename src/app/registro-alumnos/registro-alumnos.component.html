@@ -1,46 +1,247 @@
+<div class="main">
+    <div class="signup-img"></div>
+    <div class="signup-form">
+        <div class="title-form">
+            <h4 class="card-header">Registro de Alumno {{tipoAlumno}}</h4>
+        </div>
+        <div class="signup-content">
+            <mat-horizontal-stepper linear #stepper>
+                <mat-step [stepControl]="datosPersonales" errorMessage="Name is required." [editable]="isEditable">
+                    <ng-template matStepLabel>Datos Personales</ng-template>
 
-<!--<h2>REGISTRO ALUMNO</h2>
-<form [formGroup] ="formulario"> 
-        <h4>DATOS PERSONALES DEL ALUMNO</h4>
-        <label>Nombre(s):</label>
-        <p><input formControlName="nombre" type="text" placeholder="Nombre(s) del alumno"></p>
-        
-        <label>Apellido paterno:</label>
-        <p><input formControlName="apellidoPaterno" type="text" placeholder="Apellido paterno"></p>
+                    <div class="form-group">
+                        <label>Tipo de Registro:</label>
+                        <button type="button" class="btn-outline-info" style="margin-left: 0.5em"
+                            (click)="chage_alumno()">{{nameButton}}</button>
+                    </div>
 
-        <label>Apellido materno:</label>
-        <p><input formControlName="apellidoMaterno" type="text" placeholder="apellido materno"> </p>
+                    <form [formGroup]="datos_personales">
+                        <label>Nombre(s):</label>
+                        <p><input formControlName="nombre" type="text" class="form-control"
+                                placeholder="Nombre(s) del alumno"></p>
 
-        <label>CURP:</label>
-        <p><input formControlName="curp" type="text" placeholder="CURP"> </p>
-        
-        <label>Fecha de nacimiento:</label>
-        <p><input formControlName="fechadeNacimiento" type="date" placeholder="Fecha de nacimiento"></p>
+                        <div class="row">
+                            <div class="col">
+                                <label>Apellido paterno:</label>
+                                <p><input formControlName="apellidopaterno" type="text" class="form-control"
+                                        placeholder="Apellido paterno"></p>
+                            </div>
+                            <div class="col">
+                                <label>Apellido materno:</label>
+                                <p><input formControlName="apellidomaterno" type="text" class="form-control"
+                                        placeholder="Apellido materno"> </p>
+                            </div>
+                            <div class="col">
+                                <label>Fecha de nacimiento:</label>
+                                <p><input formControlName="fechadenacimiento" type="date" class="form-control"
+                                        placeholder="Fecha de nacimiento"></p>
+                            </div>
+                        </div>
 
-        <label>Edad:</label>
-        <p><input formControlName="edad" type="number" min="10" max="80" placeholder="Edad"></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>CURP:</label>
+                                <p><input formControlName="curp" type="text" class="form-control" placeholder="CURP">
+                                </p>
+                            </div>
 
-        <label>Sexo:</label>
-        <p>
-            <select formControlName="sexo">
-                <option value="1">Masculino</option>
-                <option value="2">Mujer</option>
-            </select>
-        </p>
-        
-        <label>Dirección:</label>
-        <p><input formControlName="direccion" type="text" placeholder="Dirección"> </p>
+                            <div class="col-md-3">
+                                <label>Edad:</label>
+                                <p><input formControlName="edad" type="number" class="form-control" min="10" max="80"
+                                        placeholder="Edad"></p>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Sexo:</label>
+                                <p>
+                                    <select formControlName="sexo" class="form-control">
+                                        <option value="1">Masculino</option>
+                                        <option value="2">Mujer</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
 
-        <label>Municipio:</label>
-        <p><input formControlName="municipio" type="text" placeholder="Municipio"></p>
-    
-    
-    
-        <h4>Datos de la escuela</h4>
-        
-        <label>Matricula:</label>
-        <p> <input formControlName="matricula" type="text" placeholder="Matricula"> </p>
+                        <div class="row">
+                            <div class="col">
+                                <label>Municipio:</label>
+                                <p><input formControlName="municipio" type="text" class="form-control"
+                                        placeholder="Municipio"></p>
+                            </div>
+                            <div class="col">
+                                <label>Dirección:</label>
+                                <p><input formControlName="direccion" type="text" class="form-control"
+                                        placeholder="Dirección"> </p>
+                            </div>
+                        </div>
 
+                        <div *ngIf="alumno_prepa">
+                            <label>Tutor:</label>
+                            <p><input formControlName="tutor" type="text" class="form-control" placeholder="Tutor"></p>
+                        </div>
+
+                        <div style="float: right;">
+                            <button mat-button matStepperNext>Siguiente</button>
+                        </div>
+
+                    </form>
+
+                </mat-step>
+                <mat-step [stepControl]="datos_escuela" errorMessage="Name is required." [editable]="isEditable">
+                    <ng-template matStepLabel>Datos Escolares</ng-template>
+                    <form [formGroup]="datos_escuela">
+
+                        <div class="row">
+                            <div class="col">
+                                <label>Matricula:</label>
+                                <p> <input formControlName="matricula" type="text" class="form-control"
+                                        placeholder="Matricula"> </p>
+                            </div>
+                            <div class="col">
+                                <label>Aula:</label>
+                                <p>
+                                    <select formControlName="aula" class="form-control">
+                                        <option value="1">Aula 1</option>
+                                        <option value="2">Aula 2</option>
+                                    </select>
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <label>Estado:</label>
+                        <p>
+                            <select formControlName="estado" class="form-control">
+                                <option value="1">Activo</option>
+                                <option value="2">Inactivo</option>
+                                <option value="3">Concluido</option>
+                            </select>
+                        </p>
+
+                        <label>Folio de certificado:</label>
+                        <p> <input formControlName="folio_certificado" type="text" class="form-control"
+                                placeholder="Folio de certificado">
+                        </p>
+
+                        <div style="float: right;">
+                            <button mat-button matStepperPrevious>Atras</button>
+                            <button mat-button matStepperNext>Siguiente</button>
+                        </div>
+
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="documentos" errorMessage="Name is required." [editable]="isEditable">
+                    <ng-template matStepLabel>Documentación</ng-template>
+                    <form [formGroup]="documentos">
+                        <input type="checkbox" formControlName="certificado_original"> Certificado original<br>
+                        <input type="checkbox" formControlName="certificado_tres_copias" value="1"> certificado 3
+                        copias<br>
+                        <input type="checkbox" formControlName="acta_de_nacimiento" value="1"> acta de nacimiento
+                        original<br>
+                        <input type="checkbox" formControlName="acta_de_nacimiento_tres_copias" value="1"> acta de
+                        nacimiento 3 copias<br>
+                        <input type="checkbox" formControlName="ine_tres_copias" value="1"> INE 3 copias<br>
+                        <input type="checkbox" formControlName="comprobante_de_domicilio" value="1"> comprobante de
+                        domicilio<br>
+
+                        <div style="float: right;">
+                            <button mat-button matStepperPrevious>Atras</button>
+                            <button mat-button matStepperNext>Siguiente</button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step>
+                    <p>¿Te aseguraste de llenar correctamente todos los campos? </p>
+                    <ng-template matStepLabel>Guardado</ng-template>
+
+                    <button type="button" class="btn btn-success" mat-button
+                        (click)="registrar(datos_personales.value, datos_escuela.value, documentos.value)">Registrar</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Registro de Maestro</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    El Registro del Maestro ha finalizado con éxito
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                                        (click)="home()">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </div>
+</div>
+
+
+<!--<button (click)="chage_alumno()">{{nameButton}}</button>
+
+<h1>registrando alumno de {{tipoAlumno}}</h1>
+
+
+<form [formGroup]="datos_personales">
+    <h4>DATOS PERSONALES</h4>
+    <label>Nombre(s):</label>
+    <p><input formControlName="nombre" type="text" placeholder="Nombre(s) del alumno"></p>
+
+    <label>Apellido paterno:</label>
+    <p><input formControlName="apellidopaterno" type="text" placeholder="Apellido paterno"></p>
+
+    <label>Apellido materno:</label>
+    <p><input formControlName="apellidomaterno" type="text" placeholder="apellido materno"> </p>
+
+    <div *ngIf="alumno_prepa">
+        <label>Tutor:</label>
+        <p><input formControlName="tutor" type="text" placeholder="Tutor"></p>
+    </div>
+
+
+    <label>CURP:</label>
+    <p><input formControlName="curp" type="text" placeholder="CURP"> </p>
+
+    <label>Fecha de nacimiento:</label>
+    <p><input formControlName="fechadenacimiento" type="date" placeholder="Fecha de nacimiento"></p>
+
+    <label>Edad:</label>
+    <p><input formControlName="edad" type="number" min="10" max="80" placeholder="Edad"></p>
+
+    <label>Sexo:</label>
+    <p>
+        <select formControlName="sexo">
+            <option value="1">Masculino</option>
+            <option value="2">Mujer</option>
+        </select>
+    </p>
+
+    <label>Dirección:</label>
+    <p><input formControlName="direccion" type="text" placeholder="Dirección"> </p>
+
+    <label>Municipio:</label>
+    <p><input formControlName="municipio" type="text" placeholder="Municipio"></p>
+    <!-- ACA AGREGAS LOS BOTONES SIGUIENTES NADA MAS--
+</form>
+
+
+
+<form [formGroup]="datos_escuela">
+    <h4>DATOS DE LA ESCUELA</h4>
+
+    <label>Matricula:</label>
+    <p> <input formControlName="matricula" type="text" placeholder="Matricula"> </p>
+
+    <div *ngIf="alumno_prepa">
         <label>Carrera: </label>
         <p>
             <select formControlName="carrera">
@@ -48,28 +249,37 @@
                 <option value="2">Carrera2</option>
             </select>
         </p>
+    </div>
 
-        <label>Aula:</label>
-        <p>
-            <select formControlName="aula">
-                <option value="1">Aula 1</option>
-                <option value="2">Aula 2</option>
-            </select>
-        </p>
+    <label>Aula:</label>
+    <p>
+        <select formControlName="aula">
+            <option value="1">Aula 1</option>
+            <option value="2">Aula 2</option>
+        </select>
+    </p>
 
-        <label>Estado:</label>
-        <p>
-            <select formControlName="estado">
-                <option value="1">Activo</option>
-                <option value="2">Inactivo</option>
-                <option value="3">Concluido</option>
-            </select>
-        </p>
+    <label>Estado:</label>
+    <p>
+        <select formControlName="estado">
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
+            <option value="3">Concluido</option>
+        </select>
+    </p>
 
-        <label>Folio de certificado:</label>
-        <p> <input formControlName="foliocertificado" type="text" placeholder="Folio de certificado"> </p>
+    <label>Folio de certificado:</label>
+    <p> <input formControlName="folio_certificado" type="text" placeholder="Folio de certificado"> </p>
 
-    <button class="btn btn-primary" type="submit" (click)="guardar(formulario.value)" >Guardar</button>
+</form>
+<form [formGroup]="documentos"> 
+    <h4>DOCUMENTACION</h4>
+    <input type="checkbox" formControlName="certificado_original"> Certificado original<br>
+    <input type="checkbox" formControlName="certificado_tres_copias" value="1"> certificado 3 copias<br>
+    <input type="checkbox" formControlName="acta_de_nacimiento" value="1"> acta de nacimiento original<br>
+    <input type="checkbox" formControlName="acta_de_nacimiento_tres_copias" value="1"> acta de nacimiento 3 copias<br>
+    <input type="checkbox" formControlName="ine_tres_copias" value="1"> INE 3 copias<br>
+    <input type="checkbox" formControlName="comprobante_de_domicilio" value="1"> comprobante de domicilio<br>
 </form>
 
-<button class="btn btn-primary" (click)="regresar()">Inicio</button>-->
+<button (click)="registrar(datos_personales.value, datos_escuela.value, documentos.value)">Registrar</button>-->

@@ -6,289 +6,165 @@
         </div>
         <div class="signup-content">
             <!--Inicia Form Group-->
-            <form [formGroup]="formulario">
-                <mat-horizontal-stepper linear #stepper>
-                    <mat-step [stepControl]="datosPersonales" errorMessage="Name is required." [editable]="isEditable">
-                        
-                        <div formGroupName="datosPersonales">
-                            <ng-template matStepLabel>Datos Personales</ng-template> 
+            <mat-horizontal-stepper linear #stepper>
+                <mat-step [stepControl]="datosPersonales" errorMessage="Name is required." [editable]="isEditable">
 
-                            <div class="form-group">
-                                <label>Nombre(s):</label>
-                                <p><input formControlName="nombre" type="text" matInput class="form-control" placeholder="Nombre(s)" ng-required="true"></p>
-                                        </div>
-                                        
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Apellido Paterno: </label>
-                                                    <p><input formControlName="apellidopaterno" matInput required type="text" class="form-control" placeholder="Apellido Paterno" ></p>
-                                                 </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Apellido Materno:</label>
-                                                    <p><input formControlName="apellidomaterno" matInput type="text" class="form-control" placeholder="Apellido Materno" required></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                                            
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Fecha de nacimiento:</label>
-                                                    <p><input formControlName="fechadenacimiento" matInput type="date" class="form-control" required></p>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Edad:</label>
-                                                    <p><input formControlName="edad" type="number" class="form-control" min="18" max="98" required></p>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Sexo:</label>
-                                                    <p>
-                                                        <select formControlName="sexo" class="form-control">
-                                                            <option value="1">Hombre</option>
-                                                            <option value="2">Mujer</option>
-                                                        </select>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                                            
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Correo:</label>
-                                                    <p><input formControlName="correo" type="email" class="form-control" placeholder="example@example.com" required></p>
-                                                </div>
-                                            </div>
-                                                
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label>Teléfono:</label>
-                                                    <p><input formControlName="telefono" type="tel" class="form-control" placeholder="Teléfono" required></p>
-                                                </div>    
-                                            </div>
-                                        </div>
-                                                            
-                                        <div class="form-group">
-                                            <label>Dirección</label>
-                                            <p><input formControlName="direccion" type="text" class="form-control" placeholder="Dirección" required></p>
-                                        </div>
+                    <form [formGroup]="datosPersonales">
+                        <ng-template matStepLabel>Datos Personales</ng-template>
 
-                                        <div style="float: right;">
-                                            <button mat-button matStepperNext>Siguiente</button>
-                                        </div>
-                            </div>
-                        
-                    </mat-step>
-                    <mat-step [stepControl]="informacionAcademica" errorMessage="Informacion is required."> 
-                        <ng-template matStepLabel>Información Académica</ng-template>
-                        <!--Inicia Form Grup Informacion Academica-->
-                            <div formGroupName="informacionAcademica">
+                        <div class="form-group">
+                            <label>Nombre(s):</label>
+                            <p><input formControlName="nombre" type="text" matInput class="form-control"
+                                    placeholder="Nombre(s)" ng-required="true"></p>
+                        </div>
 
+                        <div class="row">
+                            <div class="col">
                                 <div class="form-group">
-                                    <label>Titulo Profesional</label>
-                                    <p><input input formControlName="tituloprofesional" type="text" class="form-control" placeholder="Titulo profesional" required></p>
+                                    <label>Apellido Paterno: </label>
+                                    <p><input formControlName="apellidopaterno" matInput required type="text"
+                                            class="form-control" placeholder="Apellido Paterno"></p>
                                 </div>
-
-                                <div class="form-group">
-                                    <label>Cedula profesional:</label>
-                                    <p><input formControlName="institucioneducativa" type="text" class="form-control" placeholder="Institución educatuva" required></p>
-                                </div>
-                                    
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label>Institución educativa:</label>
-                                            <p><input type="text" formControlName="institucioneducativa" class="form-control" placeholder="Institución educativa" required></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label>Tipo:</label>
-                                            <p>
-                                                <select formControlName="tipo" class="form-control"> 
-                                                    <option value="1">Preparatoria</option>
-                                                    <option value="2">Universidad</option>
-                                                    <option value="3">Ambas</option>
-                                                </select>
-                                            </p>
-                                        </div>
-                                    </div>
                             </div>
-                        <div style="float: right;"> 
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Apellido Materno:</label>
+                                    <p><input formControlName="apellidomaterno" matInput type="text"
+                                            class="form-control" placeholder="Apellido Materno" required></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Fecha de nacimiento:</label>
+                                    <p><input formControlName="fechadenacimiento" matInput type="date"
+                                            class="form-control" required></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Edad:</label>
+                                    <p><input formControlName="edad" type="number" class="form-control" min="18"
+                                            max="98" required></p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Sexo:</label>
+                                    <p>
+                                        <select formControlName="sexo" class="form-control">
+                                            <option value="1">Hombre</option>
+                                            <option value="2">Mujer</option>
+                                        </select>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Correo:</label>
+                                    <p><input formControlName="correo" type="email" class="form-control"
+                                            placeholder="example@example.com" required></p>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Teléfono:</label>
+                                    <p><input formControlName="telefono" type="tel" class="form-control"
+                                            placeholder="Teléfono" required></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <p><input formControlName="direccion" type="text" class="form-control"
+                                    placeholder="Dirección" required></p>
+                        </div>
+
+                        <div style="float: right;">
+                            <button mat-button matStepperNext>Siguiente</button>
+                        </div>
+                    </form>
+
+                </mat-step>
+
+                <mat-step [stepControl]="informacionAcademica" errorMessage="Informacion is required.">
+                    <ng-template matStepLabel>Información Académica</ng-template>
+                    <!--Inicia Form Grup Informacion Academica-->
+                    <form [formGroup]="informacionAcademica">
+
+                        <div class="form-group">
+                            <label>Titulo Profesional</label>
+                            <p><input input formControlName="tituloprofesional" type="text" class="form-control"
+                                    placeholder="Titulo profesional" required></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Cedula profesional:</label>
+                            <p><input formControlName="cedulaprofesional" type="text" class="form-control"
+                                    placeholder="Cedula profesional " required></p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Institución educativa:</label>
+                                    <p><input type="text" formControlName="institucioneducativa" class="form-control"
+                                            placeholder="Institución educativa" required></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Tipo:</label>
+                                <p>
+                                    <select formControlName="tipo" class="form-control" required>
+                                        <option value="1">Preparatoria</option>
+                                        <option value="2">Universidad</option>
+                                        <option value="3">Ambas</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="float: right;">
                             <button mat-button matStepperPrevious>Atras</button>
                             <button mat-button matStepperNext>Siguiente</button>
                         </div>
-                    </mat-step>
-                    <mat-step>
-                        <ng-template matStepLabel>Guardado</ng-template>
-                        <button mat-button (click)="save(formulario.value)" > Guardar </button>
-                    </mat-step>
-                </mat-horizontal-stepper>
-            </form>
-        </div>
-    </div>
-</div>       
+                    </form>
+                </mat-step>
 
-
-<!---<div class="main">
-        <!--Signup-img
-        <div class="signup-img"></div>
-        <!--End sigunp-img
-        <div class="signup-form">
-            <div class="title-form">
-                <h4 class="card-header">
-                    Registro de Maestro
-                </h4>
-            </div>
-            <div class="signup-content">
-                <!--Inicia Form Group-
-                <form [formGroup]="formulario">
-                    <!--Inicia Tabla Datos Personales
-                    <div class="Tab">
-                        <div class="card-body">
-                            <h5 class="card-title">Datos Personales</h5>
-                            <!--Inica Form Group Datos Personales
-                            <div formGroupName="datosPersonales">
-                                    
-                                <div class="form-group">
-                                    <label>Nombre(s):</label>
-                                    <p><input formControlName="nombre" type="text" class="form-control" placeholder="Nombre(s)" required></p>
+                <mat-step>
+                    <p>¿Te aseguraste de llenar correctamente todos los campos? </p>
+                    <ng-template matStepLabel>Guardado</ng-template>
+                    
+                    <button type="button" class="btn btn-success"  mat-button (click)="save(datosPersonales.value, informacionAcademica.value)"> Guardar </button>
+      
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Registro de Maestro</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label>Apellido Paterno: </label>
-                                            <p><input formControlName="apellidopaterno" required type="text" class="form-control" placeholder="Apellido Paterno"></p>
-                                         </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label>Apellido Materno:</label>
-                                            <p><input formControlName="apellidomaterno" type="text" class="form-control" placeholder="Apellido Materno" required></p>
-                                        </div>
-                                    </div>
+                                <div class="modal-body">
+                                    El Registro del Maestro ha finalizado con éxito
                                 </div>
-                                                    
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label>Fecha de nacimiento:</label>
-                                            <p><input formControlName="fechadenacimiento" type="date" class="form-control" required></p>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label>Edad:</label>
-                                            <p><input formControlName="edad" type="number" class="form-control" min="18" max="98" required></p>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label>Sexo:</label>
-                                            <p>
-                                                <select formControlName="sexo" class="form-control">
-                                                    <option value="1">Hombre</option>
-                                                    <option value="2">Mujer</option>
-                                                </select>
-                                            </p>
-                                        </div>
-                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" (click)="home()">Aceptar</button>
                                 </div>
-                                                    
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label>Correo:</label>
-                                            <p><input formControlName="correo" type="email" class="form-control" placeholder="example@example.com" required></p>
-                                        </div>
-                                    </div>
-                                        
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label>Teléfono:</label>
-                                            <p><input formControlName="telefono" type="tel" class="form-control" placeholder="Teléfono" required></p>
-                                        </div>    
-                                    </div>
-                                </div>
-                                                    
-                                <div class="form-group">
-                                    <label>Dirección</label>
-                                    <p><input formControlName="direccion" type="text" class="form-control" placeholder="Dirección" required></p>
-                                </div>
-
                             </div>
                         </div>
-                        <!--Termina Form Group Datos Personales
                     </div>
-                    <!--Termina Tabla Datos Personales
-                    
-                    <!--Inicia Tabla Informacion Academica
-                    <div class="Tab">
-                        <div class="card-body">
-                            <h5 class="card-title">Información Académica</h5>
-                            <!--Inicia Form Grup Informacion Academica-
-                                <div formGroupName="informacionAcademica">
 
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label>Titulo profesional:</label>
-                                                <p><input formControlName="tituloprofesional" type="text" class="form-control" placeholder="Titulo profesional" required></p>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-group">
-                                                <label>Cedula profesional:</label>
-                                                <p><input formControlName="cedulaprofesional" type="text" class="form-control" placeholder="Cedula profesional" required></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                            
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Institución educativa:</label>
-                                                <p><input type="text" formControlName="institucioneducativa" class="form-control" placeholder="Institución educativa" required></p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Tipo:</label>
-                                            <p>
-                                                <select formControlName="tipo" class="form-control"> 
-                                                    <option value="1">Preparatoria</option>
-                                                    <option value="2">Universidad</option>
-                                                    <option value="3">Ambas</option>
-                                                </select>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            <!--Termina Form Group Informacion Academica-
-                        </div>
-                    </div>
-                    <!--Termina Tabla Informacion Academica-
-                    <div style="overflow:auto;">
-                        <div style="float:right;">
-                          <button type="button" id="prevBtn" class="btn btn-outline-danger" style="margin-right: 1em;" onclick="nextPrev(-1)">Previous</button>
-                          <button type="button" id="nextBtn" class="btn btn-succes" style="margin-right: 1em;" onclick="nextPrev(1)">Next</button>
-                        </div>
-                    </div>
-                    <!-- Circles which indicates the steps of the form: -
-                    <div style="text-align:center;margin-top:40px;">
-                            <span class="step"></span>
-                            <span class="step"></span>
-                    </div>
-                </form>
-                <!--Fin Form Group-
-            </div>
+                </mat-step>
+            </mat-horizontal-stepper>
         </div>
-
-        
-</div>-->
+    </div>
+</div>

@@ -2,7 +2,15 @@
 
 .container-fluid {
     height: 100%;
-    width: 100%;    
-    justify-content: center;
-    justify-items: center;
+    width: 100%;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-attachment: relative;
+    background-size: cover;
 }
+
+.navbar-toggle {
+    border-color: aqua;
+    color: #fff !important;
+}
+

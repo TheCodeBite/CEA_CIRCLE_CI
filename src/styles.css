@@ -1,13 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+.navbar-light .navbar-toggler-icon {
+    background-color: #007bff !important;
+    border-color: rgba(255, 0, 0, 0.85) !important;
+}
+
 .navbar {
     background-color:transparent;
 }
 
 body{
     background-image: url("https://avante.biz/wp-content/uploads/Back-To-School-Wallpapers-For-Desktop/Back-To-School-Wallpapers-For-Desktop-021.jpg"); 
+    background-position: left center;
     background-repeat: no-repeat; 
+    background-attachment: fixed;
     background-size: cover;
-   
+    background-color: bisque; 
 }

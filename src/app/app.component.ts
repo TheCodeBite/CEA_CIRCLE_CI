@@ -28,7 +28,8 @@ export class AppComponent {
     console.log("redirigiendo al index");
     this.router.navigate(['']);
   }
-  
+
+
 }
 
 //RUTAS DEL NAVBAR
