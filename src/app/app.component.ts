@@ -29,6 +29,11 @@ export class AppComponent {
     this.router.navigate(['']);
   }
 
+  administracion(){
+    console.log("BOTON ADMINISTRACION");
+    this.router.navigate(["/listaMaestros"]);
+  }
+
 
 }
 

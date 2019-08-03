@@ -18,3 +18,8 @@ body{
     background-size: cover;
     background-color: bisque; 
 }
+
+.button_no_found{
+    background-color: transparent; 
+    border: transparent
+}
