@@ -15,22 +15,31 @@
                             <th>Edad</th>
                             <th>Tipo de Clase</th>
                             <th>Cantidad a Pagar</th>
-                            <th></th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Erick Arturo</td>
+                        <tr *ngFor = "let i of maestros">
+                            <td>{{i}}</td>
                             <td>Díaz</td>
                             <td>Hernández</td>
                             <td>21</td>
                             <td>Universidad</td>
                             <td>$1800</td>
+                            <td><button class="button_no_found material-icons">edit</button></td>
+                            <td><button class="button_no_found material-icons" (click)="eliminar(i)">delete_forever
+                                </button></td>
                         </tr>
                     </tbody>
-                    
+
                 </table>
             </div>
         </div>
+        hay algo
+        <div *ngFor="let i of maestros">
+            {{i}}<br>
+        </div>
     </div>
+
 </div>

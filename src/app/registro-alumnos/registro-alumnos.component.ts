@@ -30,7 +30,8 @@ export class RegistroAlumnosComponent implements OnInit {
       edad: [''],
       sexo: [''],
       direccion: [''],
-      municipio: ['']
+      municipio: [''],
+      telefono: ['']
     });
 
     this.datos_escuela = this.fb.group({
@@ -39,6 +40,7 @@ export class RegistroAlumnosComponent implements OnInit {
       aula: [''],
       estado: [''],
       folio_certificado: [''],
+      modalidad: ['']
     });
 
     this.documentos = this.fb.group({
