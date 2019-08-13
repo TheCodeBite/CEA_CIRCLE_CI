@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { ApiService } from './api.service';
+import { ApiService } from './service/api.service';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +33,13 @@ export class AppComponent{
     this.router.navigate(["/listaMaestros"]);
   }
 
+  listaMaestros(){
+    this.router.navigate(['listaMaestros']);
+  }
+
+  listaAlumnos(){
+    this.router.navigate(['listaAlumnos']);
+  }
 
 }
 

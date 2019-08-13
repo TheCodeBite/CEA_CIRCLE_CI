@@ -1,36 +1,40 @@
 <header class="header">
   <nav class="navbar-expand-lg navbar">
     <a class="navbar-brand" style="color: white" href="">Centro de Estudios Avanzados</a>
-      
-    <button class="navbar-toggler" style="background-color: rgb(250, 219, 250); color: violet;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" style="color: white;"></span>
+
+    <button class="navbar-toggler" style="background-color: rgb(250, 219, 250); color: violet;" type="button"
+      data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="color: white;"></span>
     </button>
-          
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent" w-100 order-1 order-md-0 dual-collapse2>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" style="color: white" (click)="home()">Inicio<span class="sr-only">(current)</span></a>
+          <button class="nav-link button_no_found" style="color: white" (click)="home()">Inicio<span
+              class="sr-only">(current)</span></button>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: white" (click)="registroAlumno()">Alumnos</a>
+          <button class="nav-link button_no_found" style="color: white" (click)="registroAlumno()">Alumnos</button>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: white" (click)="registroMaestro()">Maestros</a>
+          <button class="nav-link button_no_found" style="color: white" (click)="registroMaestro()">Maestros</button>
         </li>
         <li class="nav-item">
-          <a class="nav-link" style="color: white" (click)="administracion()">Administración</a>
+          <a class="nav-link disabled" href="#">Control de pagos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Calificaciones</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Control de Pagos
+          <a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Administracion
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Pagos a Maestros</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Pagos a Estudiantes</a>
+            <button class="dropdown-item" (click)="listaMaestros()">Control Maestros</button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" (click)="listaAlumnos()">Control Estudiantes</button>
           </div>
         </li>
       </ul>
@@ -39,6 +43,5 @@
 </header>
 
 <div class="container-fluid">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
-

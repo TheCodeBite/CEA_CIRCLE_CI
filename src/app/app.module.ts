@@ -16,7 +16,8 @@ import { MatNativeDateModule} from '@angular/material/core';
 import { MaestrosComponent } from './maestros/maestros.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ApiService } from './api.service';
+import { ApiService } from './service/api.service';
+
 
 
 @NgModule({

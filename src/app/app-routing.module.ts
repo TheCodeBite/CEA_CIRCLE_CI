@@ -5,6 +5,7 @@ import { Page404Component } from './page404/page404.component';
 import { RegistroAlumnosComponent } from './registro-alumnos/registro-alumnos.component';
 import { RegistroMaestroComponent } from './registro-maestro/registro-maestro.component';
 import { MaestrosComponent } from './maestros/maestros.component';
+import { AlumnosComponent } from './alumnos/alumnos.component';
 
 const routes: Routes = [
   {path:'', component: IndexComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:'registroAlumnos', component: RegistroAlumnosComponent},
   {path:'registroMaestro', component: RegistroMaestroComponent},
   {path:'listaMaestros', component: MaestrosComponent},
+  {path:'listaAlumnos', component: AlumnosComponent},
   {path:'**', component:Page404Component}
 ];
 
