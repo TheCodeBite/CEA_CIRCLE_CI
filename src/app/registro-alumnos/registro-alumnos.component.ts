@@ -11,7 +11,7 @@ import { ApiService } from '../service/api.service';
 })
 export class RegistroAlumnosComponent implements OnInit {
   grupos: any;
-  tipo = "Universidad";
+  tipo = "Preparatoria";
   tipoAlumno = "Preparatoria"
   nameButton = "Universidad"
   alumno_prepa = true;

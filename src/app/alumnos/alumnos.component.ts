@@ -11,7 +11,7 @@ export class AlumnosComponent implements OnInit {
   grupos: any;
   Alumnos: any;
   formulario: FormGroup;
-
+  alumnotipo = "";
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -56,6 +56,7 @@ export class AlumnosComponent implements OnInit {
   }
 
   editar(form: any) {
+    this.alumnotipo = form.tipo;
     console.log("este es su nombre" + form.nombre)
     this.formulario = this.fb.group({
       nombre: [form.nombre],

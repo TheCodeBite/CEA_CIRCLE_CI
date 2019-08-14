@@ -69,7 +69,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div *ngIf="alumnotipo == 'Preparatoria'" class="form-group">
                             <label>Tutor:</label>
                             <input class="form-control" formControlName="tutor" type="text" placeholder="Tutor">
                         </div>

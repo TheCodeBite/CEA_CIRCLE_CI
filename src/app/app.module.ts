@@ -17,6 +17,8 @@ import { MaestrosComponent } from './maestros/maestros.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './service/api.service';
+import { AulasComponent } from './aulas/aulas.component';
+import { CarrerasComponent } from './carreras/carreras.component';
 
 
 
@@ -28,7 +30,9 @@ import { ApiService } from './service/api.service';
     RegistroAlumnosComponent,
     RegistroMaestroComponent,
     MaestrosComponent,
-    AlumnosComponent
+    AlumnosComponent,
+    AulasComponent,
+    CarrerasComponent
   ],
   imports: [
     BrowserModule,
