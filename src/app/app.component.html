@@ -1,41 +1,46 @@
 <header class="header">
   <nav class="navbar-expand-lg navbar">
-    <a class="navbar-brand" style="color: white" href="">Centro de Estudios Avanzados</a>
+    <a class="navbar-brand" style="color: black" href="">Centro de Estudios Avanzados</a>
 
     <button class="navbar-toggler" style="background-color: rgb(250, 219, 250); color: violet;" type="button"
       data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon" style="color: white;"></span>
+      <span class="navbar-toggler-icon" style="color: black;"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" w-100 order-1 order-md-0 dual-collapse2>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <button class="nav-link button_no_found" style="color: white" (click)="home()">Inicio<span
+          <button class="nav-link button_no_found" style="color: black" (click)="home()">Inicio<span
               class="sr-only">(current)</span></button>
         </li>
-        <li class="nav-item">
-          <button class="nav-link button_no_found" style="color: white" (click)="registroAlumno()">Alumnos</button>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" style="color: black" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Registros
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <button class="dropdown-item button_no_found" (click)="registroMaestro()">Registro de Maestro</button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item button_no_found" (click)="registroAlumno()">Registro de Alumno</button>
+          </div>
         </li>
-        <li class="nav-item">
-          <button class="nav-link button_no_found" style="color: white" (click)="registroMaestro()">Maestros</button>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Control de pagos</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" style="color: black" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Control
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <button class="dropdown-item" (click)="listaMaestros()">Maestros</button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" (click)="listaAlumnos()">Estudiantes</button>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Calificaciones</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Administracion
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <button class="dropdown-item" (click)="listaMaestros()">Control Maestros</button>
-            <div class="dropdown-divider"></div>
-            <button class="dropdown-item" (click)="listaAlumnos()">Control Estudiantes</button>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Control de pagos</a>
         </li>
       </ul>
     </div>
