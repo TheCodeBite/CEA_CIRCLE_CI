@@ -6,6 +6,8 @@ import { RegistroAlumnosComponent } from './registro-alumnos/registro-alumnos.co
 import { RegistroMaestroComponent } from './registro-maestro/registro-maestro.component';
 import { MaestrosComponent } from './maestros/maestros.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
+import { CarrerasComponent } from './carreras/carreras.component';
+import { AulasComponent } from './aulas/aulas.component';
 
 const routes: Routes = [
   {path:'', component: IndexComponent},
@@ -14,6 +16,8 @@ const routes: Routes = [
   {path:'registroMaestro', component: RegistroMaestroComponent},
   {path:'listaMaestros', component: MaestrosComponent},
   {path:'listaAlumnos', component: AlumnosComponent},
+  {path:'carreras', component: CarrerasComponent},
+  {path:'aulas', component: AulasComponent},
   {path:'**', component:Page404Component}
 ];
 
