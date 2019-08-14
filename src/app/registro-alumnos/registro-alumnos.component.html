@@ -100,9 +100,9 @@
                                         placeholder="Matricula"> </p>
                             </div>
                             <div class="col">
-                                <label>Aula:</label>
+                                <label>Grupo:</label>
                                 <p>
-                                    <select formControlName="aula" class="form-control">
+                                    <select formControlName="grupo" class="form-control">
                                         <option value="1">Aula 1</option>
                                         <option value="2">Aula 2</option>
                                     </select>
@@ -144,7 +144,7 @@
                     <ng-template matStepLabel>Documentación</ng-template>
                     
                     <form [formGroup]="documentos">
-                        <mat-checkbox type="checkbox" formControlName="certificado_original"> Certificado original</mat-checkbox><br>
+                        <mat-checkbox type="checkbox" formControlName="certificado_original" value="1"> Certificado original</mat-checkbox><br>
                         <mat-checkbox type="checkbox" formControlName="certificado_tres_copias" value="1"> certificado 3
                         copias</mat-checkbox><br>
                         <mat-checkbox type="checkbox" formControlName="acta_de_nacimiento" value="1"> acta de nacimiento
@@ -177,101 +177,3 @@
     </div>
 </div>
 
-
-<!--<button (click)="chage_alumno()">{{nameButton}}</button>
-
-<h1>registrando alumno de {{tipoAlumno}}</h1>
-
-
-<form [formGroup]="datos_personales">
-    <h4>DATOS PERSONALES</h4>
-    <label>Nombre(s):</label>
-    <p><input formControlName="nombre" type="text" placeholder="Nombre(s) del alumno"></p>
-
-    <label>Apellido paterno:</label>
-    <p><input formControlName="apellidopaterno" type="text" placeholder="Apellido paterno"></p>
-
-    <label>Apellido materno:</label>
-    <p><input formControlName="apellidomaterno" type="text" placeholder="apellido materno"> </p>
-
-    <div *ngIf="alumno_prepa">
-        <label>Tutor:</label>
-        <p><input formControlName="tutor" type="text" placeholder="Tutor"></p>
-    </div>
-
-
-    <label>CURP:</label>
-    <p><input formControlName="curp" type="text" placeholder="CURP"> </p>
-
-    <label>Fecha de nacimiento:</label>
-    <p><input formControlName="fechadenacimiento" type="date" placeholder="Fecha de nacimiento"></p>
-
-    <label>Edad:</label>
-    <p><input formControlName="edad" type="number" min="10" max="80" placeholder="Edad"></p>
-
-    <label>Sexo:</label>
-    <p>
-        <select formControlName="sexo">
-            <option value="1">Masculino</option>
-            <option value="2">Mujer</option>
-        </select>
-    </p>
-
-    <label>Dirección:</label>
-    <p><input formControlName="direccion" type="text" placeholder="Dirección"> </p>
-
-    <label>Municipio:</label>
-    <p><input formControlName="municipio" type="text" placeholder="Municipio"></p>
-    <!-- ACA AGREGAS LOS BOTONES SIGUIENTES NADA MAS--
-</form>
-
-
-
-<form [formGroup]="datos_escuela">
-    <h4>DATOS DE LA ESCUELA</h4>
-
-    <label>Matricula:</label>
-    <p> <input formControlName="matricula" type="text" placeholder="Matricula"> </p>
-
-    <div *ngIf="alumno_prepa">
-        <label>Carrera: </label>
-        <p>
-            <select formControlName="carrera">
-                <option value="1">Carrera1</option>
-                <option value="2">Carrera2</option>
-            </select>
-        </p>
-    </div>
-
-    <label>Aula:</label>
-    <p>
-        <select formControlName="aula">
-            <option value="1">Aula 1</option>
-            <option value="2">Aula 2</option>
-        </select>
-    </p>
-
-    <label>Estado:</label>
-    <p>
-        <select formControlName="estado">
-            <option value="1">Activo</option>
-            <option value="2">Inactivo</option>
-            <option value="3">Concluido</option>
-        </select>
-    </p>
-
-    <label>Folio de certificado:</label>
-    <p> <input formControlName="folio_certificado" type="text" placeholder="Folio de certificado"> </p>
-
-</form>
-<form [formGroup]="documentos"> 
-    <h4>DOCUMENTACION</h4>
-    <input type="checkbox" formControlName="certificado_original"> Certificado original<br>
-    <input type="checkbox" formControlName="certificado_tres_copias" value="1"> certificado 3 copias<br>
-    <input type="checkbox" formControlName="acta_de_nacimiento" value="1"> acta de nacimiento original<br>
-    <input type="checkbox" formControlName="acta_de_nacimiento_tres_copias" value="1"> acta de nacimiento 3 copias<br>
-    <input type="checkbox" formControlName="ine_tres_copias" value="1"> INE 3 copias<br>
-    <input type="checkbox" formControlName="comprobante_de_domicilio" value="1"> comprobante de domicilio<br>
-</form>
-
-<button (click)="registrar(datos_personales.value, datos_escuela.value, documentos.value)">Registrar</button>-->

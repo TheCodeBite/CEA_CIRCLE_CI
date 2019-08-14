@@ -34,4 +34,9 @@ export class ApiService {
   editarMaestro(id: any, params:any) {
     return this.http.put(this.url + 'maestros/' + id + "/", params);
   }
+
+  //GRUPOS
+  getGrupos(){
+    return this.http.get(this.url +  "grupos/");  
+  }
 }
