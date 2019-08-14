@@ -11,11 +11,15 @@ import { ApiService } from '../service/api.service';
 })
 export class RegistroAlumnosComponent implements OnInit {
   grupos: any;
+  carreras: any;
+
   tipo = "Preparatoria";
   tipoAlumno = "Preparatoria"
   nameButton = "Universidad"
+
   alumno_prepa = true;
   isEditable = true;
+  
 
   datos_personales: FormGroup;
   datos_escuela: FormGroup;
@@ -23,6 +27,13 @@ export class RegistroAlumnosComponent implements OnInit {
   constructor(private route: Router, private fb: FormBuilder, private api: ApiService) { }
 
   ngOnInit() {
+
+    this.api.getCarreras().subscribe(response =>{
+      this.carreras = response;
+      console.log("carreras")
+      console.log(this.carreras);
+      console.log("fin carreras")
+    })
 
     this.api.getGrupos().subscribe(response => {
       this.grupos = response;
@@ -49,7 +60,7 @@ export class RegistroAlumnosComponent implements OnInit {
       grupo: [''],
       estado: [''],
       folio_certificado: [''],
-      modalidad: ['']
+      modalidad: [''],
     });
 
     this.documentos = this.fb.group({

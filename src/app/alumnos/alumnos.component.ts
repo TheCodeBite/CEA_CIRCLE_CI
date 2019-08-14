@@ -10,8 +10,11 @@ import Swal from 'sweetalert2';
 export class AlumnosComponent implements OnInit {
   grupos: any;
   Alumnos: any;
+  carreras: any;
+
   formulario: FormGroup;
   alumnotipo = "";
+
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -53,6 +56,9 @@ export class AlumnosComponent implements OnInit {
       console.log(this.grupos);
     });
 
+    this.api.getCarreras().subscribe(response =>{
+      this.carreras = response;
+    })
   }
 
   editar(form: any) {

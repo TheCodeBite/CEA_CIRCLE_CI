@@ -80,7 +80,8 @@
                         </div>
 
                         <label>Teléfono:</label>
-                        <input formControlName="telefono" class="form-control" type="tel" placeholder="+55 000 000 00 00">
+                        <input formControlName="telefono" class="form-control" type="tel"
+                            placeholder="+55 000 000 00 00">
 
                         <div style="float: right;">
                             <button mat-button matStepperNext>Siguiente</button>
@@ -102,21 +103,34 @@
                             <div class="col">
                                 <label>Aula:</label>
                                 <p>
-                                    <select formControlName="grupo"  class="form-control">
+                                    <select formControlName="grupo" class="form-control">
                                         <option *ngFor="let grup of grupos" value="{{grup.id}}">{{grup.nombre}}</option>
                                     </select>
                                 </p>
                             </div>
                         </div>
 
-                        <label>Estado:</label>
-                        <p>
-                            <select formControlName="estado" class="form-control">
-                                <option value="1">Activo</option>
-                                <option value="2">Inactivo</option>
-                                <option value="3">Concluido</option>
-                            </select>
-                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <label>Estado:</label>
+                                <p>
+                                    <select formControlName="estado" class="form-control">
+                                        <option value="1">Activo</option>
+                                        <option value="2">Inactivo</option>
+                                        <option value="3">Concluido</option>
+                                    </select>
+                                </p>
+                            </div>
+                            <div class="col">
+                                    <label>Carrera:</label>
+                                    <p>
+                                        <select formControlName="carrera" class="form-control">
+                                            <option *ngFor="let carrera of carreras" value="{{carrera.id}}">{{carrera.nombre}}</option>
+                                        </select>
+                                    </p>
+                            </div>
+                        </div>
+
 
                         <label>Modalidad:</label>
                         <p>
@@ -141,18 +155,20 @@
                 </mat-step>
                 <mat-step [stepControl]="documentos" errorMessage="Name is required." [editable]="isEditable">
                     <ng-template matStepLabel>Documentación</ng-template>
-                    
+
                     <form [formGroup]="documentos">
-                        <mat-checkbox type="checkbox" formControlName="certificado_original" value="true"> Certificado original</mat-checkbox><br>
+                        <mat-checkbox type="checkbox" formControlName="certificado_original" value="true"> Certificado
+                            original</mat-checkbox><br>
                         <mat-checkbox type="checkbox" formControlName="certificado_tres_copias" value="1"> certificado 3
-                        copias</mat-checkbox><br>
-                        <mat-checkbox type="checkbox" formControlName="acta_de_nacimiento" value="1"> acta de nacimiento
-                        original </mat-checkbox><br>
-                        <mat-checkbox type="checkbox" formControlName="acta_de_nacimiento_tres_copias" value="1"> acta de
-                        nacimiento 3 copias</mat-checkbox><br>
+                            copias</mat-checkbox><br>
+                        <mat-checkbox type="checkbox" formControlName="acta_nacimiento" value="1"> acta de nacimiento
+                            original </mat-checkbox><br>
+                        <mat-checkbox type="checkbox" formControlName="acta_de_nacimiento_tres_copias" value="1"> acta
+                            de
+                            nacimiento 3 copias</mat-checkbox><br>
                         <mat-checkbox formControlName="ine_tres_copias" value="1"> INE 3 copias</mat-checkbox><br>
                         <mat-checkbox formControlName="comprobante_de_domicilio" value="1"> comprobante de
-                        domicilio</mat-checkbox>
+                            domicilio</mat-checkbox>
 
                         <div style="float: right; margin-top: 3em;">
                             <button mat-button matStepperPrevious>Atras</button>

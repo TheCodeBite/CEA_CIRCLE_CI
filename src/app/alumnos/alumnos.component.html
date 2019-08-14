@@ -46,11 +46,13 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Apellido Paterno</label>
-                                <input formControlName="apellidopaterno" type="text" class="form-control" placeholder="Apellido paterno">
+                                <input formControlName="apellidopaterno" type="text" class="form-control"
+                                    placeholder="Apellido paterno">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Apellido Materno: </label>
-                                <input type="text" class="form-control" formControlName="apellidomaterno" placeholder="Apellido Materno">
+                                <input type="text" class="form-control" formControlName="apellidomaterno"
+                                    placeholder="Apellido Materno">
                             </div>
                         </div>
 
@@ -61,11 +63,12 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Fecha de nacimiento:</label>
-                                <input type="date" class="form-control" placeholder="30/12/1996" formControlName="fechadenacimiento">
+                                <input type="date" class="form-control" placeholder="30/12/1996"
+                                    formControlName="fechadenacimiento">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>CURP:</label>
-                                <input type="text"formControlName="curp" class="form-control" placeholder="CURP">
+                                <input type="text" formControlName="curp" class="form-control" placeholder="CURP">
                             </div>
                         </div>
 
@@ -74,10 +77,19 @@
                             <input class="form-control" formControlName="tutor" type="text" placeholder="Tutor">
                         </div>
 
+                        <div *ngIf="alumnotipo == 'Universidad'" class="form-group">
+                            <label>Carrera:</label>
+                            <select formControlName="carrera" class="form-control">
+                                <option *ngFor="let carrera of carreras" value="{{carrera.id}}">{{carrera.nombre}}
+                                </option>
+                            </select>
+                        </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Teléfono</label>
-                                <input type="tel" formControlName="telefono" class="form-control" placeholder="Teléfono">
+                                <input type="tel" formControlName="telefono" class="form-control"
+                                    placeholder="Teléfono">
                             </div>
 
                             <div class="form-group col-md-6">
@@ -94,12 +106,14 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Dirección:</label>
-                                <input formControlName="direccion" type="text" class="form-control" placeholder="Dirección">
+                                <input formControlName="direccion" type="text" class="form-control"
+                                    placeholder="Dirección">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Municipio:</label>
-                                <input formControlName="municipio" type="text" class="form-control" placeholder="Municipio">
+                                <input formControlName="municipio" type="text" class="form-control"
+                                    placeholder="Municipio">
                             </div>
                         </div>
                         <!-- DATOS ESCOLARES --> <br>
@@ -138,36 +152,42 @@
 
                             <div class="form-group col-md-4">
                                 <label>Folio de certificado:</label>
-                                <input type="text" formControlName="folio_certificado" class="form-control" placeholder="Folio de certificado">
+                                <input type="text" formControlName="folio_certificado" class="form-control"
+                                    placeholder="Folio de certificado">
                             </div>
 
                         </div>
                         <!-- DOCUMNTACION --> <br>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <mat-checkbox type="checkbox" formControlName="certificado_original" value="true">Certificado original</mat-checkbox>
+                                <mat-checkbox type="checkbox" formControlName="certificado_original" value="true">
+                                    Certificado original</mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <mat-checkbox type="checkbox" formControlName="certificado_tres_copias" value="1">certificado 3 copias</mat-checkbox>
+                                <mat-checkbox type="checkbox" formControlName="certificado_tres_copias" value="1">
+                                    certificado 3 copias</mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <mat-checkbox type="checkbox" formControlName="acta_nacimiento" value="1"> acta de nacimiento original </mat-checkbox>
+                                <mat-checkbox type="checkbox" formControlName="acta_nacimiento" value="1"> acta de
+                                    nacimiento original </mat-checkbox>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <mat-checkbox type="checkbox" formControlName="acta_de_nacimiento_tres_copias" value="1"> acta de nacimiento 3 copias</mat-checkbox>
+                                <mat-checkbox type="checkbox" formControlName="acta_de_nacimiento_tres_copias"
+                                    value="1"> acta de nacimiento 3 copias</mat-checkbox>
                             </div>
 
-                            <div class="form-group col-md-4"> 
+                            <div class="form-group col-md-4">
                                 <mat-checkbox formControlName="ine_tres_copias" value="1"> INE 3 copias</mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <mat-checkbox value="1" formControlName="comprobante_de_domicilio"> comprobante de domicilio</mat-checkbox>
+                                <mat-checkbox value="1" formControlName="comprobante_de_domicilio"> comprobante de
+                                    domicilio</mat-checkbox>
                             </div>
                         </div>
 

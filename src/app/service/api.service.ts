@@ -39,4 +39,10 @@ export class ApiService {
   getGrupos(){
     return this.http.get(this.url +  "grupos/");  
   }
+
+  //CARRERAS
+
+  getCarreras(){
+    return this.http.get(this.url + "carreras/")
+  }
 }
