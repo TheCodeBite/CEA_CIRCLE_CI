@@ -100,11 +100,10 @@
                                         placeholder="Matricula"> </p>
                             </div>
                             <div class="col">
-                                <label>Grupo:</label>
+                                <label>Aula:</label>
                                 <p>
-                                    <select formControlName="grupo" class="form-control">
-                                        <option value="1">Aula 1</option>
-                                        <option value="2">Aula 2</option>
+                                    <select formControlName="grupo"  class="form-control">
+                                        <option *ngFor="let grup of grupos" value="{{grup.id}}">{{grup.nombre}}</option>
                                     </select>
                                 </p>
                             </div>
@@ -144,7 +143,7 @@
                     <ng-template matStepLabel>Documentación</ng-template>
                     
                     <form [formGroup]="documentos">
-                        <mat-checkbox type="checkbox" formControlName="certificado_original" value="1"> Certificado original</mat-checkbox><br>
+                        <mat-checkbox type="checkbox" formControlName="certificado_original" value="true"> Certificado original</mat-checkbox><br>
                         <mat-checkbox type="checkbox" formControlName="certificado_tres_copias" value="1"> certificado 3
                         copias</mat-checkbox><br>
                         <mat-checkbox type="checkbox" formControlName="acta_de_nacimiento" value="1"> acta de nacimiento
@@ -176,4 +175,3 @@
         </div>
     </div>
 </div>
-

@@ -10,9 +10,9 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./registro-alumnos.component.css']
 })
 export class RegistroAlumnosComponent implements OnInit {
-  grupos : any; 
-
-  tipoAlumno = ""
+  grupos: any;
+  tipo = "Universidad";
+  tipoAlumno = "Preparatoria"
   nameButton = "Universidad"
   alumno_prepa = true;
   isEditable = true;
@@ -24,7 +24,7 @@ export class RegistroAlumnosComponent implements OnInit {
 
   ngOnInit() {
 
-    this.api.getGrupos().subscribe(response =>{
+    this.api.getGrupos().subscribe(response => {
       this.grupos = response;
       console.log(this.grupos);
     })
@@ -33,7 +33,7 @@ export class RegistroAlumnosComponent implements OnInit {
       nombre: [''],
       apellidopaterno: [''],
       apellidomaterno: [''],
-      tutor: [''],
+      tutor: [' '],
       curp: [''],
       fechadenacimiento: [''],
       edad: [''],
@@ -53,12 +53,12 @@ export class RegistroAlumnosComponent implements OnInit {
     });
 
     this.documentos = this.fb.group({
-      certificado_original: [''],
-      certificado_tres_copias: [''],
-      acta_nacimiento: [''],
-      acta_de_nacimiento_tres_copias: [''],
-      ine_tres_copias: [''],
-      comprobante_de_domicilio: ['']
+      certificado_original: [0],
+      certificado_tres_copias: [0],
+      acta_nacimiento: [0],
+      acta_de_nacimiento_tres_copias: [0],
+      ine_tres_copias: [0],
+      comprobante_de_domicilio: [0]
     });
   }
 
@@ -77,7 +77,9 @@ export class RegistroAlumnosComponent implements OnInit {
     if (this.alumno_prepa) {
       this.tipoAlumno = " de Prepatoria";
       this.nameButton = "Universidad";
+      this.tipo = "Universidad";
     } else {
+      this.tipo = "Preparatoria";
       this.tipoAlumno = "de Universidad";
       this.nameButton = "Prepatoria";
     }
@@ -89,7 +91,44 @@ export class RegistroAlumnosComponent implements OnInit {
     console.log(datos_escuela_value);
     console.log(documentos_value);
 
+    if(documentos_value.certificado_original){
+      documentos_value.certificado_original = 1;
+    }else if(!documentos_value.certificado_original){
+      documentos_value.certificado_original = 0;
+    }
+
+    if(documentos_value.certificado_tres_copias){
+      documentos_value.certificado_tres_copias = 1;
+    }else if(!documentos_value.certificado_tres_copias){
+      documentos_value.certificado_tres_copias = 0;
+    }
+
+    if(documentos_value.acta_nacimiento){
+      documentos_value.acta_nacimiento = 1;
+    }else if (!documentos_value.acta_nacimiento){
+      documentos_value.acta_nacimiento = 0;
+    }
+
+    if(documentos_value.acta_de_nacimiento_tres_copias){
+      documentos_value.acta_de_nacimiento_tres_copias = 1;
+    }else if(!documentos_value.acta_de_nacimiento_tres_copias){
+      documentos_value.acta_de_nacimiento_tres_copias = 0;
+    }
+
+    if(documentos_value.ine_tres_copias){
+      documentos_value.ine_tres_copias = 1;
+    }else if (!documentos_value.ine_tres_copias){
+      documentos_value.ine_tres_copias = 0;
+    }
+
+    if(documentos_value.comprobante_de_domicilio){
+      documentos_value.comprobante_de_domicilio = 1;
+    }else if (!documentos_value.comprobante_de_domicilio){
+      documentos_value.comprobante_de_domicilio = 0;
+    }
+
     const formulario_alumno = {
+      tipo: this.tipo,
       nombre: datos_personales_value.nombre,
       apellidopaterno: datos_personales_value.apellidopaterno,
       apellidomaterno: datos_personales_value.apellidomaterno,
@@ -97,7 +136,7 @@ export class RegistroAlumnosComponent implements OnInit {
       curp: datos_personales_value.curp,
       fechadenacimiento: datos_personales_value.fechadenacimiento,
       edad: datos_personales_value.edad,
-      sexo: datos_personales_value.edad,
+      sexo: datos_personales_value.sexo,
       direccion: datos_personales_value.direccion,
       municipio: datos_personales_value.municipio,
       telefono: datos_personales_value.telefono,
@@ -114,10 +153,17 @@ export class RegistroAlumnosComponent implements OnInit {
       ine_tres_copias: documentos_value.ine_tres_copias,
       comprobante_de_domicilio: documentos_value.comprobante_de_domicilio
     }
-
-    this.api.agregarAlumno(formulario_alumno).subscribe(response =>{
+    console.log("tipo " + this.tipo)
+    this.api.agregarAlumno(formulario_alumno).subscribe(response => {
       console.log("ALUMNO REGISTRADO");
-    }, err =>{
+      Swal.fire({
+        title: 'Registro guardado!',
+        text: 'Alumno registrado con exito.',
+        confirmButtonText: 'OK',
+        type: 'success'
+      }).then((restult) => {
+      })
+    }, err => {
       console.log("UPS!");
       console.log(err.error)
     })
@@ -125,13 +171,7 @@ export class RegistroAlumnosComponent implements OnInit {
     console.log("ESTE ES EL FORMULARIO");
     console.log(formulario_alumno)
 
-    Swal.fire({
-      title: 'Registro guardado!',
-      text: 'el alumno se alamceno con exito en la base de datos',
-      confirmButtonText: 'OK',
-      type: 'success'
-    }).then((restult) => {
-    })
+
   }
 
 

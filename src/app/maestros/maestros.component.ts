@@ -75,7 +75,7 @@ export class MaestrosComponent implements OnInit {
         type: 'success'
       }).then((restult) => {
         this.ngOnInit();
-      });
+      }); 
     }, err => {
       console.log("UPS! ");
       console.log(err.error)
