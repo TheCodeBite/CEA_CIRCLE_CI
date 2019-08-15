@@ -45,6 +45,9 @@ export class ApiService {
   agregarAulas(params){
     return this.http.post(this.url + 'grupos/', params);
   }
+  editarAula(id: any, params:any) {
+    return this.http.put(this.url + 'grupos/' + id + "/", params);
+  }
 
   //CARRERAS
 

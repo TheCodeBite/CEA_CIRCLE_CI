@@ -27,10 +27,7 @@ export class AulasComponent implements OnInit {
     })
   }
   agregar(aula){
-    this.formulario = this.fb.group({
-      nombre: [aula.nombre, Validators.required]
-    });
-    this.api.agregarAulas(this.formulario).subscribe(response => {
+    this.api.agregarAulas(aula).subscribe(response => {
       console.log("aula agregado con exito!");
       Swal.fire({
         title: 'Agregado con exito!',
@@ -51,7 +48,8 @@ export class AulasComponent implements OnInit {
   }
 
   guardar(form: any) {
-    this.api.editarMaestro(form.id, form).subscribe(response => {
+    console.log(form)
+    this.api.editarAula(form.id, form).subscribe(response => {
       Swal.fire({
         title: 'Editado con exito!',
         text: 'Los datos han sido cambiado exitosamente.',
