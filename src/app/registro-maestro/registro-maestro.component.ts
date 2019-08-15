@@ -82,6 +82,7 @@ export class RegistroMaestroComponent implements OnInit {
       this.ngOnInit();
     }, err => {
       console.log("UPS! ah ocurrido un error");
+      console.log(err.error);
     })
 
   }
