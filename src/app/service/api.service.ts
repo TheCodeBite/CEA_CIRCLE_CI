@@ -45,4 +45,8 @@ export class ApiService {
   getCarreras(){
     return this.http.get(this.url + "carreras/")
   }
+
+  addCarreras(params: any) { 
+    return this.http.post(this.url + 'carreras/', params); 
+  }
 }
