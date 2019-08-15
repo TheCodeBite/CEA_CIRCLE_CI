@@ -36,9 +36,6 @@ export class ApiService {
   }
 
   //GRUPOS
-  getGrupos(){
-    return this.http.get(this.url +  "grupos/");  
-  }
   verAulas(){
     return this.http.get(this.url +  "grupos/");  
   }
@@ -48,11 +45,11 @@ export class ApiService {
 
   //CARRERAS
 
-  getCarreras(){
+  verCarreras(){
     return this.http.get(this.url + "carreras/")
   }
 
-  addCarreras(params: any) { 
+  agregarCarreras(params: any) { 
     return this.http.post(this.url + 'carreras/', params); 
   }
 }

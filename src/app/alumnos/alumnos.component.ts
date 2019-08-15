@@ -51,12 +51,12 @@ export class AlumnosComponent implements OnInit {
       this.Alumnos = response;
     });
 
-    this.api.getGrupos().subscribe(response => {
+    this.api.verAulas().subscribe(response => {
       this.grupos = response;
       console.log(this.grupos);
     });
 
-    this.api.getCarreras().subscribe(response =>{
+    this.api.verCarreras().subscribe(response =>{
       this.carreras = response;
     })
   }

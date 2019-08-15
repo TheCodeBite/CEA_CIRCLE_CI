@@ -15,7 +15,7 @@ export class CarrerasComponent implements OnInit {
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.api.getCarreras().subscribe(response => {
+    this.api.verCarreras().subscribe(response => {
       this.carreras = response;
     });
 
@@ -26,7 +26,7 @@ export class CarrerasComponent implements OnInit {
   save_data(formulario: any){
     if(this.gurdar == 0){
       /// se crea un nuevo usuario
-      this.api.addCarreras(formulario).subscribe(response => {
+      this.api.agregarCarreras(formulario).subscribe(response => {
         console.log("AGREGADO")
         this.ngOnInit();
       })
