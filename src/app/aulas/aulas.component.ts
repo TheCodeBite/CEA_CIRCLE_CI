@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class AulasComponent implements OnInit {
   formulario: FormGroup;
   listaAulas: any;
-  constructor(private api: ApiService, private fb: FormBuilder) { 
+  constructor(private api: ApiService, private fb: FormBuilder) {
     this.formulario = this.fb.group({
       nombre: ['', Validators.required]
     });
@@ -19,18 +19,21 @@ export class AulasComponent implements OnInit {
 
   ngOnInit() {
     this.verAulas();
+    this.formulario = this.fb.group({
+      nombre: ['', Validators.required]
+    });
   }
-  verAulas(){
+  verAulas() {
     this.api.verAulas().subscribe(response => {
       this.listaAulas = response;
       console.log(this.listaAulas)
     })
   }
-  agregar(aula){
-    this.formulario = this.fb.group({
-      nombre: [aula.nombre, Validators.required]
-    });
-    this.api.agregarAulas(this.formulario).subscribe(response => {
+
+  agregar(aula:any) {
+    console.log(aula)
+    console.log("XD")
+    this.api.agregarAulas(aula).subscribe(response => {
       console.log("aula agregado con exito!");
       Swal.fire({
         title: 'Agregado con exito!',
@@ -59,7 +62,7 @@ export class AulasComponent implements OnInit {
         type: 'success'
       }).then((restult) => {
         this.ngOnInit();
-      }); 
+      });
     }, err => {
       console.log("UPS! ");
       console.log(err.error)

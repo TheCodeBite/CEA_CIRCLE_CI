@@ -7,11 +7,13 @@
             <hr class="hr-light my-3">
 
             <div class="form-group row">
-                <label class="col-sm-1 col-form-label">Aula:</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" placeholder="Nombre del aula">
-                </div>
-                <button class="col-auto btn-primary" style="width: 200px" (click)="agregar()">Agregar</button>
+                <form [formGroup]="formulario">
+                    <label class="col-sm-1 col-form-label">Aula:</label>
+                    <div class="col-sm-9">
+                        <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre del aula">
+                    </div>
+                    <button class="col-auto btn-primary" style="width: 200px" (click)="agregar(formulario.value)">Agregar</button>
+                </form>
             </div>
 
             <div class="buscador mb-2 text-center ">
