@@ -63,7 +63,8 @@ export class RegistroMaestroComponent implements OnInit {
       tituloprofesional: informacionAcademica_value.tituloprofesional,
       cedulaprofesional: informacionAcademica_value.cedulaprofesional,
       institucioneducativa: informacionAcademica_value.institucioneducativa,
-      tipo: informacionAcademica_value.tipo
+      tipo: informacionAcademica_value.tipo,
+      estado: 'activo'
 
     }
 
