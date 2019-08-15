@@ -1,1 +1,56 @@
-<p>carreras works!</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Nomeclatura</th>
+            <th scope="col">Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let carrera of carreras; let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{carrera.nombre}}</td>
+            <td>{{carrera.nomenclatura}}</td>
+            <td><button class="button_no_found material-icons" data-toggle="modal" data-target="#exampleModal"
+                    (click)="editar(carrera)">edit</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    <button type="button" class="btn btn-warning btn-lg" style="border-radius: 100%; margin-left: 95%" data-toggle="modal" data-target="#exampleModal" (click)="iniciarFormulario()"><b>+</b></button>
+</p>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Carrera</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="carreraForm">
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <input type="text" formControlName="nombre" class="form-control" placeholder="nombre">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nomeclatura:</label>
+                        <input formControlName="nomenclatura" type="text" class="form-control"
+                            placeholder="nomeclatura">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="save_data(carreraForm.value)">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
