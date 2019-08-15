@@ -30,7 +30,7 @@ export class AulasComponent implements OnInit {
     this.formulario = this.fb.group({
       nombre: [aula.nombre, Validators.required]
     });
-    this.api.agregarAulas(form).subscribe(response => {
+    this.api.agregarAulas(this.formulario).subscribe(response => {
       console.log("aula agregado con exito!");
       Swal.fire({
         title: 'Agregado con exito!',
