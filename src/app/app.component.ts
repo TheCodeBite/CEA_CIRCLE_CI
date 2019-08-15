@@ -28,17 +28,20 @@ export class AppComponent{
     this.router.navigate(['']);
   }
 
-  administracion(){
-    console.log("BOTON ADMINISTRACION");
-    this.router.navigate(["/listaMaestros"]);
-  }
-
   listaMaestros(){
     this.router.navigate(['listaMaestros']);
   }
 
   listaAlumnos(){
     this.router.navigate(['listaAlumnos']);
+  }
+
+  aulas(){
+    this.router.navigate(['aulas']);
+  }
+
+  carreras(){
+    this.router.navigate(['carreras']);
   }
 
 }

@@ -1,0 +1,14 @@
+#superficie {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: #fff;
+    background-size: 100% 100%;
+    text-align: left
+}
+
+.ubicacion {
+    background: crimson;
+    margin-inline-end: 10em;
+    margin-right: 5em;
+}
