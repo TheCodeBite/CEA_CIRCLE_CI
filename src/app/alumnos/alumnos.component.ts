@@ -20,6 +20,7 @@ export class AlumnosComponent implements OnInit {
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.permisoEditar = true;
     this.formulario = this.fb.group({
       nombre: [''],
       apellidopaterno: [''],

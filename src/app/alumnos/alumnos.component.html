@@ -1,12 +1,12 @@
 <div>
-    <div class="row">
+    <div class="row" style="overflow: scroll">
         <div class="col-md-12 text-left">
-            <h3 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
+            <h4 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
                 style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex"> Alumnos
-                </strong></h3>
+                </strong></h4>
             <hr class="hr-light my-3">
             <div class="buscador mb-2 text-center">
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <table id="example" class="table table-striped table-bordered" style="width:100%;">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -16,6 +16,7 @@
                             <th>Teléfono</th>
                             <th>Detalles</th>
                             <th>Eliminar</th>
+                            <th>Pago</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,21 +31,27 @@
                             <td><button class="button_no_found material-icons"
                                     (click)="eliminar(maestro.value)">delete_forever
                                 </button></td>
+                            <td>
+                                <button class="button_no_found material-icons">monetization_on</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <p><br><br></p>
         </div>
+        
     </div>
-
+    
     <!-- Modal-->
     <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar datos de: {{alumnoname}} <button class="button_no_found material-icons" (click)="botonPermiso()">border_color</button> </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar datos de: {{alumnoname}} <button
+                            class="button_no_found material-icons" (click)="botonPermiso()">border_color</button> </h5>
+                    <button (click)="ngOnInit()" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -53,45 +60,52 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label>Nombre:</label>
-                                <input [attr.disabled]="permisoEditar ? '' : null" type="text" [disabled]="permisoEditar" formControlName="nombre" class="form-control" placeholder="Nombre">
+                                <input [attr.disabled]="permisoEditar ? '' : null" type="text"
+                                    [disabled]="permisoEditar" formControlName="nombre" class="form-control"
+                                    placeholder="Nombre">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Apellido Paterno</label>
-                                <input formControlName="apellidopaterno" [attr.disabled]="permisoEditar ? '' : null" type="text" class="form-control"
-                                    placeholder="Apellido paterno">
+                                <input formControlName="apellidopaterno" [attr.disabled]="permisoEditar ? '' : null"
+                                    type="text" class="form-control" placeholder="Apellido paterno">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Apellido Materno: </label>
-                                <input [attr.disabled]="permisoEditar ? '' : null" type="text" class="form-control" formControlName="apellidomaterno"
-                                    placeholder="Apellido Materno">
+                                <input [attr.disabled]="permisoEditar ? '' : null" type="text" class="form-control"
+                                    formControlName="apellidomaterno" placeholder="Apellido Materno">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label>Edad:</label>
-                                <input [attr.disabled]="permisoEditar ? '' : null" type="number" class="form-control" placeholder="Edad" formControlName="edad">
+                                <input [attr.disabled]="permisoEditar ? '' : null" type="number" class="form-control"
+                                    placeholder="Edad" formControlName="edad">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Fecha de nacimiento:</label>
-                                <input type="date" class="form-control" [attr.disabled]="permisoEditar ? '' : null" placeholder="30/12/1996"
-                                    formControlName="fechadenacimiento">
+                                <input type="date" class="form-control" [attr.disabled]="permisoEditar ? '' : null"
+                                    placeholder="30/12/1996" formControlName="fechadenacimiento">
                             </div>
                             <div class="form-group col-md-4">
                                 <label>CURP:</label>
-                                <input type="text" [attr.disabled]="permisoEditar ? '' : null" formControlName="curp" class="form-control" placeholder="CURP" >
+                                <input type="text" [attr.disabled]="permisoEditar ? '' : null" formControlName="curp"
+                                    class="form-control" placeholder="CURP">
                             </div>
                         </div>
 
                         <div *ngIf="alumnotipo == 'Preparatoria'" class="form-group">
                             <label>Tutor:</label>
-                            <input class="form-control" [attr.disabled]="permisoEditar ? '' : null" formControlName="tutor" type="text" placeholder="Tutor">
+                            <input class="form-control" [attr.disabled]="permisoEditar ? '' : null"
+                                formControlName="tutor" type="text" placeholder="Tutor">
                         </div>
 
                         <div *ngIf="alumnotipo == 'Universidad'" class="form-group">
                             <label>Carrera:</label>
-                            <select [attr.disabled]="permisoEditar ? '' : null" formControlName="carrera" class="form-control">
-                                <option [attr.disabled]="permisoEditar ? '' : null" *ngFor="let carrera of carreras" value="{{carrera.id}}">
+                            <select [attr.disabled]="permisoEditar ? '' : null" formControlName="carrera"
+                                class="form-control">
+                                <option [attr.disabled]="permisoEditar ? '' : null" *ngFor="let carrera of carreras"
+                                    value="{{carrera.id}}">
                                     {{carrera.nombre}}
                                 </option>
                             </select>
@@ -100,14 +114,15 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Teléfono</label>
-                                <input [attr.disabled]="permisoEditar ? '' : null" type="tel" formControlName="telefono" class="form-control"
-                                    placeholder="Teléfono">
+                                <input [attr.disabled]="permisoEditar ? '' : null" type="tel" formControlName="telefono"
+                                    class="form-control" placeholder="Teléfono">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Sexo:</label>
                                 <p>
-                                    <select [attr.disabled]="permisoEditar ? '' : null" formControlName="sexo" class="form-control">
+                                    <select [attr.disabled]="permisoEditar ? '' : null" formControlName="sexo"
+                                        class="form-control">
                                         <option value="1">Hombre</option>
                                         <option value="2">Mujer</option>
                                     </select>
@@ -118,26 +133,28 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Dirección:</label>
-                                <input [attr.disabled]="permisoEditar ? '' : null" formControlName="direccion" type="text" class="form-control"
-                                    placeholder="Dirección">
+                                <input [attr.disabled]="permisoEditar ? '' : null" formControlName="direccion"
+                                    type="text" class="form-control" placeholder="Dirección">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Municipio:</label>
-                                <input [attr.disabled]="permisoEditar ? '' : null" formControlName="municipio" type="text" class="form-control"
-                                    placeholder="Municipio">
+                                <input [attr.disabled]="permisoEditar ? '' : null" formControlName="municipio"
+                                    type="text" class="form-control" placeholder="Municipio">
                             </div>
                         </div>
                         <!-- DATOS ESCOLARES --> <br>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Matricula:</label>
-                                <input [attr.disabled]="permisoEditar ? '' : null" formControlName="matricula" type="text" class="form-control">
+                                <input [attr.disabled]="permisoEditar ? '' : null" formControlName="matricula"
+                                    type="text" class="form-control">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>Aula:</label>
-                                <select [attr.disabled]="permisoEditar ? '' : null" formControlName="grupo" class="form-control">
+                                <select [attr.disabled]="permisoEditar ? '' : null" formControlName="grupo"
+                                    class="form-control">
                                     <option *ngFor="let grup of grupos" value="{{grup.id}}">{{grup.nombre}}
                                     </option>
                                 </select>
@@ -147,7 +164,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label>Estado:</label>
-                                <select [attr.disabled]="permisoEditar ? '' : null" formControlName="estado" class="form-control">
+                                <select [attr.disabled]="permisoEditar ? '' : null" formControlName="estado"
+                                    class="form-control">
                                     <option value="1">Activo</option>
                                     <option value="2">Inactivo</option>
                                     <option value="3">Concluido</option>
@@ -156,7 +174,8 @@
 
                             <div class="form-group col-md-4">
                                 <label>Modalidad:</label>
-                                <select [attr.disabled]="permisoEditar ? '' : null" formControlName="modalidad" class="form-control">
+                                <select [attr.disabled]="permisoEditar ? '' : null" formControlName="modalidad"
+                                    class="form-control">
                                     <option value="1">Escolarizado</option>
                                     <option value="2">Semi Escolarizado</option>
                                     <option value="3">Linea</option>
@@ -165,7 +184,8 @@
 
                             <div class="form-group col-md-4">
                                 <label>Folio de certificado:</label>
-                                <input [attr.disabled]="permisoEditar ? '' : null" type="text" formControlName="folio_certificado" class="form-control"
+                                <input [attr.disabled]="permisoEditar ? '' : null" type="text"
+                                    formControlName="folio_certificado" class="form-control"
                                     placeholder="Folio de certificado">
                             </div>
 
@@ -173,17 +193,20 @@
                         <!-- DOCUMNTACION --><br>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox" formControlName="certificado_original" value="true">
+                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox"
+                                    formControlName="certificado_original" value="true">
                                     Certificado original</mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox" formControlName="certificado_tres_copias" value="1">
+                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox"
+                                    formControlName="certificado_tres_copias" value="1">
                                     certificado 3 copias</mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox" formControlName="acta_nacimiento" value="1">
+                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox"
+                                    formControlName="acta_nacimiento" value="1">
                                     acta de
                                     nacimiento original </mat-checkbox>
                             </div>
@@ -191,18 +214,20 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox" formControlName="acta_de_nacimiento_tres_copias"
-                                    value="1"> acta de
+                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox"
+                                    formControlName="acta_de_nacimiento_tres_copias" value="1"> acta de
                                     nacimiento 3 copias</mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" formControlName="ine_tres_copias" value="1"> INE 3 copias
+                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null"
+                                    formControlName="ine_tres_copias"> INE 3 copias
                                 </mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
-                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" value="1" formControlName="comprobante_de_domicilio">
+                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" value="1"
+                                    formControlName="comprobante_de_domicilio">
                                     comprobante de
                                     domicilio</mat-checkbox>
                             </div>
@@ -211,8 +236,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" [attr.disabled]="permisoEditar ? '' : null" class="btn btn-primary" data-dismiss="modal" (click)="guardar(formulario.value)" >Guardar</button>
+                    <button type="button" class="btn btn-secondary" (click)="ngOnInit()" data-dismiss="modal">Cancelar</button>
+                    <button type="button" [attr.disabled]="permisoEditar ? '' : null" class="btn btn-primary" data-dismiss="modal" (click)="guardar(formulario.value)">Guardar</button>
                 </div>
             </div>
         </div>
