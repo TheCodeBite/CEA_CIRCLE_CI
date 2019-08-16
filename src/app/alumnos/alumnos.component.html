@@ -33,193 +33,187 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
 
-                <!-- Modal-->
-                <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Editar datos de: {{maestro_name}} </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+    <!-- Modal-->
+    <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar datos de: {{maestro_name}} </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="formulario">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Nombre:</label>
+                                <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre">
                             </div>
-                            <div class="modal-body">
-                                <form [formGroup]="formulario">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label>Nombre:</label>
-                                            <input type="text" formControlName="nombre" class="form-control"
-                                                placeholder="Nombre">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label>Apellido Paterno</label>
-                                            <input formControlName="apellidopaterno" type="text" class="form-control"
-                                                placeholder="Apellido paterno">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label>Apellido Materno: </label>
-                                            <input type="text" class="form-control" formControlName="apellidomaterno"
-                                                placeholder="Apellido Materno">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label>Edad:</label>
-                                            <input type="number" class="form-control" placeholder="Edad"
-                                                formControlName="edad">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label>Fecha de nacimiento:</label>
-                                            <input type="date" class="form-control" placeholder="30/12/1996"
-                                                formControlName="fechadenacimiento">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label>CURP:</label>
-                                            <input type="text" formControlName="curp" class="form-control"
-                                                placeholder="CURP">
-                                        </div>
-                                    </div>
-
-                                    <div *ngIf="alumnotipo == 'Preparatoria'" class="form-group">
-                                        <label>Tutor:</label>
-                                        <input class="form-control" formControlName="tutor" type="text"
-                                            placeholder="Tutor">
-                                    </div>
-
-                                    <div *ngIf="alumnotipo == 'Universidad'" class="form-group">
-                                        <label>Carrera:</label>
-                                        <select formControlName="carrera" class="form-control">
-                                            <option *ngFor="let carrera of carreras" value="{{carrera.id}}">
-                                                {{carrera.nombre}}
-                                            </option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Teléfono</label>
-                                            <input type="tel" formControlName="telefono" class="form-control"
-                                                placeholder="Teléfono">
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label>Sexo:</label>
-                                            <p>
-                                                <select formControlName="sexo" class="form-control">
-                                                    <option value="1">Hombre</option>
-                                                    <option value="2">Mujer</option>
-                                                </select>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Dirección:</label>
-                                            <input formControlName="direccion" type="text" class="form-control"
-                                                placeholder="Dirección">
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label>Municipio:</label>
-                                            <input formControlName="municipio" type="text" class="form-control"
-                                                placeholder="Municipio">
-                                        </div>
-                                    </div>
-                                    <!-- DATOS ESCOLARES --> <br>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label>Matricula:</label>
-                                            <input formControlName="matricula" type="text" class="form-control">
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label>Aula:</label>
-                                            <select formControlName="grupo" class="form-control">
-                                                <option *ngFor="let grup of grupos" value="{{grup.id}}">{{grup.nombre}}
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label>Estado:</label>
-                                            <select formControlName="estado" class="form-control">
-                                                <option value="1">Activo</option>
-                                                <option value="2">Inactivo</option>
-                                                <option value="3">Concluido</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <label>Modalidad:</label>
-                                            <select formControlName="modalidad" class="form-control">
-                                                <option value="1">Escolarizado</option>
-                                                <option value="2">Semi Escolarizado</option>
-                                                <option value="3">Linea</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <label>Folio de certificado:</label>
-                                            <input type="text" formControlName="folio_certificado" class="form-control"
-                                                placeholder="Folio de certificado">
-                                        </div>
-
-                                    </div>
-                                    <!-- DOCUMNTACION --><br>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <mat-checkbox type="checkbox" formControlName="certificado_original"
-                                                value="true">
-                                                Certificado original</mat-checkbox>
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <mat-checkbox type="checkbox" formControlName="certificado_tres_copias"
-                                                value="1">
-                                                certificado 3 copias</mat-checkbox>
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <mat-checkbox type="checkbox" formControlName="acta_nacimiento" value="1">
-                                                acta de
-                                                nacimiento original </mat-checkbox>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <mat-checkbox type="checkbox"
-                                                formControlName="acta_de_nacimiento_tres_copias" value="1"> acta de
-                                                nacimiento 3 copias</mat-checkbox>
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <mat-checkbox formControlName="ine_tres_copias" value="1"> INE 3 copias
-                                            </mat-checkbox>
-                                        </div>
-
-                                        <div class="form-group col-md-4">
-                                            <mat-checkbox value="1" formControlName="comprobante_de_domicilio">
-                                                comprobante de
-                                                domicilio</mat-checkbox>
-                                        </div>
-                                    </div>
-
-                                </form>
+                            <div class="form-group col-md-4">
+                                <label>Apellido Paterno</label>
+                                <input formControlName="apellidopaterno" type="text" class="form-control"
+                                    placeholder="Apellido paterno">
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                    (click)="guardar(formulario.value)">Guardar</button>
+                            <div class="form-group col-md-4">
+                                <label>Apellido Materno: </label>
+                                <input type="text" class="form-control" formControlName="apellidomaterno"
+                                    placeholder="Apellido Materno">
                             </div>
                         </div>
-                    </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Edad:</label>
+                                <input type="number" class="form-control" placeholder="Edad" formControlName="edad">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Fecha de nacimiento:</label>
+                                <input type="date" class="form-control" placeholder="30/12/1996"
+                                    formControlName="fechadenacimiento">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>CURP:</label>
+                                <input type="text" formControlName="curp" class="form-control" placeholder="CURP">
+                            </div>
+                        </div>
+
+                        <div *ngIf="alumnotipo == 'Preparatoria'" class="form-group">
+                            <label>Tutor:</label>
+                            <input class="form-control" formControlName="tutor" type="text" placeholder="Tutor">
+                        </div>
+
+                        <div *ngIf="alumnotipo == 'Universidad'" class="form-group">
+                            <label>Carrera:</label>
+                            <select formControlName="carrera" class="form-control">
+                                <option *ngFor="let carrera of carreras" value="{{carrera.id}}">
+                                    {{carrera.nombre}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Teléfono</label>
+                                <input type="tel" formControlName="telefono" class="form-control"
+                                    placeholder="Teléfono">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>Sexo:</label>
+                                <p>
+                                    <select formControlName="sexo" class="form-control">
+                                        <option value="1">Hombre</option>
+                                        <option value="2">Mujer</option>
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Dirección:</label>
+                                <input formControlName="direccion" type="text" class="form-control"
+                                    placeholder="Dirección">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>Municipio:</label>
+                                <input formControlName="municipio" type="text" class="form-control"
+                                    placeholder="Municipio">
+                            </div>
+                        </div>
+                        <!-- DATOS ESCOLARES --> <br>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Matricula:</label>
+                                <input formControlName="matricula" type="text" class="form-control">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>Aula:</label>
+                                <select formControlName="grupo" class="form-control">
+                                    <option *ngFor="let grup of grupos" value="{{grup.id}}">{{grup.nombre}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Estado:</label>
+                                <select formControlName="estado" class="form-control">
+                                    <option value="1">Activo</option>
+                                    <option value="2">Inactivo</option>
+                                    <option value="3">Concluido</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label>Modalidad:</label>
+                                <select formControlName="modalidad" class="form-control">
+                                    <option value="1">Escolarizado</option>
+                                    <option value="2">Semi Escolarizado</option>
+                                    <option value="3">Linea</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label>Folio de certificado:</label>
+                                <input type="text" formControlName="folio_certificado" class="form-control"
+                                    placeholder="Folio de certificado">
+                            </div>
+
+                        </div>
+                        <!-- DOCUMNTACION --><br>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <mat-checkbox type="checkbox" formControlName="certificado_original" value="true">
+                                    Certificado original</mat-checkbox>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <mat-checkbox type="checkbox" formControlName="certificado_tres_copias" value="1">
+                                    certificado 3 copias</mat-checkbox>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <mat-checkbox type="checkbox" formControlName="acta_nacimiento" value="1">
+                                    acta de
+                                    nacimiento original </mat-checkbox>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <mat-checkbox type="checkbox" formControlName="acta_de_nacimiento_tres_copias"
+                                    value="1"> acta de
+                                    nacimiento 3 copias</mat-checkbox>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <mat-checkbox formControlName="ine_tres_copias" value="1"> INE 3 copias
+                                </mat-checkbox>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <mat-checkbox value="1" formControlName="comprobante_de_domicilio">
+                                    comprobante de
+                                    domicilio</mat-checkbox>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        (click)="guardar(formulario.value)">Guardar</button>
                 </div>
             </div>
         </div>
