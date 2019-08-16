@@ -4,19 +4,20 @@
             <h3 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
                 style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex"> Aulas
                 </strong></h3>
-                <button data-toggle="modal" data-target="#agregarModal"mat-fab>Agregar</button>
             <hr class="hr-light my-3">
 
-            <div class="form-group row">
-                <form [formGroup]="formulario">
+            <form [formGroup]="formulario">
+                <div class="form-group row">
+                
                     <label class="col-sm-1 col-form-label">Aula:</label>
                     <div class="col-sm-9">
                         <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre del aula">
                     </div>
                     <button class="col-auto btn-primary" style="width: 200px"
                         (click)="agregar(formulario.value)">Agregar</button>
-                </form>
-            </div>
+                
+                </div>
+            </form>
 
             <div class="buscador mb-2 text-center ">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -37,9 +38,13 @@
                         </tr>
                     </tbody>
                 </table>
+                <p></p><br><br>
             </div>
+            <br><br><br>
         </div>
+        <br><br><br><p></p>
     </div>
+    <br><p></p>
 
     <!-- Modal editar-->
     <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog"
@@ -98,4 +103,5 @@
             </div>
         </div>
     </div>
+    <p><br></p>
 </div>
