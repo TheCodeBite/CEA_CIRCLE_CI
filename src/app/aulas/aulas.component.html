@@ -12,7 +12,8 @@
                     <div class="col-sm-9">
                         <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre del aula">
                     </div>
-                    <button class="col-auto btn-primary" style="width: 200px" (click)="agregar(formulario.value)">Agregar</button>
+                    <button class="col-auto btn-primary" style="width: 200px"
+                        (click)="agregar(formulario.value)">Agregar</button>
                 </form>
             </div>
 
@@ -41,6 +42,34 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar {{aula_name}} </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="formulario">
+
+                        <label>Nombre:</label>
+                        <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre">
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        (click)="guardar(formulario.value)">Guardar</button>
+                </div>
             </div>
         </div>
     </div>

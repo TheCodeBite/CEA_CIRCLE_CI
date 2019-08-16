@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 export class AulasComponent implements OnInit {
   formulario: FormGroup;
   listaAulas: any;
+
+  
   constructor(private api: ApiService, private fb: FormBuilder) {
     this.formulario = this.fb.group({
       nombre: ['', Validators.required]
