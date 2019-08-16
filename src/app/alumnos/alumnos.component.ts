@@ -11,14 +11,15 @@ export class AlumnosComponent implements OnInit {
   grupos: any;
   Alumnos: any;
   carreras: any;
+  permisoEditar = true;
 
   formulario: FormGroup;
   alumnotipo = "";
+  alumnoname = "";
 
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
-
     this.formulario = this.fb.group({
       nombre: [''],
       apellidopaterno: [''],
@@ -47,23 +48,24 @@ export class AlumnosComponent implements OnInit {
     });
 
     this.api.verAlumnos().subscribe(response => {
-      console.log(response);
       this.Alumnos = response;
     });
 
-    this.api.getGrupos().subscribe(response => {
+    this.api.verAulas().subscribe(response => {
       this.grupos = response;
-      console.log(this.grupos);
     });
 
-    this.api.getCarreras().subscribe(response =>{
+    this.api.verCarreras().subscribe(response =>{
       this.carreras = response;
     })
   }
 
+  botonPermiso(){
+    this.permisoEditar = !this.permisoEditar;
+  }
   editar(form: any) {
     this.alumnotipo = form.tipo;
-    console.log("este es su nombre" + form.nombre)
+    this.alumnoname = form.nombre + " " + form.apellidopaterno
     this.formulario = this.fb.group({
       nombre: [form.nombre],
       apellidopaterno: [form.apellidopaterno],
@@ -158,10 +160,8 @@ export class AlumnosComponent implements OnInit {
       comprobante_de_domicilio: form_value.comprobante_de_domicilio
     }
 
-    console.log("este es el nuevo formulario");
-    console.log(formulario_alumno);
+    
     this.api.editarAlumno(form_value, form_value.id).subscribe(response => {
-      console.log("PERRO SE EDITO");
       Swal.fire({
         title: 'Editado con exito!',
         text: 'Los datos han sido cambiado exitosamente.',

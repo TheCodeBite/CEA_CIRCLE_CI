@@ -28,14 +28,14 @@ export class RegistroAlumnosComponent implements OnInit {
 
   ngOnInit() {
 
-    this.api.getCarreras().subscribe(response =>{
+    this.api.verCarreras().subscribe(response =>{
       this.carreras = response;
       console.log("carreras")
       console.log(this.carreras);
       console.log("fin carreras")
     })
 
-    this.api.getGrupos().subscribe(response => {
+    this.api.verAulas().subscribe(response => {
       this.grupos = response;
       console.log(this.grupos);
     })
