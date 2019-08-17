@@ -30,15 +30,11 @@ export class RegistroAlumnosComponent implements OnInit {
 
     this.api.verCarreras().subscribe(response =>{
       this.carreras = response;
-      console.log("carreras")
-      console.log(this.carreras);
-      console.log("fin carreras")
-    })
+    });
 
     this.api.verAulas().subscribe(response => {
       this.grupos = response;
-      console.log(this.grupos);
-    })
+    });
 
     this.datos_personales = this.fb.group({
       nombre: [''],
@@ -73,18 +69,12 @@ export class RegistroAlumnosComponent implements OnInit {
     });
   }
 
-  guardar(datos: any) {
-    console.log(datos);
-  }
-
   regresar() {
     this.route.navigate([""]);
   }
 
   chage_alumno() {
-    console.log("click en ocultar");
     this.alumno_prepa = !this.alumno_prepa;
-    console.log("alumno prepa ");
     if (this.alumno_prepa) {
       this.tipoAlumno = " de Prepatoria";
       this.nameButton = "Universidad";
@@ -94,14 +84,9 @@ export class RegistroAlumnosComponent implements OnInit {
       this.tipoAlumno = "de Universidad";
       this.nameButton = "Prepatoria";
     }
-    console.log(this.alumno_prepa)
   }
 
   registrar(datos_personales_value: any, datos_escuela_value: any, documentos_value: any) {
-    console.log(datos_personales_value);
-    console.log(datos_escuela_value);
-    console.log(documentos_value);
-
     if(documentos_value.certificado_original){
       documentos_value.certificado_original = 1;
     }else if(!documentos_value.certificado_original){
@@ -164,24 +149,21 @@ export class RegistroAlumnosComponent implements OnInit {
       ine_tres_copias: documentos_value.ine_tres_copias,
       comprobante_de_domicilio: documentos_value.comprobante_de_domicilio
     }
-    console.log("tipo " + this.tipo)
-    this.api.agregarAlumno(formulario_alumno).subscribe(response => {
-      console.log("ALUMNO REGISTRADO");
+
+    this.api.agregarAlumno(formulario_alumno).subscribe(response => {    
       Swal.fire({
         title: 'Registro guardado!',
         text: 'Alumno registrado con exito.',
         confirmButtonText: 'OK',
         type: 'success'
       }).then((restult) => {
+        this.ngOnInit();
+        this.regresar();
       })
     }, err => {
       console.log("UPS!");
       console.log(err.error)
-    })
-
-    console.log("ESTE ES EL FORMULARIO");
-    console.log(formulario_alumno)
-
+    });
 
   }
 

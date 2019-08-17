@@ -11,10 +11,19 @@ export class AlumnosComponent implements OnInit {
   grupos: any;
   Alumnos: any;
   carreras: any;
+
+  AlumnosMostrar: any;
+
+  alumnosPrepa = [];
+  alumnosUni = [];
+  alumnosTods = [];
+
   permisoEditar = true;
 
   formulario: FormGroup;
   pagoFormulario: FormGroup;
+  formTipo: FormGroup;
+
   alumnotipo = "";
   alumnoname = "";
 
@@ -27,6 +36,10 @@ export class AlumnosComponent implements OnInit {
       tipo: ['', Validators.required]
     });
 
+    this.formTipo = this.fb.group({
+      tipo: ['0']
+    });
+    
     this.permisoEditar = true;
     this.formulario = this.fb.group({
       nombre: [''],
@@ -57,6 +70,7 @@ export class AlumnosComponent implements OnInit {
 
     this.api.verAlumnos().subscribe(response => {
       this.Alumnos = response;
+      this.AlumnosMostrar = response;
     });
 
     this.api.verAulas().subscribe(response => {
@@ -65,11 +79,34 @@ export class AlumnosComponent implements OnInit {
 
     this.api.verCarreras().subscribe(response => {
       this.carreras = response;
-    })
+    });
+
+  }
+
+  SepararGrupos(value: any){
+    this.AlumnosMostrar = []
+    this.alumnosPrepa = [];
+    this.alumnosUni = [];
+
+    for (let i of this.Alumnos){
+      if(i.tipo == 'Universidad'){
+        this.alumnosUni.push(i);
+      }else{
+        this.alumnosPrepa.push(i)
+      }
+    }
+
+
+    if(value.tipo == 1){
+      this.AlumnosMostrar = this.alumnosPrepa;
+    }else if (value.tipo == 2){
+      this.AlumnosMostrar = this.alumnosUni;
+    }else{
+      this.AlumnosMostrar = this.Alumnos;
+    }
   }
 
   botonModalPago(idAlumno) {
-    console.log("este es su id" + idAlumno)
     this.pagoFormulario = this.fb.group({
       alumno: [idAlumno],
       pago: ['', Validators.required],
@@ -78,7 +115,6 @@ export class AlumnosComponent implements OnInit {
   }
 
   pagar(form: any){
-    console.log(form)
     this.api.pagosAlumnos(form).subscribe(response =>{
       console.log("pago Realizado con exito");
       this.ngOnInit();
