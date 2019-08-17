@@ -84,24 +84,23 @@ export class AlumnosComponent implements OnInit {
   }
 
   SepararGrupos(value: any){
-    this.AlumnosMostrar = []
+    this.AlumnosMostrar = [];
     this.alumnosPrepa = [];
     this.alumnosUni = [];
 
     for (let i of this.Alumnos){
       if(i.tipo == 'Universidad'){
         this.alumnosUni.push(i);
-      }else{
+      }else if(i.tipo == 'Preparatoria'){
         this.alumnosPrepa.push(i)
       }
     }
 
-
-    if(value.tipo == 1){
+    if(value.tipo == '1'){
       this.AlumnosMostrar = this.alumnosPrepa;
-    }else if (value.tipo == 2){
+    }else if (value.tipo == '2'){
       this.AlumnosMostrar = this.alumnosUni;
-    }else{
+    }else if(value.tipo == '0'){
       this.AlumnosMostrar = this.Alumnos;
     }
   }
