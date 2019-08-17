@@ -3,6 +3,15 @@
         <div class="col-md-12 text-left">
             <h4 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
                 style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex"> Alumnos
+                    <form [formGroup]="formTipo" >
+                        <label>Filtrar por: </label>
+                        <select formControlName="tipo">
+                            <option value="0">Todos</option>
+                            <option value="1">Preparatoria</option>
+                            <option value="2">Universidad</option>
+                        </select>
+                        <button class="btn" (click)="SepararGrupos(formTipo.value)">aplicar</button>
+                    </form>
                 </strong></h4>
             <hr class="hr-light my-3">
             <div class="buscador mb-2 text-center">
@@ -20,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let alumno of Alumnos">
+                        <tr *ngFor="let alumno of AlumnosMostrar">
                             <td>{{alumno.nombre}} {{alumno.apellidopaterno}} {{alumno.apellidomaterno}}</td>
                             <td>{{alumno.matricula}}</td>
                             <td>{{alumno.tipo}}</td>
