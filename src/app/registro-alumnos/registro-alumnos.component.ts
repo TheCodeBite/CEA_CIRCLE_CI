@@ -13,6 +13,9 @@ export class RegistroAlumnosComponent implements OnInit {
   grupos: any;
   carreras: any;
 
+  private gruposPrepa: any = [];
+  private gruposUniversidad: any = [];
+
   tipo = 'Preparatoria';
   tipoAlumno = 'Preparatoria';
   nameButton = 'Universidad';
@@ -26,14 +29,21 @@ export class RegistroAlumnosComponent implements OnInit {
   constructor(private route: Router, private fb: FormBuilder, private api: ApiService) { }
 
   ngOnInit() {
-
-    console.log("tipo" + this.tipo); 
     this.api.verCarreras().subscribe(response =>{
       this.carreras = response;
     });
 
     this.api.verAulas().subscribe(response => {
+      
       this.grupos = response;
+      for (let i of this.grupos){
+        if(i.tipo == 'Universidad'){
+          this.gruposUniversidad.push(i);
+        }else{
+          this.gruposPrepa.push(i);
+        }
+      }
+      this.grupos = this.gruposPrepa;
     });
 
     this.datos_personales = this.fb.group({
@@ -79,13 +89,14 @@ export class RegistroAlumnosComponent implements OnInit {
       this.tipoAlumno = " de Prepatoria";
       this.nameButton = "Universidad";
       this.tipo = "Preparatoria";
+      this.grupos = this.gruposPrepa;
     } else {
       this.tipo = "Universidad";
       this.tipoAlumno = "de Universidad";
       this.nameButton = "Prepatoria";
+      this.grupos = this.gruposUniversidad;
     }
 
-    console.log("cambiando: " + this.tipo);
   }
 
   registrar(datos_personales_value: any, datos_escuela_value: any, documentos_value: any) {
@@ -152,7 +163,6 @@ export class RegistroAlumnosComponent implements OnInit {
       comprobante_de_domicilio: documentos_value.comprobante_de_domicilio
     }
 
-    console.log("formulario" + formulario_alumno );
 
     this.api.agregarAlumno(formulario_alumno).subscribe(response => {    
       Swal.fire({

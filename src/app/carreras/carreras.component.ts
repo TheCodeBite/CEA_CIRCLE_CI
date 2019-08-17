@@ -31,8 +31,11 @@ export class CarrerasComponent implements OnInit {
         this.ngOnInit();
       })
     }else{
-      // se editan cambios
-      console.log("se edito el cambio");
+      // se editan cambios 
+      this.api.editarCarrera(formulario.id, formulario).subscribe(response => {
+        console.log("cambio editado")
+        this.ngOnInit();
+      });
     }
   }
 

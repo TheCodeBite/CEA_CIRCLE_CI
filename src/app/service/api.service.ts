@@ -59,4 +59,8 @@ export class ApiService {
   agregarCarreras(params: any) { 
     return this.http.post(this.url + 'carreras/', params); 
   }
+
+  editarCarrera(id: any, params: any){
+    return this.http.put(this.url + "carreras/" + id, params);
+  }
 }
