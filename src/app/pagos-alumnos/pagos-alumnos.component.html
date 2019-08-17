@@ -1,0 +1,28 @@
+<div class="view">
+    <div id="main" class="row">
+        <div class="col-md-12 text-left">
+
+            <h4 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
+                style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex">
+                    Control de Pagos - Alumnos</strong></h4>
+
+            <form [formGroup]="formFecha">
+                <div class="form-group row">
+                    <label class="col-sm-auto col-form-label">Filtrar por: </label>
+                    <div class="col-sm-6">
+                        <select formControlName="tipo" class="form-control">
+                            <option value="0">Todos</option>
+                            <option value="1">Preparatoria</option>
+                            <option value="2">Universidad</option>
+                        </select>
+                    </div>
+                    <button class="col-auto btn-outline-secondary" (click)="SepararGrupos(formTipo.value)">Aplicar
+                        Filtro</button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -52,6 +52,13 @@ export class AulasComponent implements OnInit {
     });
   }
 
+  iniciarFormulario(){
+    this.verAulas();
+    this.formulario = this.fb.group({
+      nombre: ['', Validators.required]
+    });
+  }
+
   guardar(form: any) {
     console.log(form)
     this.api.editarAula(form.id, form).subscribe(response => {
