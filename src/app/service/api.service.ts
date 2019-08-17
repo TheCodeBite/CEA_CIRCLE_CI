@@ -21,6 +21,10 @@ export class ApiService {
   editarAlumno(params:any, id:any) {
     return this.http.put(this.url+'alumnos/' + id, params);
   }
+
+  pagosAlumnos(params: any){
+    return this.http.post(this.url + 'pagoAlumnos/',params);
+  }
  //Maestros
   verMaestros() {
     return this.http.get(this.url+'maestros/');

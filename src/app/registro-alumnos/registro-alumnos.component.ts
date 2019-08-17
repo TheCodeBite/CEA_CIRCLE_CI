@@ -44,7 +44,7 @@ export class RegistroAlumnosComponent implements OnInit {
       nombre: [''],
       apellidopaterno: [''],
       apellidomaterno: [''],
-      tutor: [' '],
+      tutor: [null],
       curp: [''],
       fechadenacimiento: [''],
       edad: [''],

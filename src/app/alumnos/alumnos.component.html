@@ -32,7 +32,9 @@
                                     (click)="eliminar(maestro.value)">delete_forever
                                 </button></td>
                             <td>
-                                <button class="button_no_found material-icons">monetization_on</button>
+                                <button class="button_no_found material-icons" data-toggle="modal"
+                                    data-target="#modalpago"
+                                    (click)="botonModalPago(alumno.id)">monetization_on</button>
                             </td>
                         </tr>
                     </tbody>
@@ -40,10 +42,40 @@
             </div>
             <p><br><br></p>
         </div>
-        
+
     </div>
-    
-    <!-- Modal-->
+
+    <!-- Modal DE PAGO -->
+    <div class="modal fade" id="modalpago" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="pagoFormulario">
+                        <label>Cantidad a Pagar:</label>
+                        <input formControlName="pago" type="number" placeholder="4256.80">
+
+                        <label>Tipo:</label>
+                        <input formControlName="tipo" type="text" placeholder="Inscripcion/ Extraordinario/ etc.">
+                        
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" (click)="pagar(pagoFormulario.value)">Realizar Pago</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar -->
     <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
@@ -236,8 +268,10 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" (click)="ngOnInit()" data-dismiss="modal">Cancelar</button>
-                    <button type="button" [attr.disabled]="permisoEditar ? '' : null" class="btn btn-primary" data-dismiss="modal" (click)="guardar(formulario.value)">Guardar</button>
+                    <button type="button" class="btn btn-secondary" (click)="ngOnInit()"
+                        data-dismiss="modal">Cancelar</button>
+                    <button type="button" [attr.disabled]="permisoEditar ? '' : null" class="btn btn-primary"
+                        data-dismiss="modal" (click)="guardar(formulario.value)">Guardar</button>
                 </div>
             </div>
         </div>

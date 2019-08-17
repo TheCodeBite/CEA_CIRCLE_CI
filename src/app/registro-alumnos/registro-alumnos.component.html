@@ -121,7 +121,7 @@
                                     </select>
                                 </p>
                             </div>
-                            <div class="col">
+                            <div *ngIf="!alumno_prepa" class="col">
                                     <label>Carrera:</label>
                                     <p>
                                         <select formControlName="carrera" class="form-control">

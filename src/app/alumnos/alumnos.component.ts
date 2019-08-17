@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-alumnos',
@@ -14,12 +14,19 @@ export class AlumnosComponent implements OnInit {
   permisoEditar = true;
 
   formulario: FormGroup;
+  pagoFormulario: FormGroup;
   alumnotipo = "";
   alumnoname = "";
 
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.pagoFormulario = this.fb.group({
+      alumno: ['', Validators.required],
+      pago: ['', Validators.required],
+      tipo: ['', Validators.required]
+    });
+
     this.permisoEditar = true;
     this.formulario = this.fb.group({
       nombre: [''],
@@ -56,12 +63,31 @@ export class AlumnosComponent implements OnInit {
       this.grupos = response;
     });
 
-    this.api.verCarreras().subscribe(response =>{
+    this.api.verCarreras().subscribe(response => {
       this.carreras = response;
     })
   }
 
-  botonPermiso(){
+  botonModalPago(idAlumno) {
+    console.log("este es su id" + idAlumno)
+    this.pagoFormulario = this.fb.group({
+      alumno: [idAlumno],
+      pago: ['', Validators.required],
+      tipo: ['',Validators.required]
+    });
+  }
+
+  pagar(form: any){
+    console.log(form)
+    this.api.pagosAlumnos(form).subscribe(response =>{
+      console.log("pago Realizado con exito");
+      this.ngOnInit();
+    },err => {
+      console.log("error", err.error);
+    })
+  }
+
+  botonPermiso() {
     this.permisoEditar = !this.permisoEditar;
   }
   editar(form: any) {
@@ -161,7 +187,7 @@ export class AlumnosComponent implements OnInit {
       comprobante_de_domicilio: form_value.comprobante_de_domicilio
     }
 
-    
+
     this.api.editarAlumno(form_value, form_value.id).subscribe(response => {
       Swal.fire({
         title: 'Editado con exito!',
