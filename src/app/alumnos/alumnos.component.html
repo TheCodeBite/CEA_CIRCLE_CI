@@ -1,18 +1,37 @@
 <div>
-    <div class="row" style="overflow: scroll">
+    <div id="superficie" class="row" style="overflow: scroll">
         <div class="col-md-12 text-left">
-            <h4 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
-                style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex"> Alumnos
-                    <form [formGroup]="formTipo" >
-                        <label>Filtrar por: </label>
-                        <select formControlName="tipo">
-                            <option value="0">Todos</option>
-                            <option value="1">Preparatoria</option>
-                            <option value="2">Universidad</option>
-                        </select>
-                        <button class="btn" (click)="SepararGrupos(formTipo.value)">aplicar</button>
+
+            <div class="row">
+                <div class="col-sm-7">
+                    <h4 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
+                        style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex">
+                            Alumnos</strong></h4>
+                </div>
+                <div class="col-sm-5">
+                    <form [formGroup]="formTipo">
+
+                        <div class="form-group row">
+
+                            <label class="col-sm-auto col-form-label">Filtrar por: </label>
+                            <div class="col-sm-6">
+                                <select formControlName="tipo" class="form-control">
+                                    <option value="0">Todos</option>
+                                    <option value="1">Preparatoria</option>
+                                    <option value="2">Universidad</option>
+                                </select>
+                            </div>
+                            <button class="col-auto btn-outline-secondary"
+                                (click)="SepararGrupos(formTipo.value)">Aplicar
+                                Filtro</button>
+                        </div>
+
+
                     </form>
-                </strong></h4>
+                </div>
+
+            </div>
+
             <hr class="hr-light my-3">
             <div class="buscador mb-2 text-center">
                 <table id="example" class="table table-striped table-bordered" style="width:100%;">

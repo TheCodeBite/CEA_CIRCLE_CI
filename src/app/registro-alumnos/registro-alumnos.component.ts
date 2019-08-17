@@ -13,14 +13,13 @@ export class RegistroAlumnosComponent implements OnInit {
   grupos: any;
   carreras: any;
 
-  tipo = "Preparatoria";
-  tipoAlumno = "Preparatoria"
-  nameButton = "Universidad"
+  tipo = 'Preparatoria';
+  tipoAlumno = 'Preparatoria';
+  nameButton = 'Universidad';
 
   alumno_prepa = true;
   isEditable = true;
   
-
   datos_personales: FormGroup;
   datos_escuela: FormGroup;
   documentos: FormGroup;
@@ -28,6 +27,7 @@ export class RegistroAlumnosComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log("tipo" + this.tipo); 
     this.api.verCarreras().subscribe(response =>{
       this.carreras = response;
     });
@@ -78,12 +78,14 @@ export class RegistroAlumnosComponent implements OnInit {
     if (this.alumno_prepa) {
       this.tipoAlumno = " de Prepatoria";
       this.nameButton = "Universidad";
-      this.tipo = "Universidad";
-    } else {
       this.tipo = "Preparatoria";
+    } else {
+      this.tipo = "Universidad";
       this.tipoAlumno = "de Universidad";
       this.nameButton = "Prepatoria";
     }
+
+    console.log("cambiando: " + this.tipo);
   }
 
   registrar(datos_personales_value: any, datos_escuela_value: any, documentos_value: any) {
@@ -149,6 +151,8 @@ export class RegistroAlumnosComponent implements OnInit {
       ine_tres_copias: documentos_value.ine_tres_copias,
       comprobante_de_domicilio: documentos_value.comprobante_de_domicilio
     }
+
+    console.log("formulario" + formulario_alumno );
 
     this.api.agregarAlumno(formulario_alumno).subscribe(response => {    
       Swal.fire({
