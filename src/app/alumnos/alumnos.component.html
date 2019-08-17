@@ -3,6 +3,15 @@
         <div class="col-md-12 text-left">
             <h4 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
                 style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex"> Alumnos
+                    <form [formGroup]="formTipo" >
+                        <label>Filtrar por: </label>
+                        <select formControlName="tipo">
+                            <option value="0">Todos</option>
+                            <option value="1">Preparatoria</option>
+                            <option value="2">Universidad</option>
+                        </select>
+                        <button class="btn" (click)="SepararGrupos(formTipo.value)">aplicar</button>
+                    </form>
                 </strong></h4>
             <hr class="hr-light my-3">
             <div class="buscador mb-2 text-center">
@@ -20,7 +29,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let alumno of Alumnos">
+                        <tr *ngFor="let alumno of AlumnosMostrar">
                             <td>{{alumno.nombre}} {{alumno.apellidopaterno}} {{alumno.apellidomaterno}}</td>
                             <td>{{alumno.matricula}}</td>
                             <td>{{alumno.tipo}}</td>
@@ -51,25 +60,33 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+<<<<<<< HEAD
                     <h5 class="modal-title" id="exampleModalLongTitle">Z</h5>
+=======
+                    <h5 class="modal-title" id="exampleModalLongTitle">Pagos</h5>
+>>>>>>> 104d445e28088e2249016285ee067ec75c11eaca
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form [formGroup]="pagoFormulario">
-                        <label>Cantidad a Pagar:</label>
-                        <input formControlName="pago" type="number" placeholder="4256.80">
-
-                        <label>Tipo:</label>
-                        <input formControlName="tipo" type="text" placeholder="Inscripcion/ Extraordinario/ etc.">
-                        
+                        <div class="form-group">
+                            <label>Cantidad a Pagar:</label>
+                            <input formControlName="pago" type="number" class="form-control" placeholder="4256.80">
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo:</label>
+                            <input formControlName="tipo" type="text" class="form-control"
+                                placeholder="Inscripcion/ Extraordinario/ etc.">
+                        </div>
                     </form>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" (click)="pagar(pagoFormulario.value)">Realizar Pago</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" (click)="pagar(pagoFormulario.value)">Realizar
+                        Pago</button>
                 </div>
             </div>
         </div>
@@ -268,7 +285,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" (click)="ngOnInit()"
+                    <button type="button" class="btn btn-danger" (click)="ngOnInit()"
                         data-dismiss="modal">Cancelar</button>
                     <button type="button" [attr.disabled]="permisoEditar ? '' : null" class="btn btn-primary"
                         data-dismiss="modal" (click)="guardar(formulario.value)">Guardar</button>
