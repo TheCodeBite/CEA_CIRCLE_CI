@@ -8,6 +8,7 @@ import { MaestrosComponent } from './maestros/maestros.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
 import { CarrerasComponent } from './carreras/carreras.component';
 import { AulasComponent } from './aulas/aulas.component';
+import { PagosAlumnosComponent } from './pagos-alumnos/pagos-alumnos.component';
 
 const routes: Routes = [
   {path:'', component: IndexComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'listaAlumnos', component: AlumnosComponent},
   {path:'carreras', component: CarrerasComponent},
   {path:'aulas', component: AulasComponent},
+  {path:'pagosAlumnos', component: PagosAlumnosComponent},
   {path:'**', component:Page404Component}
 ];
 

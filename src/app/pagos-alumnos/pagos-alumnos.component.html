@@ -6,23 +6,20 @@
                 style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex">
                     Control de Pagos - Alumnos</strong></h4>
 
-            <form [formGroup]="formFecha">
+            <hr class="hr-light my-3">
+            <form>
                 <div class="form-group row">
-                    <label class="col-sm-auto col-form-label">Filtrar por: </label>
-                    <div class="col-sm-6">
-                        <select formControlName="tipo" class="form-control">
-                            <option value="0">Todos</option>
-                            <option value="1">Preparatoria</option>
-                            <option value="2">Universidad</option>
-                        </select>
+                    <label class="col-md-auto col-form-label">Fechas: </label>
+
+                    <div class="col-md-5">
+                        <input type="date" class="form-control" placeholder="Fecha Inicial">
                     </div>
-                    <button class="col-auto btn-outline-secondary" (click)="SepararGrupos(formTipo.value)">Aplicar
-                        Filtro</button>
+                    <div class="col-md-5">
+                        <input type="date" class="form-control" placeholder="Fecha Final">
+                    </div>
+                    <button class="col-md-auto btn-primary" style="width: 135px;" (click)="agregar(formulario.value)">Buscar</button>
                 </div>
-
-
             </form>
 
         </div>
     </div>
-</div>

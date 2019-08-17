@@ -64,6 +64,8 @@ export class AulasComponent implements OnInit {
         }).then((restult) => {
           this.ngOnInit();
         });
+      }, err => {
+        console.log(err.error.nombre)
       });
 
     } else {
@@ -78,8 +80,28 @@ export class AulasComponent implements OnInit {
         });
       }, err => {
         console.log("UPS! ");
-        console.log(err.error)
+        console.log(err.error);
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: err.error.restult
+        })
       });
     }
   }
+
+
+  /*this.api.editarAlumno(form_value, form_value.id).subscribe(response => {
+    Swal.fire({
+      title: 'Editado con exito!',
+      text: 'Los datos han sido cambiado exitosamente.',
+      confirmButtonText: 'OK',
+      type: 'success'
+    }).then((restult) => {
+      this.ngOnInit();
+    });
+    this.ngOnInit();
+  }, err => {
+    console.log(err.error);
+  })*/
 }

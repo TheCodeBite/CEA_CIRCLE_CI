@@ -44,6 +44,10 @@ export class AppComponent{
     this.router.navigate(['carreras']);
   }
 
+  pagosAlumnos(){
+    this.router.navigate(['pagosAlumnos']);
+  }
+
 }
 
 //RUTAS DEL NAVBAR
