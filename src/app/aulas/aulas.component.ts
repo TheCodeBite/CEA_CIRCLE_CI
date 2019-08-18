@@ -65,7 +65,12 @@ export class AulasComponent implements OnInit {
           this.ngOnInit();
         });
       }, err => {
-        console.log(err.error.nombre)
+        console.log("Nombre " + err.error.nombre + " \nTipo " + err.error.tipo)
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text:"Llene todos los campos correctamente"
+        })
       });
 
     } else {
@@ -84,24 +89,9 @@ export class AulasComponent implements OnInit {
         Swal.fire({
           type: 'error',
           title: 'Oops...',
-          text: err.error.restult
+          text: 'Llene los campos correctamente'
         })
       });
     }
   }
-
-
-  /*this.api.editarAlumno(form_value, form_value.id).subscribe(response => {
-    Swal.fire({
-      title: 'Editado con exito!',
-      text: 'Los datos han sido cambiado exitosamente.',
-      confirmButtonText: 'OK',
-      type: 'success'
-    }).then((restult) => {
-      this.ngOnInit();
-    });
-    this.ngOnInit();
-  }, err => {
-    console.log(err.error);
-  })*/
 }

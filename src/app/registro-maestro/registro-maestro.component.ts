@@ -70,8 +70,6 @@ export class RegistroMaestroComponent implements OnInit {
 
     this.api.agregarMaestro(formulario).subscribe(response => {
       console.log("maestro registrado");
-
-
       Swal.fire({
         title: 'Registro guardado!',
         text: 'el profesor se alamceno con exito en la base de datos',
@@ -84,7 +82,12 @@ export class RegistroMaestroComponent implements OnInit {
     }, err => {
       console.log("UPS! ah ocurrido un error");
       console.log(err.error);
-    })
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Llene los campos correctamente'
+      })
+    });
 
   }
 

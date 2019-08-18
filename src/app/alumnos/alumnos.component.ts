@@ -116,10 +116,22 @@ export class AlumnosComponent implements OnInit {
   pagar(form: any){
     this.api.pagosAlumnos(form).subscribe(response =>{
       console.log("pago Realizado con exito");
-      this.ngOnInit();
-    },err => {
-      console.log("error", err.error);
-    })
+      Swal.fire({
+        title: 'Pago realizado con éxito!',
+        text: 'El pago ha sido realizado',
+        confirmButtonText: 'OK',
+        type: 'success'
+      }).then((restult) => {
+        this.ngOnInit();
+      });
+    }, err => {
+      console.log(err.error)
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text:"Algo ha salido mal"
+      })
+    });
   }
 
   botonPermiso() {
