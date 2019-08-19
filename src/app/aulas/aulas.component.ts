@@ -89,19 +89,4 @@ export class AulasComponent implements OnInit {
       });
     }
   }
-
-
-  /*this.api.editarAlumno(form_value, form_value.id).subscribe(response => {
-    Swal.fire({
-      title: 'Editado con exito!',
-      text: 'Los datos han sido cambiado exitosamente.',
-      confirmButtonText: 'OK',
-      type: 'success'
-    }).then((restult) => {
-      this.ngOnInit();
-    });
-    this.ngOnInit();
-  }, err => {
-    console.log(err.error);
-  })*/
 }
