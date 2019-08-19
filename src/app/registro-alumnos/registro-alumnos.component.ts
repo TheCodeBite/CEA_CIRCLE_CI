@@ -22,24 +22,24 @@ export class RegistroAlumnosComponent implements OnInit {
 
   alumno_prepa = true;
   isEditable = true;
-  
+
   datos_personales: FormGroup;
   datos_escuela: FormGroup;
   documentos: FormGroup;
   constructor(private route: Router, private fb: FormBuilder, private api: ApiService) { }
 
   ngOnInit() {
-    this.api.verCarreras().subscribe(response =>{
+    this.api.verCarreras().subscribe(response => {
       this.carreras = response;
     });
 
     this.api.verAulas().subscribe(response => {
-      
+
       this.grupos = response;
-      for (let i of this.grupos){
-        if(i.tipo == 'Universidad'){
+      for (let i of this.grupos) {
+        if (i.tipo == 'Universidad') {
           this.gruposUniversidad.push(i);
-        }else{
+        } else {
           this.gruposPrepa.push(i);
         }
       }
@@ -79,6 +79,16 @@ export class RegistroAlumnosComponent implements OnInit {
     });
   }
 
+  reset() {
+    this.datos_escuela = this.fb.group({
+      matricula: [''],
+      carrera: [''],
+      grupo: [''],
+      estado: [''],
+      folio_certificado: [''],
+      modalidad: [''],
+    });
+  }
   regresar() {
     this.route.navigate([""]);
   }
@@ -90,49 +100,51 @@ export class RegistroAlumnosComponent implements OnInit {
       this.nameButton = "Universidad";
       this.tipo = "Preparatoria";
       this.grupos = this.gruposPrepa;
+      this.reset();
     } else {
       this.tipo = "Universidad";
       this.tipoAlumno = "de Universidad";
       this.nameButton = "Prepatoria";
       this.grupos = this.gruposUniversidad;
+      this.reset();
     }
 
   }
 
   registrar(datos_personales_value: any, datos_escuela_value: any, documentos_value: any) {
-    if(documentos_value.certificado_original){
+    if (documentos_value.certificado_original) {
       documentos_value.certificado_original = 1;
-    }else if(!documentos_value.certificado_original){
+    } else if (!documentos_value.certificado_original) {
       documentos_value.certificado_original = 0;
     }
 
-    if(documentos_value.certificado_tres_copias){
+    if (documentos_value.certificado_tres_copias) {
       documentos_value.certificado_tres_copias = 1;
-    }else if(!documentos_value.certificado_tres_copias){
+    } else if (!documentos_value.certificado_tres_copias) {
       documentos_value.certificado_tres_copias = 0;
     }
 
-    if(documentos_value.acta_nacimiento){
+    if (documentos_value.acta_nacimiento) {
       documentos_value.acta_nacimiento = 1;
-    }else if (!documentos_value.acta_nacimiento){
+    } else if (!documentos_value.acta_nacimiento) {
       documentos_value.acta_nacimiento = 0;
     }
 
-    if(documentos_value.acta_de_nacimiento_tres_copias){
+    if (documentos_value.acta_de_nacimiento_tres_copias) {
       documentos_value.acta_de_nacimiento_tres_copias = 1;
-    }else if(!documentos_value.acta_de_nacimiento_tres_copias){
+    } else if (!documentos_value.acta_de_nacimiento_tres_copias) {
       documentos_value.acta_de_nacimiento_tres_copias = 0;
     }
 
-    if(documentos_value.ine_tres_copias){
+    if (documentos_value.ine_tres_copias) {
       documentos_value.ine_tres_copias = 1;
-    }else if (!documentos_value.ine_tres_copias){
+    } else if (!documentos_value.ine_tres_copias) {
       documentos_value.ine_tres_copias = 0;
     }
 
-    if(documentos_value.comprobante_de_domicilio){
+    if (documentos_value.comprobante_de_domicilio) {
       documentos_value.comprobante_de_domicilio = 1;
-    }else if (!documentos_value.comprobante_de_domicilio){
+    } else if (!documentos_value.comprobante_de_domicilio) {
       documentos_value.comprobante_de_domicilio = 0;
     }
 
@@ -163,8 +175,9 @@ export class RegistroAlumnosComponent implements OnInit {
       comprobante_de_domicilio: documentos_value.comprobante_de_domicilio
     }
 
+    console.log(formulario_alumno)
 
-    this.api.agregarAlumno(formulario_alumno).subscribe(response => {    
+    this.api.agregarAlumno(formulario_alumno).subscribe(response => {
       Swal.fire({
         title: 'Registro guardado!',
         text: 'Alumno registrado con exito.',
@@ -177,6 +190,11 @@ export class RegistroAlumnosComponent implements OnInit {
     }, err => {
       console.log("UPS!");
       console.log(err.error)
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Llene los campos correctamente'
+      })
     });
 
   }

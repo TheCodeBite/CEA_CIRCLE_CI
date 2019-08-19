@@ -65,7 +65,12 @@ export class AulasComponent implements OnInit {
           this.ngOnInit();
         });
       }, err => {
-        console.log(err.error.nombre)
+        console.log("Nombre " + err.error.nombre + " \nTipo " + err.error.tipo)
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text:"Llene todos los campos correctamente"
+        })
       });
 
     } else {
@@ -84,7 +89,7 @@ export class AulasComponent implements OnInit {
         Swal.fire({
           type: 'error',
           title: 'Oops...',
-          text: err.error.restult
+          text: 'Llene los campos correctamente'
         })
       });
     }
