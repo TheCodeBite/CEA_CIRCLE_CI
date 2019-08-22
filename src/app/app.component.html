@@ -33,16 +33,23 @@
             <button class="dropdown-item" (click)="listaMaestros()">Maestros</button>
             <button class="dropdown-item" (click)="listaAlumnos()">Estudiantes</button>
             <div class="dropdown-divider"></div>
-            <button class="dropdown-item" (click)="pagosAlumnos()">Pagos - Estudiantes</button>
             <button class="dropdown-item" (click)="aulas()">Aulas</button>
             <button class="dropdown-item" (click)="carreras()">Carreras</button>
+            <button class="dropdown-item" (click)="materias()">Materias</button>
           </div>
         </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" style="color: black" href="#" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Pagos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <button class="dropdown-item" (click)="pagosAlumnos()">Estudiantes</button>
+              <button class="dropdown-item" (click)="pagosMaestros()">Maestros</button>
+            </div>
+          </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Calificaciones</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Control de pagos</a>
         </li>
       </ul>
     </div>

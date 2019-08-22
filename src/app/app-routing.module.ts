@@ -9,6 +9,9 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
 import { CarrerasComponent } from './carreras/carreras.component';
 import { AulasComponent } from './aulas/aulas.component';
 import { PagosAlumnosComponent } from './pagos-alumnos/pagos-alumnos.component';
+import { PagosMaestrosComponent } from './pagos-maestros/pagos-maestros.component';
+import { MateriasComponent } from './materias/materias.component';
+import { MateriasAsignadasComponent } from './materias-asignadas/materias-asignadas.component';
 
 const routes: Routes = [
   {path:'', component: IndexComponent},
@@ -20,6 +23,9 @@ const routes: Routes = [
   {path:'carreras', component: CarrerasComponent},
   {path:'aulas', component: AulasComponent},
   {path:'pagosAlumnos', component: PagosAlumnosComponent},
+  {path:'pagosMaestros', component: PagosMaestrosComponent},
+  {path:'materias', component: MateriasComponent},
+  {path:'materiasAsignadas', component: MateriasAsignadasComponent},
   {path:'**', component:Page404Component}
 ];
 

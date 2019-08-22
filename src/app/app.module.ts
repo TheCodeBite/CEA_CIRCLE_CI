@@ -20,6 +20,9 @@ import { ApiService } from './service/api.service';
 import { AulasComponent } from './aulas/aulas.component';
 import { CarrerasComponent } from './carreras/carreras.component';
 import { PagosAlumnosComponent } from './pagos-alumnos/pagos-alumnos.component';
+import { PagosMaestrosComponent } from './pagos-maestros/pagos-maestros.component';
+import { MateriasComponent } from './materias/materias.component';
+import { MateriasAsignadasComponent } from './materias-asignadas/materias-asignadas.component';
 
 
 
@@ -34,7 +37,10 @@ import { PagosAlumnosComponent } from './pagos-alumnos/pagos-alumnos.component';
     AlumnosComponent,
     AulasComponent,
     CarrerasComponent,
-    PagosAlumnosComponent
+    PagosAlumnosComponent,
+    PagosMaestrosComponent,
+    MateriasComponent,
+    MateriasAsignadasComponent
   ],
   imports: [
     BrowserModule,
