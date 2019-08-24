@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './service/api.service';
 import { AulasComponent } from './aulas/aulas.component';
 import { CarrerasComponent } from './carreras/carreras.component';
+import { CalificacionesComponent } from './calificaciones/calificaciones.component';
 
 
 
@@ -32,7 +33,8 @@ import { CarrerasComponent } from './carreras/carreras.component';
     MaestrosComponent,
     AlumnosComponent,
     AulasComponent,
-    CarrerasComponent
+    CarrerasComponent,
+    CalificacionesComponent
   ],
   imports: [
     BrowserModule,

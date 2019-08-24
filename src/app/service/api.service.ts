@@ -55,4 +55,17 @@ export class ApiService {
   agregarCarreras(params: any) { 
     return this.http.post(this.url + 'carreras/', params); 
   }
+
+  //Calificaciones
+  verCalificaciones(){
+    return this.http.get(this.url + "calificaciones/")
+  }
+  agregarCalificacion(params: any){
+    return this.http.post(this.url + 'calificaciones/', params); 
+  }
+
+  //Asignar materia
+  verMateriasAsignadas(){
+    return this.http.get(this.url + "materiasAsignadas/")
+  }
 }
