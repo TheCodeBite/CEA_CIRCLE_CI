@@ -25,6 +25,7 @@ const routes: Routes = [
   {path:'aulas', component: AulasComponent},
   {path:'pagosAlumnos', component: PagosAlumnosComponent},
   {path:'pagosMaestros', component: PagosMaestrosComponent},
+  {path:'calificaciones', component: CalificacionesComponent},
   {path:'materias', component: MateriasComponent},
   {path:'materiasAsignadas', component: MateriasAsignadasComponent},
   {path:'calificaciones', component: CalificacionesComponent},
