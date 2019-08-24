@@ -75,4 +75,10 @@ export class ApiService {
   verMateriasAsignadas(fecha:any,tipo:any){
     return this.http.get(this.url + "materiasAsignadas/calificaciones/"+fecha+"/"+tipo+"/")
   }
+
+
+  //Pagos
+  verPagos(){
+    return this.http.get(this.url + "pagoAlumnos/");
+  }
 }

@@ -14,6 +14,8 @@ export class AlumnosComponent implements OnInit {
 
   AlumnosMostrar: any;
 
+  separador = 0;
+
   alumnosPrepa = [];
   alumnosUni = [];
   alumnosTods = [];
@@ -30,16 +32,22 @@ export class AlumnosComponent implements OnInit {
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.AlumnosMostrar = [];
+    this.alumnosPrepa = [];
+    this.alumnosUni = [];
+
     this.pagoFormulario = this.fb.group({
       alumno: ['', Validators.required],
       pago: ['', Validators.required],
-      tipo: ['', Validators.required]
+      tipo: ['', Validators.required],
+      costo: ['', Validators.required],
+      restante: ['', Validators.required]
     });
 
     this.formTipo = this.fb.group({
       tipo: ['0']
     });
-    
+
     this.permisoEditar = true;
     this.formulario = this.fb.group({
       nombre: [''],
@@ -70,7 +78,23 @@ export class AlumnosComponent implements OnInit {
 
     this.api.verAlumnos().subscribe(response => {
       this.Alumnos = response;
-      this.AlumnosMostrar = response;
+
+
+      for (let i of this.Alumnos) {
+        if (i.tipo == 'Universidad') {
+          this.alumnosUni.push(i);
+        } else if (i.tipo == 'Preparatoria') {
+          this.alumnosPrepa.push(i)
+        }
+      }
+
+      if (this.separador == 1) {
+        this.AlumnosMostrar = this.alumnosPrepa;
+      } else if (this.separador == 2) {
+        this.AlumnosMostrar = this.alumnosUni;
+      } else if (this.separador == 0) {
+        this.AlumnosMostrar = this.Alumnos;
+      }
     });
 
     this.api.verAulas().subscribe(response => {
@@ -83,25 +107,16 @@ export class AlumnosComponent implements OnInit {
 
   }
 
-  SepararGrupos(value: any){
-    this.AlumnosMostrar = [];
-    this.alumnosPrepa = [];
-    this.alumnosUni = [];
-
-    for (let i of this.Alumnos){
-      if(i.tipo == 'Universidad'){
-        this.alumnosUni.push(i);
-      }else if(i.tipo == 'Preparatoria'){
-        this.alumnosPrepa.push(i)
-      }
-    }
-
-    if(value.tipo == '1'){
-      this.AlumnosMostrar = this.alumnosPrepa;
-    }else if (value.tipo == '2'){
-      this.AlumnosMostrar = this.alumnosUni;
-    }else if(value.tipo == '0'){
-      this.AlumnosMostrar = this.Alumnos;
+  SepararGrupos(value: any) {
+    if (value.tipo == '1') {
+      this.separador = 1;
+      this.ngOnInit();
+    } else if (value.tipo == '2') {
+      this.separador = 2;
+      this.ngOnInit();
+    } else if (value.tipo == '0') {
+      this.separador = 0;
+      this.ngOnInit();
     }
   }
 
@@ -109,12 +124,24 @@ export class AlumnosComponent implements OnInit {
     this.pagoFormulario = this.fb.group({
       alumno: [idAlumno],
       pago: ['', Validators.required],
-      tipo: ['',Validators.required]
+      tipo: ['', Validators.required],
+      costo: ['', Validators.required],
+      restante: ['', Validators.required]
     });
   }
 
-  pagar(form: any){
-    this.api.pagosAlumnos(form).subscribe(response =>{
+  pagar(form: any) {
+
+    const temp_formpago = {
+      alumno: form.alumno,
+      pago: form.pago,
+      tipo: form.tipo,
+      costo: form.costo,
+      restante: (form.costo - form.pago)
+    }
+
+    console.log(temp_formpago);
+    this.api.pagosAlumnos(temp_formpago).subscribe(response => {
       console.log("pago Realizado con exito");
       Swal.fire({
         title: 'Pago realizado con éxito!',
@@ -129,7 +156,7 @@ export class AlumnosComponent implements OnInit {
       Swal.fire({
         type: 'error',
         title: 'Oops...',
-        text:"Algo ha salido mal"
+        text: "Algo ha salido mal"
       })
     });
   }

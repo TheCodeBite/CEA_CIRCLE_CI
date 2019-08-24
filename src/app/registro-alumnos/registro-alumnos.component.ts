@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { ApiService } from '../service/api.service';
 
@@ -12,6 +12,7 @@ import { ApiService } from '../service/api.service';
 export class RegistroAlumnosComponent implements OnInit {
   grupos: any;
   carreras: any;
+  mensaje_error: any;
 
   private gruposPrepa: any = [];
   private gruposUniversidad: any = [];
@@ -22,7 +23,6 @@ export class RegistroAlumnosComponent implements OnInit {
 
   alumno_prepa = true;
   isEditable = true;
-
   datos_personales: FormGroup;
   datos_escuela: FormGroup;
   documentos: FormGroup;
@@ -43,30 +43,36 @@ export class RegistroAlumnosComponent implements OnInit {
           this.gruposPrepa.push(i);
         }
       }
-      this.grupos = this.gruposPrepa;
+
+      if(this.alumno_prepa){
+        this.grupos = this.gruposPrepa;
+      }else{
+        this.grupos = this.gruposUniversidad;
+      }
+      
     });
 
     this.datos_personales = this.fb.group({
-      nombre: [''],
-      apellidopaterno: [''],
-      apellidomaterno: [''],
-      tutor: [null],
-      curp: [''],
-      fechadenacimiento: [''],
-      edad: [''],
-      sexo: [''],
-      direccion: [''],
-      municipio: [''],
-      telefono: ['']
+      nombre: ['',Validators.required],
+      apellidopaterno: ['',Validators.required],
+      apellidomaterno: ['',Validators.required],
+      tutor: [null,Validators.required],
+      curp: ['',Validators.required],
+      fechadenacimiento: ['',Validators.required],
+      edad: ['',Validators.required],
+      sexo: ['',Validators.required],
+      direccion: ['',Validators.required],
+      municipio: ['',Validators.required],
+      telefono: ['',Validators.required]
     });
 
     this.datos_escuela = this.fb.group({
-      matricula: [''],
+      matricula: ['',Validators.required],
       carrera: [''],
-      grupo: [''],
-      estado: [''],
-      folio_certificado: [''],
-      modalidad: [''],
+      grupo: ['',Validators.required],
+      estado: ['activo',Validators.required],
+      folio_certificado: ['',Validators.required],
+      modalidad: ['',Validators.required],
     });
 
     this.documentos = this.fb.group({
@@ -79,16 +85,6 @@ export class RegistroAlumnosComponent implements OnInit {
     });
   }
 
-  reset() {
-    this.datos_escuela = this.fb.group({
-      matricula: [''],
-      carrera: [''],
-      grupo: [''],
-      estado: [''],
-      folio_certificado: [''],
-      modalidad: [''],
-    });
-  }
   regresar() {
     this.route.navigate([""]);
   }
@@ -100,13 +96,13 @@ export class RegistroAlumnosComponent implements OnInit {
       this.nameButton = "Universidad";
       this.tipo = "Preparatoria";
       this.grupos = this.gruposPrepa;
-      this.reset();
+      this.ngOnInit();
     } else {
       this.tipo = "Universidad";
       this.tipoAlumno = "de Universidad";
       this.nameButton = "Prepatoria";
       this.grupos = this.gruposUniversidad;
-      this.reset();
+      this.ngOnInit();
     }
 
   }
@@ -164,7 +160,7 @@ export class RegistroAlumnosComponent implements OnInit {
       matricula: datos_escuela_value.matricula,
       carrera: datos_escuela_value.carrera,
       grupo: datos_escuela_value.grupo,
-      estado: datos_escuela_value.estado,
+      estado: ['1'],
       folio_certificado: datos_escuela_value.folio_certificado,
       modalidad: datos_escuela_value.modalidad,
       certificado_original: documentos_value.certificado_original,
@@ -174,9 +170,6 @@ export class RegistroAlumnosComponent implements OnInit {
       ine_tres_copias: documentos_value.ine_tres_copias,
       comprobante_de_domicilio: documentos_value.comprobante_de_domicilio
     }
-
-    console.log(formulario_alumno)
-
     this.api.agregarAlumno(formulario_alumno).subscribe(response => {
       Swal.fire({
         title: 'Registro guardado!',
@@ -187,9 +180,16 @@ export class RegistroAlumnosComponent implements OnInit {
         this.ngOnInit();
         this.regresar();
       })
-    }, err => {
+    }, (err) => {
+      console.log("temp error " + err)
+      this.mensaje_error = err;
+
+      for(let i of this.mensaje_error){
+        console.log("error " + i)
+      }
+
       console.log("UPS!");
-      console.log(err.error)
+      console.log(err.response)
       Swal.fire({
         type: 'error',
         title: 'Oops...',
