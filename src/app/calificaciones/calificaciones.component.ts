@@ -16,7 +16,8 @@ export class CalificacionesComponent implements OnInit {
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.api.verMateriasAsignadas().subscribe(response => {
+    var year = new Date().getFullYear();
+    this.api.verMateriasAsignadas(year,"Universidad").subscribe(response => {
       this.listaMateriasAsignadas=response;
       console.log(response)
     })

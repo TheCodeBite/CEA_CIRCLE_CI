@@ -6,7 +6,8 @@ style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="
     <div *ngFor="let materia of listaMateriasAsignadas" class="card mb-3" style="width: 320px; margin: 10px;">
         <div class="card-body">
         <h5 class="card-title">{{materia.nombre_materia}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{materia.nombre_maestro}}</h6> 
+        <h6 class="card-subtitle mb-2 text-muted">{{materia.nombre_maestro}}</h6>
+        <p class="card-subtitle mb-2 text-muted">{{materia.inicio_modulo}} - {{materia.fin_modulo}}</p> 
         <a href="#" class="card-link">Ver calificaciones</a>
         </div>
     </div>

@@ -72,7 +72,7 @@ export class ApiService {
   }
 
   //Asignar materia
-  verMateriasAsignadas(){
-    return this.http.get(this.url + "materiasAsignadas/")
+  verMateriasAsignadas(fecha:any,tipo:any){
+    return this.http.get(this.url + "materiasAsignadas/calificaciones/"+fecha+"/"+tipo+"/")
   }
 }
