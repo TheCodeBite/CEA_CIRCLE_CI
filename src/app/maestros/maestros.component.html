@@ -10,23 +10,21 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Apellido Paterno</th>
-                            <th>Apellido Materno</th>
                             <th>correo</th>
                             <th>Teléfono</th>
                             <th>Dirección</th>
+                            <th>Estado</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let maestro of maestros">
-                            <td>{{maestro.nombre}}</td>
-                            <td>{{maestro.apellidopaterno}}</td>
-                            <td>{{maestro.apellidomaterno}}</td>
+                            <td>{{maestro.nombre}} {{maestro.apellidopaterno}} {{maestro.apellidomaterno}}</td>
                             <td>{{maestro.correo}}</td>
                             <td>{{maestro.telefono}}</td>
                             <td>{{maestro.direccion}}</td>
+                            <td>{{maestro.estado}}</td>
                             <td><button class="button_no_found material-icons" data-toggle="modal"
                                     data-target="#exampleModal" (click)="editar(maestro)">edit</button></td>
                             <td><button class="button_no_found material-icons"

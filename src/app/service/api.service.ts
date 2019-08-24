@@ -75,3 +75,4 @@ export class ApiService {
   verMateriasAsignadas() {
     return this.http.get(this.url + "materiasAsignadas/")
   }
+}
