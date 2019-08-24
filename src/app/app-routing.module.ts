@@ -23,14 +23,11 @@ const routes: Routes = [
   {path:'listaAlumnos', component: AlumnosComponent},
   {path:'carreras', component: CarrerasComponent},
   {path:'aulas', component: AulasComponent},
-<<<<<<< HEAD
-  {path:'calificaciones', component: CalificacionesComponent},
-=======
   {path:'pagosAlumnos', component: PagosAlumnosComponent},
   {path:'pagosMaestros', component: PagosMaestrosComponent},
   {path:'materias', component: MateriasComponent},
   {path:'materiasAsignadas', component: MateriasAsignadasComponent},
->>>>>>> dc2a571b47c1eaa31f4da8b0ddfc0143886461bd
+  {path:'calificaciones', component: CalificacionesComponent},
   {path:'**', component:Page404Component}
 ];
 
