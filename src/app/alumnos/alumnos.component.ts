@@ -33,7 +33,9 @@ export class AlumnosComponent implements OnInit {
     this.pagoFormulario = this.fb.group({
       alumno: ['', Validators.required],
       pago: ['', Validators.required],
-      tipo: ['', Validators.required]
+      tipo: ['', Validators.required],
+      costo: ['', Validators.required],
+      restante: ['', Validators.required]
     });
 
     this.formTipo = this.fb.group({
@@ -109,7 +111,9 @@ export class AlumnosComponent implements OnInit {
     this.pagoFormulario = this.fb.group({
       alumno: [idAlumno],
       pago: ['', Validators.required],
-      tipo: ['',Validators.required]
+      tipo: ['',Validators.required],
+      costo: ['',Validators.required],
+      restante: ['',Validators.required]
     });
   }
 
