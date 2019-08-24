@@ -19,8 +19,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './service/api.service';
 import { AulasComponent } from './aulas/aulas.component';
 import { CarrerasComponent } from './carreras/carreras.component';
+import { PagosAlumnosComponent } from './pagos-alumnos/pagos-alumnos.component';
+import { PagosMaestrosComponent } from './pagos-maestros/pagos-maestros.component';
+import { MateriasComponent } from './materias/materias.component';
+import { MateriasAsignadasComponent } from './materias-asignadas/materias-asignadas.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
-
 
 
 @NgModule({
@@ -34,6 +37,10 @@ import { CalificacionesComponent } from './calificaciones/calificaciones.compone
     AlumnosComponent,
     AulasComponent,
     CarrerasComponent,
+    PagosAlumnosComponent,
+    PagosMaestrosComponent,
+    MateriasComponent,
+    MateriasAsignadasComponent,
     CalificacionesComponent
   ],
   imports: [

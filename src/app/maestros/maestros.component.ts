@@ -29,7 +29,8 @@ export class MaestrosComponent implements OnInit {
       tituloprofesional: ['', Validators.required],
       cedulaprofesional: ['', Validators.required],
       institucioneducativa: ['', Validators.required],
-      tipo: ['', Validators.required]
+      tipo: ['', Validators.required],
+      estado: ['',Validators.required]
     });
   }
 
@@ -56,7 +57,8 @@ export class MaestrosComponent implements OnInit {
       tituloprofesional: [maestro.tituloprofesional, Validators.required],
       cedulaprofesional: [maestro.cedulaprofesional, Validators.required],
       institucioneducativa: [maestro.tituloprofesional, Validators.required],
-      tipo: [maestro.tipo, Validators.required]
+      tipo: [maestro.tipo, Validators.required],
+      estado:[maestro.estado,Validators.required]
     });
 
     console.log("Formulario es este we");

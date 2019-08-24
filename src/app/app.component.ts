@@ -44,6 +44,22 @@ export class AppComponent{
     this.router.navigate(['carreras']);
   }
 
+  pagosAlumnos(){
+    this.router.navigate(['pagosAlumnos']);
+  }
+
+  pagosMaestros(){
+    this.router.navigate(['pagosMaestros']);
+  }
+
+  materias(){
+    this.router.navigate(['materias']);
+  }
+
+  asignarMaterias(){
+    this.router.navigate(['asignarMaterias']);
+  }
+
 }
 
 //RUTAS DEL NAVBAR

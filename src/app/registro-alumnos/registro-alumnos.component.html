@@ -104,7 +104,7 @@
                                 <label>Aula:</label>
                                 <p>
                                     <select formControlName="grupo" class="form-control">
-                                        <option *ngFor="let grup of grupos" value="{{grup.id}}">{{grup.nombre}}</option>
+                                        <option *ngFor="let grup of grupos" value="{{grup.id}}">{{grup.nombre}} {{grup.id}}</option>
                                     </select>
                                 </p>
                             </div>
@@ -121,7 +121,7 @@
                                     </select>
                                 </p>
                             </div>
-                            <div class="col">
+                            <div *ngIf="!alumno_prepa" class="col">
                                     <label>Carrera:</label>
                                     <p>
                                         <select formControlName="carrera" class="form-control">

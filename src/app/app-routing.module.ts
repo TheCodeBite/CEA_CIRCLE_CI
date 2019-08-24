@@ -8,6 +8,10 @@ import { MaestrosComponent } from './maestros/maestros.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
 import { CarrerasComponent } from './carreras/carreras.component';
 import { AulasComponent } from './aulas/aulas.component';
+import { PagosAlumnosComponent } from './pagos-alumnos/pagos-alumnos.component';
+import { PagosMaestrosComponent } from './pagos-maestros/pagos-maestros.component';
+import { MateriasComponent } from './materias/materias.component';
+import { MateriasAsignadasComponent } from './materias-asignadas/materias-asignadas.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
 
 const routes: Routes = [
@@ -19,7 +23,14 @@ const routes: Routes = [
   {path:'listaAlumnos', component: AlumnosComponent},
   {path:'carreras', component: CarrerasComponent},
   {path:'aulas', component: AulasComponent},
+<<<<<<< HEAD
   {path:'calificaciones', component: CalificacionesComponent},
+=======
+  {path:'pagosAlumnos', component: PagosAlumnosComponent},
+  {path:'pagosMaestros', component: PagosMaestrosComponent},
+  {path:'materias', component: MateriasComponent},
+  {path:'materiasAsignadas', component: MateriasAsignadasComponent},
+>>>>>>> dc2a571b47c1eaa31f4da8b0ddfc0143886461bd
   {path:'**', component:Page404Component}
 ];
 

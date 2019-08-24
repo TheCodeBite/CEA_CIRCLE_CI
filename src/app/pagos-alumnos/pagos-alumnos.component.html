@@ -1,0 +1,95 @@
+<div class="view">
+    <div id="main" class="row">
+        <div class="col-md-12 text-left">
+
+            <h4 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
+                style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex">
+                    Control de Pagos - Estudiantes</strong></h4>
+
+            <hr class="hr-light my-3">
+            <form>
+                <div class="form-group row">
+                    <label class="col-md-auto col-form-label">Fechas: </label>
+
+                    <div class="col-md-5">
+                        <input type="date" class="form-control" placeholder="Fecha Inicial">
+                    </div>
+                    <div class="col-md-5">
+                        <input type="date" class="form-control" placeholder="Fecha Final">
+                    </div>
+                    <button class="col-md-auto btn-primary" style="width: 135px;"
+                        (click)="agregar(formulario.value)">Buscar</button>
+                </div>
+            </form>
+
+            <div class="buscador mb-2 text-center ">
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">Matricula</th>
+                            <th scope="col">Alumno</th>
+                            <th scope="col">Pago Total</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Pago Restante</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Abonar</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Matricula</td>
+                            <td>Nombre Completo</td>
+                            <td>Cantidad Total</td>
+                            <td>Fecha</td>
+                            <td>Restante de la deuda</td>
+                            <td>Pagado o Adeudo (Por Abonos)</td>
+                            <td>
+                                <button class="button_no_found material-icons" data-toggle="modal"
+                                    data-target="#modalAbono"
+                                    (click)="botonModalAbono(alumno.id)">monetization_on</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Abono -->
+    <div class="modal fade" id="modalAbono" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Pagos Estudiantes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="pagoFormulario">
+                        <div class="form-group">
+                            <label class="control-label">Total:</label>
+                            <input type="number" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Restante a pagar:</label>
+                            <input type="number" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>Cantidad a Abonar:</label>
+                            <input type="number" class="form-control" placeholder="500.50">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" (click)="pagar(pagoFormulario.value)">Abonar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,11 @@
 .hr-light {
-    border-top: 7px solid #fff;
+    border-top: 7px solid black;
     width: 500px;  
 }
 
 .botones{
     margin-left: 1em;
-    color: white !important;
+    color: black !important;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
 }

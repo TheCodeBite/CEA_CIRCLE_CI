@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-alumnos',
@@ -11,15 +11,35 @@ export class AlumnosComponent implements OnInit {
   grupos: any;
   Alumnos: any;
   carreras: any;
+
+  AlumnosMostrar: any;
+
+  alumnosPrepa = [];
+  alumnosUni = [];
+  alumnosTods = [];
+
   permisoEditar = true;
 
   formulario: FormGroup;
+  pagoFormulario: FormGroup;
+  formTipo: FormGroup;
+
   alumnotipo = "";
   alumnoname = "";
 
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.pagoFormulario = this.fb.group({
+      alumno: ['', Validators.required],
+      pago: ['', Validators.required],
+      tipo: ['', Validators.required]
+    });
+
+    this.formTipo = this.fb.group({
+      tipo: ['0']
+    });
+    
     this.permisoEditar = true;
     this.formulario = this.fb.group({
       nombre: [''],
@@ -50,18 +70,71 @@ export class AlumnosComponent implements OnInit {
 
     this.api.verAlumnos().subscribe(response => {
       this.Alumnos = response;
+      this.AlumnosMostrar = response;
     });
 
     this.api.verAulas().subscribe(response => {
       this.grupos = response;
     });
 
-    this.api.verCarreras().subscribe(response =>{
+    this.api.verCarreras().subscribe(response => {
       this.carreras = response;
-    })
+    });
+
   }
 
-  botonPermiso(){
+  SepararGrupos(value: any){
+    this.AlumnosMostrar = [];
+    this.alumnosPrepa = [];
+    this.alumnosUni = [];
+
+    for (let i of this.Alumnos){
+      if(i.tipo == 'Universidad'){
+        this.alumnosUni.push(i);
+      }else if(i.tipo == 'Preparatoria'){
+        this.alumnosPrepa.push(i)
+      }
+    }
+
+    if(value.tipo == '1'){
+      this.AlumnosMostrar = this.alumnosPrepa;
+    }else if (value.tipo == '2'){
+      this.AlumnosMostrar = this.alumnosUni;
+    }else if(value.tipo == '0'){
+      this.AlumnosMostrar = this.Alumnos;
+    }
+  }
+
+  botonModalPago(idAlumno) {
+    this.pagoFormulario = this.fb.group({
+      alumno: [idAlumno],
+      pago: ['', Validators.required],
+      tipo: ['',Validators.required]
+    });
+  }
+
+  pagar(form: any){
+    this.api.pagosAlumnos(form).subscribe(response =>{
+      console.log("pago Realizado con exito");
+      Swal.fire({
+        title: 'Pago realizado con éxito!',
+        text: 'El pago ha sido realizado',
+        confirmButtonText: 'OK',
+        type: 'success'
+      }).then((restult) => {
+        this.ngOnInit();
+      });
+    }, err => {
+      console.log(err.error)
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text:"Algo ha salido mal"
+      })
+    });
+  }
+
+  botonPermiso() {
     this.permisoEditar = !this.permisoEditar;
   }
   editar(form: any) {
@@ -161,7 +234,7 @@ export class AlumnosComponent implements OnInit {
       comprobante_de_domicilio: form_value.comprobante_de_domicilio
     }
 
-    
+
     this.api.editarAlumno(form_value, form_value.id).subscribe(response => {
       Swal.fire({
         title: 'Editado con exito!',

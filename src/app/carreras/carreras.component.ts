@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-carreras',
@@ -27,12 +28,44 @@ export class CarrerasComponent implements OnInit {
     if(this.gurdar == 0){
       /// se crea un nuevo usuario
       this.api.agregarCarreras(formulario).subscribe(response => {
-        console.log("AGREGADO")
-        this.ngOnInit();
-      })
+        console.log("AGREGADO");
+        Swal.fire({
+          title: 'Agregado con exito!',
+          text: 'La aula se agrego correctamente.',
+          confirmButtonText: 'OK',
+          type: 'success'
+        }).then((restult) => {
+          this.ngOnInit();
+        });
+      }, err => {
+        console.log(err.error)
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text:"Llene todos los campos correctamente"
+        })
+      });
     }else{
-      // se editan cambios
-      console.log("se edito el cambio");
+      // se editan cambios 
+      this.api.editarCarrera(formulario.id, formulario).subscribe(response => {
+        console.log("cambio editado")
+        Swal.fire({
+          title: 'Editado con exito!',
+          text: 'Los datos han sido cambiado exitosamente.',
+          confirmButtonText: 'OK',
+          type: 'success'
+        }).then((restult) => {
+          this.ngOnInit();
+        });
+      }, err => {
+        console.log("UPS! ");
+        console.log(err.error);
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Llene los campos correctamente'
+        })
+      });
     }
   }
 

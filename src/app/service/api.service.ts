@@ -5,67 +5,73 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  url="http://127.0.0.1:8000/api/v1/";
+  url = "http://127.0.0.1:8000/api/v1/";
   constructor(private http: HttpClient) { }
 
-//Alumnos
+  //Alumnos
   verAlumnos() {
-    return this.http.get(this.url+'alumnos/');
+    return this.http.get(this.url + 'alumnos/');
   }
-  verAlumno(id:any){
-    return this.http.get(this.url+'alumnos/'+id+"/");
+  verAlumno(id: any) {
+    return this.http.get(this.url + 'alumnos/' + id + "/");
   }
-  agregarAlumno(params:any) {
-    return this.http.post(this.url+'alumnos/',params);
+  agregarAlumno(params: any) {
+    return this.http.post(this.url + 'alumnos/', params);
   }
-  editarAlumno(params:any, id:any) {
-    return this.http.put(this.url+'alumnos/' + id, params);
+  editarAlumno(params: any, id: any) {
+    return this.http.put(this.url + 'alumnos/' + id, params);
   }
- //Maestros
+
+  pagosAlumnos(params: any) {
+    return this.http.post(this.url + 'pagoAlumnos/', params);
+  }
+  //Maestros
   verMaestros() {
-    return this.http.get(this.url+'maestros/');
+    return this.http.get(this.url + 'maestros/');
   }
-  verMaestro(id:any){
-    return this.http.get(this.url+'maestros/'+id+"/");
+  verMaestro(id: any) {
+    return this.http.get(this.url + 'maestros/' + id + "/");
   }
-  agregarMaestro(params:any) {
-    return this.http.post(this.url+'maestros/',params);
+  agregarMaestro(params: any) {
+    return this.http.post(this.url + 'maestros/', params);
   }
-  editarMaestro(id: any, params:any) {
+  editarMaestro(id: any, params: any) {
     return this.http.put(this.url + 'maestros/' + id + "/", params);
   }
 
   //GRUPOS
-  verAulas(){
-    return this.http.get(this.url +  "grupos/");  
+  verAulas() {
+    return this.http.get(this.url + "grupos/");
   }
-  agregarAulas(params){
+  agregarAulas(params) {
     return this.http.post(this.url + 'grupos/', params);
   }
-  editarAula(id: any, params:any) {
+  editarAula(id: any, params: any) {
     return this.http.put(this.url + 'grupos/' + id + "/", params);
   }
 
   //CARRERAS
 
-  verCarreras(){
+  verCarreras() {
     return this.http.get(this.url + "carreras/")
   }
 
-  agregarCarreras(params: any) { 
-    return this.http.post(this.url + 'carreras/', params); 
+  agregarCarreras(params: any) {
+    return this.http.post(this.url + 'carreras/', params);
   }
 
+  editarCarrera(id: any, params: any) {
+    return this.http.put(this.url + "carreras/" + id, params);
+  }
   //Calificaciones
-  verCalificaciones(){
+  verCalificaciones() {
     return this.http.get(this.url + "calificaciones/")
   }
-  agregarCalificacion(params: any){
-    return this.http.post(this.url + 'calificaciones/', params); 
+  agregarCalificacion(params: any) {
+    return this.http.post(this.url + 'calificaciones/', params);
   }
 
   //Asignar materia
-  verMateriasAsignadas(){
+  verMateriasAsignadas() {
     return this.http.get(this.url + "materiasAsignadas/")
   }
-}

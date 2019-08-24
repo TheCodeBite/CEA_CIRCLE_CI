@@ -13,13 +13,15 @@ export class RegistroAlumnosComponent implements OnInit {
   grupos: any;
   carreras: any;
 
-  tipo = "Preparatoria";
-  tipoAlumno = "Preparatoria"
-  nameButton = "Universidad"
+  private gruposPrepa: any = [];
+  private gruposUniversidad: any = [];
+
+  tipo = 'Preparatoria';
+  tipoAlumno = 'Preparatoria';
+  nameButton = 'Universidad';
 
   alumno_prepa = true;
   isEditable = true;
-  
 
   datos_personales: FormGroup;
   datos_escuela: FormGroup;
@@ -27,24 +29,28 @@ export class RegistroAlumnosComponent implements OnInit {
   constructor(private route: Router, private fb: FormBuilder, private api: ApiService) { }
 
   ngOnInit() {
-
-    this.api.verCarreras().subscribe(response =>{
+    this.api.verCarreras().subscribe(response => {
       this.carreras = response;
-      console.log("carreras")
-      console.log(this.carreras);
-      console.log("fin carreras")
-    })
+    });
 
     this.api.verAulas().subscribe(response => {
+
       this.grupos = response;
-      console.log(this.grupos);
-    })
+      for (let i of this.grupos) {
+        if (i.tipo == 'Universidad') {
+          this.gruposUniversidad.push(i);
+        } else {
+          this.gruposPrepa.push(i);
+        }
+      }
+      this.grupos = this.gruposPrepa;
+    });
 
     this.datos_personales = this.fb.group({
       nombre: [''],
       apellidopaterno: [''],
       apellidomaterno: [''],
-      tutor: [' '],
+      tutor: [null],
       curp: [''],
       fechadenacimiento: [''],
       edad: [''],
@@ -73,68 +79,72 @@ export class RegistroAlumnosComponent implements OnInit {
     });
   }
 
-  guardar(datos: any) {
-    console.log(datos);
+  reset() {
+    this.datos_escuela = this.fb.group({
+      matricula: [''],
+      carrera: [''],
+      grupo: [''],
+      estado: [''],
+      folio_certificado: [''],
+      modalidad: [''],
+    });
   }
-
   regresar() {
     this.route.navigate([""]);
   }
 
   chage_alumno() {
-    console.log("click en ocultar");
     this.alumno_prepa = !this.alumno_prepa;
-    console.log("alumno prepa ");
     if (this.alumno_prepa) {
       this.tipoAlumno = " de Prepatoria";
       this.nameButton = "Universidad";
-      this.tipo = "Universidad";
-    } else {
       this.tipo = "Preparatoria";
+      this.grupos = this.gruposPrepa;
+      this.reset();
+    } else {
+      this.tipo = "Universidad";
       this.tipoAlumno = "de Universidad";
       this.nameButton = "Prepatoria";
+      this.grupos = this.gruposUniversidad;
+      this.reset();
     }
-    console.log(this.alumno_prepa)
+
   }
 
   registrar(datos_personales_value: any, datos_escuela_value: any, documentos_value: any) {
-    console.log(datos_personales_value);
-    console.log(datos_escuela_value);
-    console.log(documentos_value);
-
-    if(documentos_value.certificado_original){
+    if (documentos_value.certificado_original) {
       documentos_value.certificado_original = 1;
-    }else if(!documentos_value.certificado_original){
+    } else if (!documentos_value.certificado_original) {
       documentos_value.certificado_original = 0;
     }
 
-    if(documentos_value.certificado_tres_copias){
+    if (documentos_value.certificado_tres_copias) {
       documentos_value.certificado_tres_copias = 1;
-    }else if(!documentos_value.certificado_tres_copias){
+    } else if (!documentos_value.certificado_tres_copias) {
       documentos_value.certificado_tres_copias = 0;
     }
 
-    if(documentos_value.acta_nacimiento){
+    if (documentos_value.acta_nacimiento) {
       documentos_value.acta_nacimiento = 1;
-    }else if (!documentos_value.acta_nacimiento){
+    } else if (!documentos_value.acta_nacimiento) {
       documentos_value.acta_nacimiento = 0;
     }
 
-    if(documentos_value.acta_de_nacimiento_tres_copias){
+    if (documentos_value.acta_de_nacimiento_tres_copias) {
       documentos_value.acta_de_nacimiento_tres_copias = 1;
-    }else if(!documentos_value.acta_de_nacimiento_tres_copias){
+    } else if (!documentos_value.acta_de_nacimiento_tres_copias) {
       documentos_value.acta_de_nacimiento_tres_copias = 0;
     }
 
-    if(documentos_value.ine_tres_copias){
+    if (documentos_value.ine_tres_copias) {
       documentos_value.ine_tres_copias = 1;
-    }else if (!documentos_value.ine_tres_copias){
+    } else if (!documentos_value.ine_tres_copias) {
       documentos_value.ine_tres_copias = 0;
     }
 
-    if(documentos_value.comprobante_de_domicilio){
+    if (documentos_value.comprobante_de_domicilio) {
       documentos_value.comprobante_de_domicilio = 1;
-    }else if (!documentos_value.comprobante_de_domicilio){
+    } else if (!documentos_value.comprobante_de_domicilio) {
       documentos_value.comprobante_de_domicilio = 0;
     }
 
@@ -164,24 +174,28 @@ export class RegistroAlumnosComponent implements OnInit {
       ine_tres_copias: documentos_value.ine_tres_copias,
       comprobante_de_domicilio: documentos_value.comprobante_de_domicilio
     }
-    console.log("tipo " + this.tipo)
+
+    console.log(formulario_alumno)
+
     this.api.agregarAlumno(formulario_alumno).subscribe(response => {
-      console.log("ALUMNO REGISTRADO");
       Swal.fire({
         title: 'Registro guardado!',
         text: 'Alumno registrado con exito.',
         confirmButtonText: 'OK',
         type: 'success'
       }).then((restult) => {
+        this.ngOnInit();
+        this.regresar();
       })
     }, err => {
       console.log("UPS!");
       console.log(err.error)
-    })
-
-    console.log("ESTE ES EL FORMULARIO");
-    console.log(formulario_alumno)
-
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Llene los campos correctamente'
+      })
+    });
 
   }
 
