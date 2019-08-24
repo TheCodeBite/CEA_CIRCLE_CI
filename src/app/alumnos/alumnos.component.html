@@ -88,19 +88,27 @@
                     <form [formGroup]="pagoFormulario">
                         <div class="form-group">
                             <label>Cantidad a Pagar:</label>
-                            <input formControlName="pago" type="number" class="form-control" placeholder="4256.80">
+                            <input formControlName="costo" type="number" class="form-control" placeholder="4256.80">
                         </div>
+
+                        <div class="form-group">
+                            <label>Efectivo recibido:</label>
+                            <input formControlName="pago" type="number" placeholder="650">
+                        </div>
+
                         <div class="form-group">
                             <label>Tipo:</label>
                             <input formControlName="tipo" type="text" class="form-control"
                                 placeholder="Inscripcion/ Extraordinario/ etc.">
                         </div>
+
                     </form>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="pagar(pagoFormulario.value)">Realizar
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        (click)="pagar(pagoFormulario.value)">Realizar
                         Pago</button>
                 </div>
             </div>

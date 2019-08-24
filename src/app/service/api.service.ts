@@ -75,4 +75,10 @@ export class ApiService {
   verMateriasAsignadas(){
     return this.http.get(this.url + "materiasAsignadas/")
   }
+
+
+  //Pagos
+  verPagos(){
+    return this.http.get(this.url + "pagoAlumnos/");
+  }
 }

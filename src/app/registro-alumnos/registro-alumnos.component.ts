@@ -12,6 +12,7 @@ import { ApiService } from '../service/api.service';
 export class RegistroAlumnosComponent implements OnInit {
   grupos: any;
   carreras: any;
+  mensaje_error: any;
 
   private gruposPrepa: any = [];
   private gruposUniversidad: any = [];
@@ -169,9 +170,6 @@ export class RegistroAlumnosComponent implements OnInit {
       ine_tres_copias: documentos_value.ine_tres_copias,
       comprobante_de_domicilio: documentos_value.comprobante_de_domicilio
     }
-
-    console.log(formulario_alumno)
-
     this.api.agregarAlumno(formulario_alumno).subscribe(response => {
       Swal.fire({
         title: 'Registro guardado!',
@@ -182,9 +180,16 @@ export class RegistroAlumnosComponent implements OnInit {
         this.ngOnInit();
         this.regresar();
       })
-    }, err => {
+    }, (err) => {
+      console.log("temp error " + err)
+      this.mensaje_error = err;
+
+      for(let i of this.mensaje_error){
+        console.log("error " + i)
+      }
+
       console.log("UPS!");
-      console.log(err.error)
+      console.log(err.response)
       Swal.fire({
         type: 'error',
         title: 'Oops...',
