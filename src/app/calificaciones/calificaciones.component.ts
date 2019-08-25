@@ -15,6 +15,7 @@ export class CalificacionesComponent implements OnInit {
   listaMaestros:any;
   listaCalificaciones:any;
   listaAlumnos:any;
+  matricula="";
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -25,7 +26,8 @@ export class CalificacionesComponent implements OnInit {
     })
   }
   buscarAlumno(){
-    this.api.BuscarAlumnos(163236).subscribe(response => {
+    console.log(this.matricula)
+    this.api.BuscarAlumnos(this.matricula).subscribe(response => {
       this.listaAlumnos=response;
       console.log(response)
     })

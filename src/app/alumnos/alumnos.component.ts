@@ -125,7 +125,7 @@ export class AlumnosComponent implements OnInit {
   botonModalPago(idAlumno) {
     this.pagoFormulario = this.fb.group({
       alumno: [idAlumno],
-      pago: ['', Validators.drequired],
+      pago: ['', Validators.required],
       tipo: ['', Validators.required],
       costo: ['', Validators.required],
       restante: ['', Validators.required]
