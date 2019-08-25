@@ -11,40 +11,55 @@ import Swal from 'sweetalert2';
 export class CalificacionesComponent implements OnInit {
   formulario: FormGroup;
   listaMateriasAsignadas: any;
-  listaMaterias:any;
-  listaMaestros:any;
+  listaMaterias: any;
+  listaMaestros: any;
 
   alumnos: any;
 
-  listaCalificaciones:any;
-  listaAlumnos:any;
-  matricula="";
+  listaCalificaciones: any;
+  listaAlumnos: any;
+  matricula = "";
+  year = new Date().getFullYear();;
+  tipo = "Universidad";
+  calificacion:any;
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    var year = new Date().getFullYear();
-    console.log("year:" + year)
-    this.api.verMateriasAsignadas(year,"UNI").subscribe(response => {
-      this.listaMateriasAsignadas=response;
+    this.api.verMateriasAsignadas(this.year, this.tipo).subscribe(response => {
+      this.listaMateriasAsignadas = response;
       console.log(response)
     });
-
     const temp = {
       estado: ['activo']
     }
-    
-    this.api.verAlumnos('activo').subscribe(response =>{
+
+    this.api.verAlumnos('activo').subscribe(response => {
       console.log("alumnos")
       console.log(response);
       this.alumnos = response;
     });
   }
-
-  buscarAlumno(){
+  buscarMaterias() {
+    this.ngOnInit();
+  }
+  buscarAlumno() {
     console.log(this.matricula)
     this.api.BuscarAlumnos(this.matricula).subscribe(response => {
-      this.listaAlumnos=response;
+      this.listaAlumnos = response;
       console.log(response)
+    })
+  }
+  agregarCalificacion(idAlumno,idMateria) {
+    console.log(idAlumno)
+    console.log(idMateria)
+    console.log(this.calificacion)
+    var param = {
+      alumno:idAlumno,
+      materia_asignada:idMateria,
+      calificacion:this.calificacion
+    }
+    this.api.agregarCalificacion(param).subscribe(response => {
+      console.log("Mensaje de agregado")
     })
   }
 }

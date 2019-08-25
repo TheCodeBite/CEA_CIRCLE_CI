@@ -1,7 +1,18 @@
 <h3 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
     style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex"> Calificaciones
-    </strong></h3>
+    </strong>
+</h3>
 <hr class="hr-light my-3">
+<div class="row">
+    <label style="margin: 5px;">Año:</label>
+    <input type="number" [(ngModel)]="year" class="form-control col-md-2" placeholder="Año">
+    <label style="margin: 5px;">Tipo:</label>
+    <select [(ngModel)]="tipo" class="form-control col-md-2">
+        <option value="Preparatoria">Preparatoria</option>
+        <option value="Universidad">Universidad</option>
+    </select>
+    <button type="button" class="btn" (click)="buscarMaterias()">Buscar</button>
+</div>
 <div class="row">
     <div *ngFor="let materia of listaMateriasAsignadas" class="card mb-3" style="width: 320px; margin: 10px;">
         <div class="card-body">
@@ -108,6 +119,30 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal poner calificaiones -->
+<div class="modal fade bd-example-modal-xs" id="calificacionModal" tabindex="-1" role="dialog" aria-labelledby="calificacionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="calificacionModalLabel">Agregar calificación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label>Calificacion:</label>
+                <input type="number" [(ngModel)]="calificacion" class="form-control col-md-2" placeholder="Año">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        (click)="agregarCalificacion()">Agregar</button>
             </div>
         </div>
     </div>
