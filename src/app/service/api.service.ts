@@ -25,6 +25,9 @@ export class ApiService {
   pagosAlumnos(params: any){
     return this.http.post(this.url + 'pagoAlumnos/',params);
   }
+  BuscarAlumnos(matricula) {
+    return this.http.get(this.url+'alumnos/buscador/'+matricula+"/");
+  }
  //Maestros
   verMaestros() {
     return this.http.get(this.url+'maestros/');
