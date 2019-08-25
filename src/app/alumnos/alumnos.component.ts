@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./alumnos.component.css']
 })
 export class AlumnosComponent implements OnInit {
-  grupos: any;
+  grupos: any; 
   Alumnos: any;
   carreras: any;
 

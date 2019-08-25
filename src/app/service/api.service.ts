@@ -10,7 +10,7 @@ export class ApiService {
 
 //Alumnos
   verAlumnos(params: any) {
-    return this.http.get(this.url+'alumnos/', params);
+    return this.http.get(this.url+'alumnos/');
   }
   verAlumno(id:any){
     return this.http.get(this.url+'alumnos/'+id+"/");

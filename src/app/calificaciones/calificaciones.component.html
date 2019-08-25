@@ -12,6 +12,7 @@
         </div>
     </div>
 </div>
+
 <!-- Modal lista de calificaiones -->
 <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -84,15 +85,15 @@
                         <thead>
                             <tr>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Calificación</th>
+                                <th scope="col">Matricula</th>
                                 <th scope="col">Editar</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let calificaciones of listaCalificaciones">
-                                <td>{{calificaciones.alumno}}</td>
-                                <td>{{calificaciones.calificacion}}</td>
+                            <tr *ngFor="let alumno of alumnos">
+                                <td>{{alumno.nombre}} {{alumno.apellidomaterno}}</td>
+                                <td>{{alumno.matricula}}</td>
                                 <td>
                                     <button class="button_no_found material-icons">edit</button>
                                 </td>

@@ -13,6 +13,9 @@ export class CalificacionesComponent implements OnInit {
   listaMateriasAsignadas: any;
   listaMaterias:any;
   listaMaestros:any;
+
+  alumnos: any;
+
   listaCalificaciones:any;
   listaAlumnos:any;
   matricula="";
@@ -20,11 +23,23 @@ export class CalificacionesComponent implements OnInit {
 
   ngOnInit() {
     var year = new Date().getFullYear();
-    this.api.verMateriasAsignadas(year,"Universidad").subscribe(response => {
+    console.log("year:" + year)
+    this.api.verMateriasAsignadas(year,"UNI").subscribe(response => {
       this.listaMateriasAsignadas=response;
       console.log(response)
-    })
+    });
+
+    const temp = {
+      estado: ['activo']
+    }
+    
+    this.api.verAlumnos('activo').subscribe(response =>{
+      console.log("alumnos")
+      console.log(response);
+      this.alumnos = response;
+    });
   }
+
   buscarAlumno(){
     console.log(this.matricula)
     this.api.BuscarAlumnos(this.matricula).subscribe(response => {
