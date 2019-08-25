@@ -160,7 +160,7 @@ export class RegistroAlumnosComponent implements OnInit {
       matricula: datos_escuela_value.matricula,
       carrera: datos_escuela_value.carrera,
       grupo: datos_escuela_value.grupo,
-      estado: ['1'],
+      estado: ['activo'],
       folio_certificado: datos_escuela_value.folio_certificado,
       modalidad: datos_escuela_value.modalidad,
       certificado_original: documentos_value.certificado_original,

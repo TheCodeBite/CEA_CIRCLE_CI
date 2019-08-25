@@ -9,8 +9,8 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
 //Alumnos
-  verAlumnos() {
-    return this.http.get(this.url+'alumnos/');
+  verAlumnos(params: any) {
+    return this.http.get(this.url+'alumnos/', params);
   }
   verAlumno(id:any){
     return this.http.get(this.url+'alumnos/'+id+"/");

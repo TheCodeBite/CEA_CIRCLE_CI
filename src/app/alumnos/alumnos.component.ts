@@ -75,8 +75,10 @@ export class AlumnosComponent implements OnInit {
       comprobante_de_domicilio: [0],
       tipo: ['']
     });
-
-    this.api.verAlumnos().subscribe(response => {
+    const temp = {
+      estado: ['activo']
+    }
+    this.api.verAlumnos(temp).subscribe(response => {
       this.Alumnos = response;
 
 
@@ -123,7 +125,7 @@ export class AlumnosComponent implements OnInit {
   botonModalPago(idAlumno) {
     this.pagoFormulario = this.fb.group({
       alumno: [idAlumno],
-      pago: ['', Validators.required],
+      pago: ['', Validators.drequired],
       tipo: ['', Validators.required],
       costo: ['', Validators.required],
       restante: ['', Validators.required]
@@ -137,7 +139,7 @@ export class AlumnosComponent implements OnInit {
       pago: form.pago,
       tipo: form.tipo,
       costo: form.costo,
-      restante: (form.costo - form.pago)
+      restante: (form.costo - form.pago)  
     }
 
     console.log(temp_formpago);
