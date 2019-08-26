@@ -97,19 +97,19 @@
                             <tr>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Matricula</th>
-                                <th scope="col">Editar</th>
-                                <th scope="col">Eliminar</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Calificar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let alumno of alumnos">
-                                <td>{{alumno.nombre}} {{alumno.apellidomaterno}}</td>
+                                <td>{{alumno.nombre}} {{alumno.apellidopaterno}} {{alumno.apellidomaterno}}</td>
                                 <td>{{alumno.matricula}}</td>
                                 <td>
-                                    <button class="button_no_found material-icons">edit</button>
+                                    {{alumno.tipo}}
                                 </td>
                                 <td>
-                                    <button class="button_no_found material-icons">delete_forever</button>
+                                    <button class="btn btn-primary">Calificar</button>
                                 </td>
                             </tr>
                         </tbody>

@@ -75,10 +75,8 @@ export class AlumnosComponent implements OnInit {
       comprobante_de_domicilio: [0],
       tipo: ['']
     });
-    const temp = {
-      estado: ['activo']
-    }
-    this.api.verAlumnos(temp).subscribe(response => {
+
+    this.api.verAlumnos("activo").subscribe(response => {
       this.Alumnos = response;
 
 

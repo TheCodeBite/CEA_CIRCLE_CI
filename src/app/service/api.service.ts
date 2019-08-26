@@ -10,7 +10,7 @@ export class ApiService {
 
 //Alumnos
   verAlumnos(params: any) {
-    return this.http.get(this.url+'alumnos/');
+    return this.http.get(this.url+'alumnos/estado/' + params );
   }
   verAlumno(id:any){
     return this.http.get(this.url+'alumnos/'+id+"/");
@@ -83,5 +83,9 @@ export class ApiService {
   //Pagos
   verPagos(){
     return this.http.get(this.url + "pagoAlumnos/");
+  }
+
+  actualizarPagoAlumnos(params: any, id: any){
+    return this.http.put(this.url + "pagoAlumnos/" + id + "/", params);
   }
 }

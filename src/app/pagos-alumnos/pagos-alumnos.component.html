@@ -17,8 +17,7 @@
                     <div class="col-md-5">
                         <input type="date" class="form-control" placeholder="Fecha Final">
                     </div>
-                    <button class="col-md-auto btn-primary" style="width: 135px;"
-                        >Buscar</button>
+                    <button class="col-md-auto btn-primary" style="width: 135px;">Buscar</button>
                 </div>
             </form>
 
@@ -42,10 +41,16 @@
                             <td>{{item.costo}}</td>
                             <td>{{item.fecha}}</td>
                             <td>{{item.restante}}</td>
-                            <td><div *ngIf="item.restante == 0">PAGADO</div> <div *ngIf="item.restante > 0"> ADEUDO</div></td>
                             <td>
-                                <button class="button_no_found material-icons" data-toggle="modal"
-                                    data-target="#modalAbono">monetization_on</button>
+                                <div *ngIf="item.restante == 0">PAGADO</div>
+                                <div *ngIf="item.restante > 0"> ADEUDO</div>
+                            </td>
+                            <td>
+                                <button *ngIf="item.restante > 0" class="button_no_found material-icons"
+                                    data-toggle="modal" data-target="#modalAbono" (click)="abonar(item)">monetization_on</button>
+
+                                <button *ngIf="item.restante == 0" class="button_no_found material-icons"
+                                    data-toggle="modal" data-target="#modalAbono" disabled>monetization_on</button>
                             </td>
                         </tr>
                     </tbody>
@@ -66,25 +71,25 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form >
+                    <form [formGroup]="formulario_pago">
                         <div class="form-group">
                             <label class="control-label">Total:</label>
-                            <input type="number" class="form-control" disabled>
+                            <input formControlName="costo" type="number" class="form-control" disabled>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Restante a pagar:</label>
-                            <input type="number" class="form-control" disabled>
+                            <input formControlName="restante" type="number" class="form-control" disabled>
                         </div>
                         <div class="form-group">
                             <label>Cantidad a Abonar:</label>
-                            <input type="number" class="form-control" placeholder="500.50">
+                            <input formControlName="abono" type="number" class="form-control" placeholder="500.50">
                         </div>
                     </form>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" (click)="pagar(pagoFormulario.value)">Abonar</button>
+                    <button type="button" class="btn btn-primary" (click)="botonPagar(formulario_pago.value)">Abonar</button>
                 </div>
             </div>
         </div>

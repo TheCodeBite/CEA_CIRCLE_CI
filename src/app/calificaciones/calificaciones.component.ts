@@ -20,7 +20,7 @@ export class CalificacionesComponent implements OnInit {
   listaAlumnos: any;
   matricula = "";
   year = new Date().getFullYear();;
-  tipo = "Universidad";
+  tipo = "UNI";
   calificacion:any;
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
