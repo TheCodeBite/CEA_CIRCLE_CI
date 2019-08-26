@@ -15,11 +15,11 @@ export class CalificacionesComponent implements OnInit {
   listaMaestros: any;
 
   alumnos: any;
-
   listaCalificaciones: any;
+
   listaAlumnos: any;
   matricula = "";
-  year = new Date().getFullYear();;
+  year = new Date().getFullYear();
   tipo = "UNI";
   calificacion:any;
   constructor(private api: ApiService, private fb: FormBuilder) { }
@@ -42,11 +42,14 @@ export class CalificacionesComponent implements OnInit {
   buscarMaterias() {
     this.ngOnInit();
   }
+
   buscarAlumno() {
     console.log(this.matricula)
     this.api.BuscarAlumnos(this.matricula).subscribe(response => {
       this.listaAlumnos = response;
       console.log(response)
+      this.ngOnInit();
+
     })
   }
   agregarCalificacion(idAlumno,idMateria) {
