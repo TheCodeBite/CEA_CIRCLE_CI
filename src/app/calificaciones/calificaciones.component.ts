@@ -21,48 +21,65 @@ export class CalificacionesComponent implements OnInit {
   matricula = "";
   year = new Date().getFullYear();
   tipo = "UNI";
-  calificacion:any;
+  calificacion: any;
+  idAlumno: any;
+  idMateria: any;
   constructor(private api: ApiService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.api.verMateriasAsignadas(this.year, this.tipo).subscribe(response => {
       this.listaMateriasAsignadas = response;
-      console.log(response)
     });
     const temp = {
       estado: ['activo']
     }
 
     this.api.verAlumnos('activo').subscribe(response => {
-      console.log("alumnos")
-      console.log(response);
       this.alumnos = response;
     });
   }
   buscarMaterias() {
     this.ngOnInit();
   }
-
   buscarAlumno() {
-    console.log(this.matricula)
     this.api.BuscarAlumnos(this.matricula).subscribe(response => {
       this.listaAlumnos = response;
-      console.log(response)
       this.ngOnInit();
 
     })
   }
-  agregarCalificacion(idAlumno,idMateria) {
-    console.log(idAlumno)
-    console.log(idMateria)
-    console.log(this.calificacion)
+  alumnosSeleccionado(idAlumno) {
+    this.idAlumno = idAlumno;
+
+  }
+  materiaSeleccionada(idMateria) {
+    this.idMateria = idMateria;
+    this.api.verCalificaciones(idMateria).subscribe(response => {
+      this.listaCalificaciones = response;
+    });
+  }
+  agregarCalificacion() {
     var param = {
-      alumno:idAlumno,
-      materia_asignada:idMateria,
-      calificacion:this.calificacion
+      alumno: this.idAlumno,
+      materia_asignada: this.idMateria,
+      calificacion: this.calificacion
     }
     this.api.agregarCalificacion(param).subscribe(response => {
-      console.log("Mensaje de agregado")
-    })
+      Swal.fire({
+        title: 'Agregado con exito!',
+        text: 'La calificación se agrego correctamente.',
+        confirmButtonText: 'OK',
+        type: 'success'
+      }).then((restult) => {
+        this.materiaSeleccionada(this.idMateria);
+        this.ngOnInit();
+      });
+    }, err => {
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: "Llene todos los campos correctamente"
+      })
+    });
   }
 }

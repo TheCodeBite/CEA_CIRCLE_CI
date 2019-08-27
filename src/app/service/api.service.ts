@@ -67,13 +67,12 @@ export class ApiService {
   }
   
   //Calificaciones
-  verCalificaciones(){
-    return this.http.get(this.url + "calificaciones/")
+  verCalificaciones(id){
+    return this.http.get(this.url + "calificaciones/"+id+"/");
   }
   agregarCalificacion(params: any){
     return this.http.post(this.url + 'calificaciones/', params); 
   }
-
   //Asignar materia
   verMateriasAsignadas(fecha:any,tipo:any){
     return this.http.get(this.url + "materiasAsignadas/calificaciones/"+fecha+"/"+tipo+"/")
