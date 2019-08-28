@@ -30,12 +30,12 @@ export class MaestrosComponent implements OnInit {
       cedulaprofesional: ['', Validators.required],
       institucioneducativa: ['', Validators.required],
       tipo: ['', Validators.required],
-      estado: ['',Validators.required]
+      estado: ['', Validators.required]
     });
   }
 
   ngOnInit() {
-    this.api.verMaestros().subscribe(response => {
+    this.api.verMaestros('activo').subscribe(response => {
       this.maestros = response;
       console.log(this.maestros)
     })
@@ -58,7 +58,7 @@ export class MaestrosComponent implements OnInit {
       cedulaprofesional: [maestro.cedulaprofesional, Validators.required],
       institucioneducativa: [maestro.tituloprofesional, Validators.required],
       tipo: [maestro.tipo, Validators.required],
-      estado:[maestro.estado,Validators.required]
+      estado: [maestro.estado, Validators.required]
     });
 
     console.log("Formulario es este we");
@@ -77,19 +77,17 @@ export class MaestrosComponent implements OnInit {
         type: 'success'
       }).then((restult) => {
         this.ngOnInit();
-      }); 
+      });
     }, err => {
       console.log("UPS! ");
       console.log(err.error)
     })
 
-    console.log("este es el id" + form.id)
-
   }
 
 
   eliminar(valor: any) {
-    console.log("Seleccionaste " + valor)
+    console.log(valor.estado)
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -107,13 +105,18 @@ export class MaestrosComponent implements OnInit {
       cancelButtonText: 'No!',
       reverseButtons: true
     }).then((result) => {
-      console.log(result)
+
       if (result.value) {
-        swalWithBootstrapButtons.fire(
-          'Eliminado!',
-          'Maestro Eliminado',
-          'success'
-        )
+        valor.estado = "inactivo";
+        this.api.editarMaestro(valor.id, valor).subscribe(response => {
+          swalWithBootstrapButtons.fire(
+            'Eliminado!',
+            'Maestro Eliminado',
+            'success'
+          )
+          this.ngOnInit();
+        })
+
       } else if (
         // Read more about handling dismissals
         result.dismiss === Swal.DismissReason.cancel

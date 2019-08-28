@@ -29,8 +29,8 @@ export class ApiService {
     return this.http.get(this.url+'alumnos/buscador/'+matricula+"/");
   }
  //Maestros
-  verMaestros() {
-    return this.http.get(this.url+'maestros/');
+  verMaestros(estado:any) {
+    return this.http.get(this.url+'maestros/estado/' + estado);
   }
   verMaestro(id:any){
     return this.http.get(this.url+'maestros/'+id+"/");
@@ -73,11 +73,22 @@ export class ApiService {
   agregarCalificacion(params: any){
     return this.http.post(this.url + 'calificaciones/', params); 
   }
-  //Asignar materia
+  
+  //MATERIAS
   verMateriasAsignadas(fecha:any,tipo:any){
-    return this.http.get(this.url + "materiasAsignadas/calificaciones/"+fecha+"/"+tipo+"/")
+    return this.http.get(this.url + "materiasAsignadas/calificaciones/"+fecha+"/"+tipo+"/");
   }
 
+  agregarMateriasAsignadas(paramas: any){
+    return this.http.post(this.url + "materiasAsignadas/", paramas);
+  }
+  verMaterias(){
+    return this.http.get(this.url + "materias/");
+  }
+
+  agregarMaterias(paramas: any){
+    return this.http.post(this.url + "materias/", paramas);
+  }
 
   //Pagos
   verPagos(){

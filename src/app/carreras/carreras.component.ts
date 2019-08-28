@@ -74,8 +74,7 @@ export class CarrerasComponent implements OnInit {
     this.carreraForm = this.fb.group({
       id: [''],
       nombre: [''],
-      nomenclatura: [''],
-      tipo: ['UNI']
+      nomenclatura: ['']
     });
   }
 
@@ -84,8 +83,7 @@ export class CarrerasComponent implements OnInit {
     this.carreraForm = this.fb.group({
       id:[formulario.id],
       nombre: [formulario.nombre],
-      nomenclatura: [formulario.nomenclatura],
-      tipo: [formulario.tipo]
+      nomenclatura: [formulario.nomenclatura]
     });
   }
 

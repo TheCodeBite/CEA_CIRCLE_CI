@@ -277,5 +277,15 @@ export class AlumnosComponent implements OnInit {
     })
   }
 
+  eliminar(form: any){
+    console.log(form)
+    form.estado = "inactivo";
+
+    this.api.editarAlumno(form, form.id).subscribe(response => {
+      console.log("alumno eliminado")
+      this.ngOnInit();
+    })
+  }
+
 
 }
