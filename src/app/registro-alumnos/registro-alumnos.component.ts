@@ -185,8 +185,7 @@ export class RegistroAlumnosComponent implements OnInit {
         this.regresar();
       })
     }, (err) => {
-      console.log("temp error " + err)
-      this.mensaje_error = err;
+      console.log("temp error " + err);
       console.log("UPS!");
       console.log(err.error)
       Swal.fire({
