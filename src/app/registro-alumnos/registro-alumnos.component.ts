@@ -36,6 +36,9 @@ export class RegistroAlumnosComponent implements OnInit {
     this.api.verAulas().subscribe(response => {
 
       this.grupos = response;
+      this.gruposPrepa = [];
+      this.gruposUniversidad = [];
+      
       for (let i of this.grupos) {
         if (i.tipo == 'Universidad') {
           this.gruposUniversidad.push(i);

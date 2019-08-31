@@ -27,22 +27,19 @@
                     <thead>
                         <tr>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Horas Semanales</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Estado</th>
+                            <th scope="col">Materia</th>
+                            <th scope="col">Horas</th>
                             <th scope="col">Pagar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Nombre Completo</td>
-                            <td>Horas que da a la semana</td>
-                            <td>Fecha</td>
-                            <td>Pagado o no</td>
+                        <tr *ngFor="let maestro of show">
+                            <td>{{maestro.nombre_maestro}}</td>
+                            <td>{{maestro.nombre_materia}}</td>
+                            <td>{{maestro.horas_semanales}}</td>
                             <td>
                                 <button class="button_no_found material-icons" data-toggle="modal"
-                                    data-target="#modalPago"
-                                    (click)="botonModalAbono(alumno.id)">monetization_on</button>
+                                    data-target="#modalPago" (click)="btnPagar(maestro)">monetization_on</button>
                             </td>
                         </tr>
                     </tbody>
@@ -68,27 +65,22 @@
                             <div class="col-sm-5">
                                 <div class="form-group">
                                     <label class="control-label">Horas Semanales:</label>
-                                    <input type="number" class="form-control" disabled>
+                                    <input type="number" formControlName="horas_semanales" class="form-control" disabled>
                                 </div>
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
                                     <label class="control-label">Pago por Hora:</label>
-                                    <input type="number" class="form-control" placeholder="70.50">
+                                    <input type="number" formControlName="pago_hora" class="form-control" placeholder="70.50">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label">Pago Semanal: </label>
-                            <input type="number" class="form-control" disabled>
                         </div>
                     </form>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" (click)="pagar(pagoFormulario.value)">Pagar</button>
+                    <button type="button" class="btn btn-primary" (click)="Pagar(pagoFormulario.value)" data-dismiss="modal">Pagar</button>
                 </div>
             </div>
         </div>

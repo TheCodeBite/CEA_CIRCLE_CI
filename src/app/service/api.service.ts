@@ -91,8 +91,16 @@ export class ApiService {
   }
 
   //Pagos
+  agregaPagoMaestro(params: any){
+    return this.http.post(this.url + "pagoMaestros/",params)
+  }
+
   verPagos(){
     return this.http.get(this.url + "pagoAlumnos/");
+  }
+
+  verPagosMaestros(){
+    return this.http.get(this.url + "materiasAsignadas/");
   }
 
   actualizarPagoAlumnos(params: any, id: any){
