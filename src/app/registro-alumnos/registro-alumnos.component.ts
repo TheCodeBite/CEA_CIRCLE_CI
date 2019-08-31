@@ -92,14 +92,14 @@ export class RegistroAlumnosComponent implements OnInit {
   chage_alumno() {
     this.alumno_prepa = !this.alumno_prepa;
     if (this.alumno_prepa) {
-      this.tipoAlumno = " de Prepatoria";
+      this.tipoAlumno = " Preparatoria";
       this.nameButton = "Universidad";
       this.tipo = "Preparatoria";
       this.grupos = this.gruposPrepa;
       this.ngOnInit();
     } else {
       this.tipo = "Universidad";
-      this.tipoAlumno = "de Universidad";
+      this.tipoAlumno = " Universidad";
       this.nameButton = "Prepatoria";
       this.grupos = this.gruposUniversidad;
       this.ngOnInit();
@@ -182,14 +182,9 @@ export class RegistroAlumnosComponent implements OnInit {
       })
     }, (err) => {
       console.log("temp error " + err)
-      this.mensaje_error = err;
-
-      for(let i of this.mensaje_error){
-        console.log("error " + i)
-      }
-
+      this.mensaje_error = err; 
       console.log("UPS!");
-      console.log(err.response)
+      console.log(err.error);
       Swal.fire({
         type: 'error',
         title: 'Oops...',

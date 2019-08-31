@@ -2,17 +2,18 @@
     <div id="superficie" class="row">
         <div class="col-md-12 text-left">
             <div class="row">
-                <div class="col-md-11">
+                <div class="col-md-10">
                     <h3 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
                         style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex">
                             Materias de {{nombre}}
                         </strong></h3>
-                    <p><button (click)="cambio()" style="margin: 10px;">{{nombre}}</button></p>
-
                 </div>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-dark btn-lg" style="border-radius: 100%;" data-toggle="modal"
-                        data-target="#exampleModal"><b>+</b></button>
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-dark btn-lg material-icons" style="border-radius: 100%;" (click)="cambio()"><b>sync</b></button>
+                </div>
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-dark btn-lg material-icons" style="border-radius: 100%;" data-toggle="modal"
+                        data-target="#exampleModal"><b>add</b></button>
                 </div>
             </div>
             <hr class="hr-light my-3">
@@ -56,26 +57,32 @@
                 </div>
                 <div class="modal-body">
                     <form [formGroup]="materia_formulario">
-                        <label>Nombre de la materia:</label>
-                        <input required formControlName="nombre" type="text" placeholder="Matemáticas">
-
-                        <label>Semestre:</label>
-                        <input required formControlName="semestre" type="number" placeholder="5">
-
-                        <div *ngIf="universidad">
-                            <label>Carrera:</label>
-                            <select formControlName="carrera">
-                                <option value="-10">Seleccione una carrera</option>
-                                <option *ngFor="let carrera of carreras" value="{{carrera.id}}">{{carrera.nombre}}
-                                </option>
-                            </select>
+                        <div class="form-group">
+                            <label>Nombre de la materia:</label>
+                            <input required formControlName="nombre" type="text" class="form-control"
+                                placeholder="Matemáticas">
+                        </div>
+                        <div class="form-group">
+                            <label>Semestre:</label>
+                            <input required formControlName="semestre" type="number" class="form-control"
+                                placeholder="5">
+                        </div>
+                        <div class="form-group">
+                            <div *ngIf="universidad">
+                                <label>Carrera:</label>
+                                <select formControlName="carrera" class="form-control">
+                                    <option value="-10">Seleccione una carrera</option>
+                                    <option *ngFor="let carrera of carreras" value="{{carrera.id}}">{{carrera.nombre}}
+                                    </option>
+                                </select>
+                            </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary"
-                        (click)="registarMateria(materia_formulario.value)">Guardar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" (click)="registarMateria(materia_formulario.value)"
+                        data-dismiss="modal"> Guardar</button>
                 </div>
             </div>
         </div>
@@ -95,26 +102,40 @@
                 </div>
                 <div class="modal-body">
                     <form [formGroup]="asignar_materia_formulario">
-                        <label>Periodo de inicio:</label>
-                        <input formControlName="inicio_modulo" type="date">
+                        <div class="form-group">
+                            <label>Periodo de inicio:</label>
+                            <input formControlName="inicio_modulo" type="date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Periodo de fin:</label>
+                            <input formControlName="fin_modulo" type="date" class="form-control">
+                        </div>
 
-                        <label>Periodo de fin:</label>
-                        <input formControlName="fin_modulo" type="date">
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label>Maestro:</label>
+                                <select formControlName="maestro" class="form-control">
+                                    <option>Seleccione un maestro</option>
+                                    <option *ngFor="let maestro of maestros_show" value="{{maestro.id}}">
+                                        {{maestro.nombre}}
+                                        {{maestro.apellidopaterno}} {{maestro.apellidomaterno}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Horas Semanales</label>
+                                <input formControlName="horas_semanales" type="number" class="form-control">
+                            </div>
+                        </div>
 
-                        <label>Maestro</label>
-                        <select formControlName="maestro">
-                            <option>Seleccione un maestro</option>
-                            <option *ngFor="let maestro of maestros_show" value="{{maestro.id}}">{{maestro.nombre}}
-                                {{maestro.apellidopaterno}} {{maestro.apellidomaterno}}</option>
-                        </select>
 
-                        <label>Horas Semanales</label>
-                        <input formControlName="horas_semanales" type="number">
+
+
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" (click)="insertMateriasAsignadas(asignar_materia_formulario.value)">Guardar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary"
+                        (click)="insertMateriasAsignadas(asignar_materia_formulario.value)" data_dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>

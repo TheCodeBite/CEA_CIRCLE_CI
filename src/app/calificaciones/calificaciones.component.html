@@ -1,143 +1,162 @@
-<h3 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
-    style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex"> Calificaciones
-    </strong>
-</h3>
-<hr class="hr-light my-3">
-<div class="row">
-    <label style="margin: 5px;">Año:</label>
-    <input type="number" [(ngModel)]="year" class="form-control col-md-2" placeholder="Año">
-    <label style="margin: 5px;">Tipo:</label>
-    <select [(ngModel)]="tipo" class="form-control col-md-2">
-        <option value="PREPA">Preparatoria</option>
-        <option value="UNI">Universidad</option>
-    </select>
-    <button type="button" class="btn" (click)="buscarMaterias()">Buscar</button>
-</div>
-<div class="row">
-    <div *ngFor="let materia of listaMateriasAsignadas" class="card mb-3" style="width: 320px; margin: 10px;">
-        <div class="card-body">
-            <h5 class="card-title">{{materia.nombre_materia}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{materia.nombre_maestro}}</h6>
-            <p class="card-subtitle mb-2 text-muted">{{materia.inicio_modulo}} - {{materia.fin_modulo}}</p>
-            <button class="card-link" (click)="materiaSeleccionada(materia.id)" data-toggle="modal" data-target="#exampleModal">Ver calificaciones</button>
-        </div>
-    </div>
-</div>
-
-<!-- Modal lista de calificaiones -->
-<div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Lista de calificaciones</h5>
-                <div class="col-md-1">
-                    <button type="button" class="btn btn-dark btn-lg" style="border-radius: 100%;" data-toggle="modal"
-                        data-target="#addModal"><b>+</b></button>
+<div class="view">
+    <div id="superficie" class="row">
+        <div class="col-md-12 text-left">
+            <h3 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
+                style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex">
+                    Calificaciones
+                </strong>
+            </h3>
+            <hr class="hr-light my-3">
+            <div class="form-group row">
+                <div class="col-auto">
+                    <label class="col-form-label">Año:</label>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="buscador mb-2 text-center">
-                    <table class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Matricula</th>
-                                <th scope="col">Calificación</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let calificaciones of listaCalificaciones">
-                                <td>{{calificaciones.apellidoP}} {{calificaciones.apellidoM}} {{calificaciones.nombre}}</td>
-                                <td>{{calificaciones.matricula}}</td>
-                                <td>{{calificaciones.calificacion}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-md-5">
+                    <input type="number" [(ngModel)]="year" class="form-control" placeholder="Año">
                 </div>
+                <div class="col-auto">
+                    <label class="col-form-label">Tipo:</label>
+                </div>
+                <div class="col-md-5">
+                    <select [(ngModel)]="tipo" class="form-control">
+                        <option value="PREPA">Preparatoria</option>
+                        <option value="UNI">Universidad</option>
+                    </select>
+                </div>
+                <button type="button" class="col-md-auto btn-primary" (click)="buscarMaterias()">Buscar</button>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            <div class="row">
+                <div *ngFor="let materia of listaMateriasAsignadas" class="card mb-3"
+                    style="width: 300px; margin: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{materia.nombre_materia}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{materia.nombre_maestro}}</h6>
+                        <p class="card-subtitle mb-2 text-muted">{{materia.inicio_modulo}} - {{materia.fin_modulo}}</p>
+                        <button type="button" class="btn btn-primary" (click)="materiaSeleccionada(materia.id)" data-toggle="modal"
+                            data-target="#exampleModal">Ver calificaciones</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Modal agregar calificaiones -->
-<div class="modal fade bd-example-modal-xl" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addModalLabel">Busqueda de alumno</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <label style="margin: 5px;">Matricula:</label>
-                    <input type="text" [(ngModel)]="matricula" class="form-control col-md-2" placeholder="Matricula">
-                    <button type="button" class="btn" (click)="buscarAlumno()">Buscar</button>
+    <!-- Modal lista de calificaiones -->
+    <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Lista de calificaciones</h5>
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-dark btn-lg" style="border-radius: 100%;"
+                            data-toggle="modal" data-target="#addModal"><b>+</b></button>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <br>
-                <div class="buscador mb-2 text-center ">
-                    <table class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Matricula</th>
-                                <th scope="col">Tipo</th>
-                                <th scope="col">Calificar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let alumno of listaAlumnos">
-                                <td>{{alumno.nombre}} {{alumno.apellidopaterno}} {{alumno.apellidomaterno}}</td>
-                                <td>{{alumno.matricula}}</td>
-                                <td>{{alumno.tipo}}</td>
-                                <td>
-                                    <button class="btn btn-primary" (click)="alumnosSeleccionado(alumno.id)" data-toggle="modal"
-                                        data-target="#calificacionModal">Calificar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="modal-body">
+                    <div class="buscador mb-2 text-center">
+                        <table class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Matricula</th>
+                                    <th scope="col">Calificación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let calificaciones of listaCalificaciones">
+                                    <td>{{calificaciones.apellidoP}} {{calificaciones.apellidoM}}
+                                        {{calificaciones.nombre}}</td>
+                                    <td>{{calificaciones.matricula}}</td>
+                                    <td>{{calificaciones.calificacion}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Modal poner calificaiones -->
-<div class="modal fade bd-example-modal-xs" id="calificacionModal" tabindex="-1" role="dialog"
-    aria-labelledby="calificacionModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xs" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="calificacionModalLabel">Agregar calificación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <label style="margin: 5px;">Calificacion:</label>
-                    <input type="number" [(ngModel)]="calificacion" class="form-control col-md-3"
-                        placeholder="Calificación">
+    <!-- Modal agregar calificaiones -->
+    <div class="modal fade bd-example-modal-xl" id="addModal" tabindex="-1" role="dialog"
+        aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">Busqueda de alumno</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-
+                <div class="modal-body">
+                    <div class="row">
+                        <label style="margin: 5px;">Matricula:</label>
+                        <input type="text" [(ngModel)]="matricula" class="form-control col-md-2"
+                            placeholder="Matricula">
+                        <button type="button" class="btn" (click)="buscarAlumno()">Buscar</button>
+                    </div>
+                    <br>
+                    <div class="buscador mb-2 text-center ">
+                        <table class="table table-striped table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Matricula</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Calificar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let alumno of listaAlumnos">
+                                    <td>{{alumno.nombre}} {{alumno.apellidopaterno}} {{alumno.apellidomaterno}}
+                                    </td>
+                                    <td>{{alumno.matricula}}</td>
+                                    <td>{{alumno.tipo}}</td>
+                                    <td>
+                                        <button class="btn btn-primary" (click)="alumnosSeleccionado(alumno.id)"
+                                            data-toggle="modal" data-target="#calificacionModal">Calificar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal"
-                    (click)="agregarCalificacion()">Agregar</button>
+        </div>
+    </div>
+
+    <!-- Modal poner calificaiones -->
+    <div class="modal fade bd-example-modal-xs" id="calificacionModal" tabindex="-1" role="dialog"
+        aria-labelledby="calificacionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xs" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="calificacionModalLabel">Agregar calificación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <label style="margin: 5px;">Calificacion:</label>
+                        <input type="number" [(ngModel)]="calificacion" class="form-control col-md-3"
+                            placeholder="Calificación">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                        (click)="agregarCalificacion()">Agregar</button>
+                </div>
             </div>
         </div>
     </div>
