@@ -20,9 +20,24 @@ export class IndexComponent implements OnInit {
     this.router.navigate(["/registroAlumnos"]);
   }
 
-  registroMaestro(){
-    console.log("BOTON REGISTRO MAESTRO");
-    this.router.navigate(["/registroMaestro"]);
+  listaAlumnos(){
+    this.router.navigate(["/listaAlumnos"]);
+  }
+
+  listaMaestros(){
+    this.router.navigate(["/listaMaestros"]);
+  }
+
+  pagosAlumnos(){
+    this.router.navigate(["/pagosAlumnos"]);
+  }
+
+  pagosMaestros(){
+    this.router.navigate(["/pagosMaestros"]);
+  }
+
+  calificaciones(){
+    this.router.navigate(["/calificaciones"]);
   }
 
 }

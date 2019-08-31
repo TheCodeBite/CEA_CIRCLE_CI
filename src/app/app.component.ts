@@ -60,6 +60,10 @@ export class AppComponent{
     this.router.navigate(['asignarMaterias']);
   }
 
+  calificaciones(){
+    this.router.navigate(['calificaciones']);
+  }
+
 }
 
 //RUTAS DEL NAVBAR
