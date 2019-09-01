@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatDialog } from '@angular/material';
 import Swal from 'sweetalert2';
 import { ApiService } from '../service/api.service';
@@ -9,9 +8,6 @@ import { ApiService } from '../service/api.service';
   selector: 'app-registro-maestro',
   templateUrl: './registro-maestro.component.html',
   styleUrls: ['./registro-maestro.component.css'],
-  providers: [{
-    provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true }
-  }]
 })
 
 export class RegistroMaestroComponent implements OnInit {

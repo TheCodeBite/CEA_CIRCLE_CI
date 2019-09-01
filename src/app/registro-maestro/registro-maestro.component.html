@@ -7,7 +7,7 @@
         <div class="signup-content">
             <!--Inicia Form Group-->
             <mat-horizontal-stepper linear #stepper>
-                <mat-step [stepControl]="datosPersonales" errorMessage="Name is required." [editable]="isEditable">
+                <mat-step [stepControl]="datosPersonales" [editable]="isEditable">
 
                     <form [formGroup]="datosPersonales">
                         <ng-template matStepLabel>Datos Personales</ng-template>
