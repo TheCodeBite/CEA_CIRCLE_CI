@@ -49,8 +49,10 @@ export class RegistroAlumnosComponent implements OnInit {
 
       if (this.alumno_prepa) {
         this.grupos = this.gruposPrepa;
+        console.log("preparatoria")
       } else {
         this.grupos = this.gruposUniversidad;
+        console.log("universidad")
       }
 
     });
@@ -84,7 +86,8 @@ export class RegistroAlumnosComponent implements OnInit {
       acta_nacimiento: [0],
       acta_de_nacimiento_tres_copias: [0],
       ine_tres_copias: [0],
-      comprobante_de_domicilio: [0]
+      comprobante_de_domicilio: [0],
+      curp_tres_copias: [0]
     });
   }
 
@@ -99,14 +102,15 @@ export class RegistroAlumnosComponent implements OnInit {
       this.nameButton = "Universidad";
       this.tipo = "Preparatoria";
       this.grupos = this.gruposPrepa;
-      this.ngOnInit();
+      //this.ngOnInit();
     } else {
       this.tipo = "Universidad";
       this.tipoAlumno = " Universidad";
       this.nameButton = "Prepatoria";
       this.grupos = this.gruposUniversidad;
-      this.ngOnInit();
+      //this.ngOnInit();
     }
+    this.ngOnInit();
 
   }
 
@@ -146,6 +150,12 @@ export class RegistroAlumnosComponent implements OnInit {
     } else if (!documentos_value.comprobante_de_domicilio) {
       documentos_value.comprobante_de_domicilio = 0;
     }
+    
+    if(documentos_value.curp_tres_copias){
+      documentos_value.curp_tres_copias = 1;
+    }else{
+      documentos_value.curp_tres_copias = 0;
+    }
 
     const formulario_alumno = {
       tipo: this.tipo,
@@ -171,11 +181,9 @@ export class RegistroAlumnosComponent implements OnInit {
       acta_nacimiento: documentos_value.acta_nacimiento,
       acta_de_nacimiento_tres_copias: documentos_value.acta_de_nacimiento_tres_copias,
       ine_tres_copias: documentos_value.ine_tres_copias,
-      comprobante_de_domicilio: documentos_value.comprobante_de_domicilio
+      comprobante_de_domicilio: documentos_value.comprobante_de_domicilio,
+      curp_tres_copias: documentos_value.curp_tres_copias
     }
-
-    console.log("formulario para agregar:")
-    console.log(formulario_alumno)
 
     this.api.agregarAlumno(formulario_alumno).subscribe(response => {
       Swal.fire({
@@ -188,7 +196,7 @@ export class RegistroAlumnosComponent implements OnInit {
         this.regresar();
       })
     }, (err) => {
-      console.log("temp error " + err);
+      console.log("temp error " + err.error);
       console.log("UPS!");
       Swal.fire({
         type: 'error',

@@ -103,8 +103,8 @@
                                 <label>Aula:</label>
                                 <p>
                                     <select formControlName="grupo" class="form-control">
-                                        <option *ngFor="let grup of grupos" value="{{grup.id}}">{{grup.nombre}}
-                                            {{grup.id}}</option>
+                                        <option>Seleccion un aula</option>
+                                        <option *ngFor="let grup of grupos" value="{{grup.id}}">{{grup.nombre}}</option>
                                     </select>
                                 </p>
                             </div>
@@ -116,6 +116,7 @@
                                 <label>Carrera:</label>
                                 <p>
                                     <select formControlName="carrera" class="form-control">
+                                        <option>Seleccione una carrera</option>
                                         <option *ngFor="let carrera of carreras" value="{{carrera.id}}">
                                             {{carrera.nombre}}</option>
                                     </select>
@@ -150,17 +151,18 @@
 
                     <form [formGroup]="documentos">
                         <mat-checkbox type="checkbox" formControlName="certificado_original" value="true"> Certificado
-                            original</mat-checkbox><br>
-                        <mat-checkbox type="checkbox" formControlName="certificado_tres_copias" value="1"> certificado 3
-                            copias</mat-checkbox><br>
-                        <mat-checkbox type="checkbox" formControlName="acta_nacimiento" value="1"> acta de nacimiento
+                            original.</mat-checkbox><br>
+                        <mat-checkbox type="checkbox" formControlName="certificado_tres_copias" value="1"> Certificado 3
+                            copias.</mat-checkbox><br>
+                        <mat-checkbox type="checkbox" formControlName="acta_nacimiento" value="1">Acta de nacimiento
                             original </mat-checkbox><br>
                         <mat-checkbox type="checkbox" formControlName="acta_de_nacimiento_tres_copias" value="1"> acta
                             de
-                            nacimiento 3 copias</mat-checkbox><br>
-                        <mat-checkbox formControlName="ine_tres_copias" value="1"> INE 3 copias</mat-checkbox><br>
-                        <mat-checkbox formControlName="comprobante_de_domicilio" value="1"> comprobante de
-                            domicilio</mat-checkbox>
+                            nacimiento 3 copias.</mat-checkbox><br>
+                        <mat-checkbox formControlName="ine_tres_copias" value="1"> INE 3 copias.</mat-checkbox><br>
+                        <mat-checkbox formControlName="comprobante_de_domicilio" value="1">Copia de comprobante de
+                            domicilio.</mat-checkbox><br>
+                        <mat-checkbox formControlName="curp_tres_copias" value="1">CURP 3 copias.</mat-checkbox>
 
                         <div style="float: right; margin-top: 3em;">
                             <button mat-button matStepperPrevious>Atras</button>

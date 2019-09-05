@@ -30,7 +30,6 @@ export class AulasComponent implements OnInit {
   verAulas() {
     this.api.verAulas().subscribe(response => {
       this.listaAulas = response;
-      console.log(this.listaAulas)
     });
   }
 
@@ -55,7 +54,6 @@ export class AulasComponent implements OnInit {
   guardar(form: any) {
     if (this.opcion == 0) {
       this.api.agregarAulas(form).subscribe(response => {
-        console.log("aula agregado con exito!");
         Swal.fire({
           title: 'Agregado con exito!',
           text: 'La aula se agrego correctamente.',
@@ -65,7 +63,6 @@ export class AulasComponent implements OnInit {
           this.ngOnInit();
         });
       }, err => {
-        console.log("Nombre " + err.error.nombre + " \nTipo " + err.error.tipo)
         Swal.fire({
           type: 'error',
           title: 'Oops...',
@@ -84,7 +81,6 @@ export class AulasComponent implements OnInit {
           this.ngOnInit();
         });
       }, err => {
-        console.log("UPS! ");
         console.log(err.error);
         Swal.fire({
           type: 'error',

@@ -72,6 +72,7 @@ export class AlumnosComponent implements OnInit {
       acta_nacimiento: [0],
       acta_de_nacimiento_tres_copias: [0],
       ine_tres_copias: [0],
+      curp_tres_copias: [0],
       comprobante_de_domicilio: [0],
       tipo: ['']
     });
@@ -140,9 +141,7 @@ export class AlumnosComponent implements OnInit {
       restante: (form.costo - form.pago)  
     }
 
-    console.log(temp_formpago);
     this.api.pagosAlumnos(temp_formpago).subscribe(response => {
-      console.log("pago Realizado con exito");
       Swal.fire({
         title: 'Pago realizado con éxito!',
         text: 'El pago ha sido realizado',
@@ -191,6 +190,7 @@ export class AlumnosComponent implements OnInit {
       acta_de_nacimiento_tres_copias: [form.acta_de_nacimiento_tres_copias],
       ine_tres_copias: [form.ine_tres_copias],
       comprobante_de_domicilio: [form.comprobante_de_domicilio],
+      curp_tres_copias: [form.curp_tres_copias],
       tipo: [form.tipo],
       id: [form.id]
     });
@@ -234,7 +234,14 @@ export class AlumnosComponent implements OnInit {
       form_value.comprobante_de_domicilio = 0;
     }
 
+    if(form_value.curp_tres_copias){
+      form_value.curp_tres_copias = 1;
+    }else{
+      form_value.curp_tres_copias = 0;
+    }
+
     const formulario_alumno = {
+      curp_tres_copias: form_value.curp_tres_copias,
       tipo: form_value.tipo,
       nombre: form_value.nombre,
       apellidopaterno: form_value.apellidopaterno,
@@ -273,16 +280,18 @@ export class AlumnosComponent implements OnInit {
       });
       this.ngOnInit();
     }, err => {
-      console.log(err.error);
-    })
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Llene los campos correctamente'
+      });
+    });
   }
 
   eliminar(form: any){
-    console.log(form)
     form.estado = "inactivo";
 
     this.api.editarAlumno(form, form.id).subscribe(response => {
-      console.log("alumno eliminado")
       this.ngOnInit();
     })
   }

@@ -21,8 +21,7 @@
                                     <option value="2">Universidad</option>
                                 </select>
                             </div>
-                            <button class="col-auto btn-primary"
-                                (click)="SepararGrupos(formTipo.value)">Aplicar
+                            <button class="col-auto btn-primary" (click)="SepararGrupos(formTipo.value)">Aplicar
                                 Filtro</button>
                         </div>
 
@@ -56,8 +55,7 @@
                             <td>{{alumno.telefono}}</td>
                             <td><button class="button_no_found material-icons" data-toggle="modal"
                                     data-target="#exampleModal" (click)="editar(alumno)">remove_red_eye</button></td>
-                            <td><button class="button_no_found material-icons"
-                                    (click)="eliminar(alumno)">delete_forever
+                            <td><button class="button_no_found material-icons" (click)="eliminar(alumno)">delete_forever
                                 </button></td>
                             <td>
                                 <button class="button_no_found material-icons" data-toggle="modal"
@@ -201,7 +199,7 @@
                                 </p>
                             </div>
                         </div>
- 
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Dirección:</label>
@@ -267,41 +265,47 @@
                             <div class="form-group col-md-4">
                                 <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox"
                                     formControlName="certificado_original" value="true">
-                                    Certificado original</mat-checkbox>
+                                    Certificado original.</mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox"
                                     formControlName="certificado_tres_copias" value="1">
-                                    certificado 3 copias</mat-checkbox>
+                                    Certificado 3 copias.</mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox"
                                     formControlName="acta_nacimiento" value="1">
-                                    acta de
-                                    nacimiento original </mat-checkbox>
+                                    Acta de
+                                    nacimiento original.</mat-checkbox>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" type="checkbox"
-                                    formControlName="acta_de_nacimiento_tres_copias" value="1"> acta de
-                                    nacimiento 3 copias</mat-checkbox>
+                                    formControlName="acta_de_nacimiento_tres_copias" value="1"> Acta de
+                                    nacimiento 3 copias.</mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <mat-checkbox [attr.disabled]="permisoEditar ? '' : null"
-                                    formControlName="ine_tres_copias"> INE 3 copias
+                                    formControlName="ine_tres_copias"> INE 3 copias.
                                 </mat-checkbox>
+                            </div>
+
+                            <div class="form-group col-md-4">
+
+                                <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" value="1"
+                                    formControlName="curp_tres_copias" value="1">CURP 3 copias.</mat-checkbox>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <mat-checkbox [attr.disabled]="permisoEditar ? '' : null" value="1"
                                     formControlName="comprobante_de_domicilio">
-                                    comprobante de
-                                    domicilio</mat-checkbox>
+                                    Copia de comprobante de
+                                    domicilio.</mat-checkbox>
                             </div>
                         </div>
 
