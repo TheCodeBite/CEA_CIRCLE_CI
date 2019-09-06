@@ -26,6 +26,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Alumno</th>
+                            <th scope="col">Matricula</th>
                             <th scope="col">Pago Total</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Pago Restante</th>
@@ -38,6 +39,7 @@
                     <tbody>
                         <tr *ngFor="let item of pagos">
                             <td>{{item.nombre_alumno}} {{item.apellidoP_alumno}} {{item.apellidoA_alumno}}</td>
+                            <td>{{item.matricula}}</td>
                             <td>{{item.costo}}</td>
                             <td>{{item.fecha}}</td>
                             <td>{{item.restante}}</td>

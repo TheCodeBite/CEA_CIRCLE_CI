@@ -18,9 +18,12 @@ export class CalificacionesComponent implements OnInit {
   listaCalificaciones: any;
 
   listaAlumnos: any;
+  alumnos_lista: any = [];
   matricula = "";
   year = new Date().getFullYear();
   tipo = "UNI";
+
+  tipo_alumnos = true;
   calificacion: any;
   idAlumno: any;
   idMateria: any;
@@ -29,6 +32,7 @@ export class CalificacionesComponent implements OnInit {
   ngOnInit() {
     this.api.verMateriasAsignadas(this.year, this.tipo).subscribe(response => {
       this.listaMateriasAsignadas = response;
+      
     });
     const temp = {
       estado: ['activo']
@@ -38,12 +42,35 @@ export class CalificacionesComponent implements OnInit {
       this.alumnos = response;
     });
   }
+
   buscarMaterias() {
+    if(this.tipo == 'UNI'){
+      this.tipo_alumnos = true;
+    }else{
+      this.tipo_alumnos = false;
+    }
+    console.log("TIPO " + this.tipo)
+    console.log(this.tipo_alumnos)
+    
     this.ngOnInit();
   }
+
   buscarAlumno() {
     this.api.BuscarAlumnos(this.matricula).subscribe(response => {
       this.listaAlumnos = response;
+      this.alumnos_lista = []
+      console.log(this.tipo_alumnos)
+      for(let i of this.listaAlumnos){
+        if(this.tipo_alumnos && i.tipo == "Universidad"){
+          console.log("encontre un universitario")
+          this.alumnos_lista.push(i)
+        }else if(!this.tipo_alumnos && i.tipo == "Preparatoria"){
+          this.alumnos_lista.push(i)
+          console.log("uno de prepa")
+        }
+      }
+      console.log(this.alumnos_lista)
+      this.listaAlumnos  = this.alumnos_lista;
       this.ngOnInit();
 
     })
