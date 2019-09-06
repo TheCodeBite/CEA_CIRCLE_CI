@@ -10,8 +10,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class PagosMaestrosComponent implements OnInit {
   pagoFormulario: FormGroup;
 
-  objeto: any;
   pagos: any;
+
+  teacher_object: any;
   show: any = [];
   id_maestro = "";
 
@@ -31,13 +32,11 @@ export class PagosMaestrosComponent implements OnInit {
           this.show.push(i)
         }
       }
-
-      console.log(this.show)
     });
   }
 
   btnPagar(form: any){
-    this.objeto = form;
+    this.teacher_object = form;
     this.id_maestro = form.maestro;
     this.pagoFormulario = this.fb.group({
       horas_semanales: form.horas_semanales,
@@ -46,24 +45,25 @@ export class PagosMaestrosComponent implements OnInit {
     
   }
 
-  Pagar(form: any){
+  Pagar(form: any, maestro:any){
     const pay = {
       maestro: this.id_maestro,
       pago: (form.horas_semanales * form.pago_hora)
     }
 
-    this.api.agregaPagoMaestro(pay).subscribe(response =>{
+    this.teacher_object.pagado = true;
+    this.api.pagarMaestro(this.teacher_object, this.teacher_object.id).subscribe(response => {
+      console.log("pagado XD")
+    })
+
+    this.api.agregaPagoMaestro(pay).subscribe(() =>{
       console.log("pago realizado con exito");
       this.ngOnInit();
-      this.objeto.pagado = true;
-      
-
     },err =>{
       console.log(err.error);
       
     });
 
-    console.log(pay)
   }
 
 }

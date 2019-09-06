@@ -103,7 +103,9 @@ export class ApiService {
     return this.http.get(this.url + "materiasAsignadas/");
   }
 
-  
+  pagarMaestro(paramas: any, id: any){
+    return this.http.put(this.url + "materiasAsignadas/" + id + "/", paramas)
+  }
 
   actualizarPagoAlumnos(params: any, id: any){
     return this.http.put(this.url + "pagoAlumnos/" + id + "/", params);
