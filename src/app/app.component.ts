@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { ApiService } from './api.service';
+import { ApiService } from './service/api.service';
 
 @Component({
   selector: 'app-root',
@@ -28,11 +28,41 @@ export class AppComponent{
     this.router.navigate(['']);
   }
 
-  administracion(){
-    console.log("BOTON ADMINISTRACION");
-    this.router.navigate(["/listaMaestros"]);
+  listaMaestros(){
+    this.router.navigate(['listaMaestros']);
   }
 
+  listaAlumnos(){
+    this.router.navigate(['listaAlumnos']);
+  }
+
+  aulas(){
+    this.router.navigate(['aulas']);
+  }
+
+  carreras(){
+    this.router.navigate(['carreras']);
+  }
+
+  pagosAlumnos(){
+    this.router.navigate(['pagosAlumnos']);
+  }
+
+  pagosMaestros(){
+    this.router.navigate(['pagosMaestros']);
+  }
+
+  materias(){
+    this.router.navigate(['materias']);
+  }
+
+  asignarMaterias(){
+    this.router.navigate(['asignarMaterias']);
+  }
+
+  calificaciones(){
+    this.router.navigate(['calificaciones']);
+  }
 
 }
 

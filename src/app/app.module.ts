@@ -16,7 +16,14 @@ import { MatNativeDateModule} from '@angular/material/core';
 import { MaestrosComponent } from './maestros/maestros.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ApiService } from './api.service';
+import { ApiService } from './service/api.service';
+import { AulasComponent } from './aulas/aulas.component';
+import { CarrerasComponent } from './carreras/carreras.component';
+import { PagosAlumnosComponent } from './pagos-alumnos/pagos-alumnos.component';
+import { PagosMaestrosComponent } from './pagos-maestros/pagos-maestros.component';
+import { MateriasComponent } from './materias/materias.component';
+import { MateriasAsignadasComponent } from './materias-asignadas/materias-asignadas.component';
+import { CalificacionesComponent } from './calificaciones/calificaciones.component';
 
 
 @NgModule({
@@ -27,7 +34,14 @@ import { ApiService } from './api.service';
     RegistroAlumnosComponent,
     RegistroMaestroComponent,
     MaestrosComponent,
-    AlumnosComponent
+    AlumnosComponent,
+    AulasComponent,
+    CarrerasComponent,
+    PagosAlumnosComponent,
+    PagosMaestrosComponent,
+    MateriasComponent,
+    MateriasAsignadasComponent,
+    CalificacionesComponent
   ],
   imports: [
     BrowserModule,

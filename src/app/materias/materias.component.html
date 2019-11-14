@@ -1,0 +1,143 @@
+<div class="view">
+    <div id="superficie" class="row">
+        <div class="col-md-12 text-left">
+            <div class="row">
+                <div class="col-md-10">
+                    <h3 class="h1-reponsive text-uppercase mb-0 pt-md-3 pt-3"
+                        style="letter-spacing: 3px; font-family: 'Signika', sans-serif;"><strong class="d-inline-flex">
+                            Materias de {{nombre}}
+                        </strong></h3>
+                </div>
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-dark btn-lg material-icons" style="border-radius: 100%;" (click)="cambio()"><b>sync</b></button>
+                </div>
+                <div class="col-md-auto">
+                    <button type="button" class="btn btn-dark btn-lg material-icons" style="border-radius: 100%;" data-toggle="modal"
+                        data-target="#exampleModal"><b>add</b></button>
+                </div>
+            </div>
+            <hr class="hr-light my-3">
+            <div class=" mb-2 text-center ">
+                <table class="table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Materia</th>
+                            <th scope="col">Semestre</th>
+                            <th scope="col">Asignar Maestro</th>
+                            <th scope="col">Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let materia of materias_show; let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{materia.nombre}}</td>
+                            <td>{{materia.semestre}}</td>
+                            <td><button (click)="btnAsignar(materia.id)" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#modalAsignar">Asignar</button></td>
+                            <td><button class="button_no_found material-icons" data-toggle="modal"
+                                    data-target="#exampleModal">edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Agregar materia -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Materia</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="materia_formulario">
+                        <div class="form-group">
+                            <label>Nombre de la materia:</label>
+                            <input required formControlName="nombre" type="text" class="form-control"
+                                placeholder="Matemáticas">
+                        </div>
+                        <div class="form-group">
+                            <label>Semestre:</label>
+                            <input required formControlName="semestre" type="number" class="form-control"
+                                placeholder="5">
+                        </div>
+                        <div class="form-group">
+                            <div *ngIf="universidad">
+                                <label>Carrera:</label>
+                                <select formControlName="carrera" class="form-control">
+                                    <option value="-10">Seleccione una carrera</option>
+                                    <option *ngFor="let carrera of carreras" value="{{carrera.id}}">{{carrera.nombre}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" (click)="registarMateria(materia_formulario.value)"
+                        data-dismiss="modal"> Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal ASIGNAR materia -->
+    <div class="modal fade" id="modalAsignar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Asignar Materia</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="asignar_materia_formulario">
+                        <div class="form-group">
+                            <label>Periodo de inicio:</label>
+                            <input formControlName="inicio_modulo" type="date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Periodo de fin:</label>
+                            <input formControlName="fin_modulo" type="date" class="form-control">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label>Maestro:</label>
+                                <select formControlName="maestro" class="form-control">
+                                    <option>Seleccione un maestro</option>
+                                    <option *ngFor="let maestro of maestros_show" value="{{maestro.id}}">
+                                        {{maestro.nombre}}
+                                        {{maestro.apellidopaterno}} {{maestro.apellidomaterno}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Horas Semanales</label>
+                                <input formControlName="horas_semanales" type="number" class="form-control">
+                            </div>
+                        </div>
+
+
+
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary"
+                        (click)="insertMateriasAsignadas(asignar_materia_formulario.value)" data_dismiss="modal">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

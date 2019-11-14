@@ -10,25 +10,25 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Apellido Paterno</th>
-                            <th>Apellido Materno</th>
-                            <th>Edad</th>
-                            <th>Tipo de Clase</th>
-                            <th>Cantidad a Pagar</th>
+                            <th>correo</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Estado</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor = "let i of maestros">
-                            <td>{{i}}</td>
-                            <td>Díaz</td>
-                            <td>Hernández</td>
-                            <td>21</td>
-                            <td>Universidad</td>
-                            <td>$1800</td>
-                            <td><button class="button_no_found material-icons">edit</button></td>
-                            <td><button class="button_no_found material-icons" (click)="eliminar(i)">delete_forever
+                        <tr *ngFor="let maestro of maestros">
+                            <td>{{maestro.nombre}} {{maestro.apellidopaterno}} {{maestro.apellidomaterno}}</td>
+                            <td>{{maestro.correo}}</td>
+                            <td>{{maestro.telefono}}</td>
+                            <td>{{maestro.direccion}}</td>
+                            <td>{{maestro.estado}}</td>
+                            <td><button class="button_no_found material-icons" data-toggle="modal"
+                                    data-target="#exampleModal" (click)="editar(maestro)">edit</button></td>
+                            <td><button class="button_no_found material-icons"
+                                    (click)="eliminar(maestro)">delete_forever
                                 </button></td>
                         </tr>
                     </tbody>
@@ -36,10 +36,104 @@
                 </table>
             </div>
         </div>
-        hay algo
-        <div *ngFor="let i of maestros">
-            {{i}}<br>
-        </div>
     </div>
 
+
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-xl" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar datos de: {{maestro_name}} </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="formulario">
+                        id: <input type="number" formControlName="id" disabled style="width: 2.5em">
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Nombre:</label>
+                                <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Apellido Paterno</label>
+                                <input formControlName="apellidopaterno" type="text" class="form-control" placeholder="Apellido paterno">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Apellido Materno: </label>
+                                <input formControlName="apellidomaterno" type="text" class="form-control" placeholder="Apellido Materno">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Dirección:</label>
+                                <input formControlName="direccion" type="text" class="form-control" placeholder="Dirección">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Correo:</label>
+                                <input type="email" formControlName="correo" class="form-control" placeholder="Correo">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Teléfono: </label>
+                                <input type="tel" formControlName="telefono" class="form-control" placeholder="Teléfono">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Edad:</label>
+                                <input type="number" formControlName="edad" class="form-control" placeholder="Edad">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Fecha de nacimiento:</label>
+                                <input type="date" formControlName="fechadenacimiento" class="form-control" placeholder="30/12/1996">
+                            </div>
+                        </div>
+ 
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Sexo:</label>
+                                <select formControlName="sexo" class="form-control">
+                                    <option value="1">Hombre</option>
+                                    <option value="2">Mujer</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Tipo</label>
+                                <select formControlName="tipo" class="form-control" required>
+                                    <option value="Preparatoria">Preparatoria</option>
+                                    <option value="Universidad">Universidad</option>
+                                    <option value="Ambas">Ambas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label>Institución educativa:</label>
+                                <input formControlName="institucioneducativa" type="text" class="form-control" placeholder="Institucion educativa">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Titulo profesional:</label>
+                                <input type="text" class="form-control" formControlName="tituloprofesional" placeholder="Titulo profesional">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Cedula profesional:</label>
+                                <input type="text" class="form-control" formControlName="cedulaprofesional" placeholder="Cedula profesional">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="guardar(formulario.value)">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

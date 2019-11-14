@@ -1,31 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatDialog } from '@angular/material';
 import Swal from 'sweetalert2';
+import { ApiService } from '../service/api.service';
 @Component({
-  selector: 'app-registro-maestro', 
+  selector: 'app-registro-maestro',
   templateUrl: './registro-maestro.component.html',
   styleUrls: ['./registro-maestro.component.css'],
-  providers: [{
-    provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: true}
-  }]
 })
 
 export class RegistroMaestroComponent implements OnInit {
   datosPersonales: FormGroup;
   informacionAcademica: FormGroup;
   isEditable = true;
-  
 
-  constructor(private route:Router, private fb:FormBuilder) { }
+
+  constructor(private api: ApiService, private route: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.datosPersonales = this.fb.group({
-      apellidopaterno: ['',Validators.required],
-      apellidomaterno: ['',Validators.required],
-      nombre: ['', Validators.required],
+      apellidopaterno: ['', Validators.required],
+      apellidomaterno: ['', Validators.required],
+      nombre: ['', Validators.required],
       fechadenacimiento: ['', Validators.required],
       edad: ['', Validators.required],
       correo: ['', Validators.required],
@@ -35,16 +32,16 @@ export class RegistroMaestroComponent implements OnInit {
     });
 
     this.informacionAcademica = this.fb.group({
-      tituloprofesional: ['',Validators.required],
-      cedulaprofesional: ['',Validators.required],
-      institucioneducativa: ['',Validators.required],
-      tipo: ['',Validators.required]
+      tituloprofesional: ['', Validators.required],
+      cedulaprofesional: ['', Validators.required],
+      institucioneducativa: ['', Validators.required],
+      tipo: ['', Validators.required]
     });
 
   }
-  
 
-  save(datosPersonales_value: any, informacionAcademica_value: any){
+
+  save(datosPersonales_value: any, informacionAcademica_value: any) {
     console.log("guardando datos del profesor..");
     console.log(datosPersonales_value.apellidopaterno);
     console.log(informacionAcademica_value);
@@ -62,30 +59,39 @@ export class RegistroMaestroComponent implements OnInit {
       tituloprofesional: informacionAcademica_value.tituloprofesional,
       cedulaprofesional: informacionAcademica_value.cedulaprofesional,
       institucioneducativa: informacionAcademica_value.institucioneducativa,
-      tipo: informacionAcademica_value.tipo
+      tipo: informacionAcademica_value.tipo,
+      estado: 'activo'
 
     }
 
-    Swal.fire({
-      title: 'Registro guardado!',
-      text: 'el profesor se alamceno con exito en la base de datos',
-      confirmButtonText: 'OK',
-      type: 'success'     
-    }).then((restult) =>{
-      this.route.navigate(['']);
-    })
+    this.api.agregarMaestro(formulario).subscribe(response => {
+      console.log("maestro registrado");
+      Swal.fire({
+        title: 'Registro guardado!',
+        text: 'el profesor se alamceno con exito en la base de datos',
+        confirmButtonText: 'OK',
+        type: 'success'
+      }).then((restult) => {
+        this.home();
+      })
+      this.ngOnInit();
+    }, err => {
+      console.log("UPS! ah ocurrido un error");
+      console.log(err.error);
+      Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Llene los campos correctamente'
+      })
+    });
 
-    console.log("esta es toda we");
-    console.log(formulario);
-    this.ngOnInit();
-    
   }
 
-  cancel(){
+  cancel() {
     this.route.navigate(['']);
   }
 
-  home(){
+  home() {
     console.log("redirigiendo al index");
     this.route.navigate(['']);
   }
