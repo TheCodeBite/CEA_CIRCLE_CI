@@ -27,7 +27,7 @@ module.exports = function(config) {
         autoWatch: true,
         browsers: ['Chrome'],
         customLaunchers: {
-            ChromeHeadlessNoSandbox: {
+            ChromeNoSandbox: {
                 base: 'Chrome',
                 flags: ['--no-sandbox']
             }
