@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  url="http://18.191.216.76:8000/api/v1/";
+  url="http://3.21.128.188:8000/api/v1/";
   constructor(private http: HttpClient) { }
 
 //Alumnos
